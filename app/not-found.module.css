@@ -1,0 +1,63 @@
+.container {
+  text-align: center;
+  padding: 3rem;
+}
+.container svg {
+  display: block;
+  margin: auto;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  font-size: 8rem;
+  color: red;
+}
+
+.container h1 {
+  font-size: 3rem;
+}
+
+.container p {
+  margin-top: 1.2rem;
+  color: grey;
+  margin-bottom: 1.5rem;
+}
+.button {
+  display: inline-block;
+  padding: 0.9rem 1.3rem;
+  border-radius: 0.5rem;
+  background: #fa7070;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  border: 0px;
+  font-size: 0.9rem;
+  margin-right: 1rem;
+  transition: all 0.3s ease;
+}
+.button:hover {
+  cursor: pointer;
+  transform: translateY(-1.5px);
+  scale: 1.1;
+}
+
+@media (max-width: 1200px) {
+  .container h1 {
+    font-size: 2rem;
+  }
+  .container svg {
+    font-size: 5rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .container h1 {
+    font-size: 1.8rem;
+  }
+  .container {
+    padding: 1rem;
+  }
+
+  .container svg {
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+    font-size: 3.5rem;
+  }
+}

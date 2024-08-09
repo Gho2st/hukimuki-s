@@ -1,0 +1,67 @@
+.container {
+  padding: 4rem 9%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container h5 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.container svg {
+  font-size: 2.5rem;
+}
+
+.container li,
+.container a {
+  margin-top: 0.5rem;
+  color: rgb(173, 172, 172);
+}
+
+.container li:hover,
+.container a:hover {
+  color: #00bf63;
+}
+
+.container ul svg {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+.facebook {
+  color: #4267b2 !important;
+  margin-right: 1rem;
+}
+
+.instagram {
+  color: orangered !important;
+}
+.copyright {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  color: rgb(173, 172, 172);
+  position: relative;
+}
+
+.copyright a {
+  color: rgb(173, 172, 172);
+}
+.copyright a:hover {
+  color: #00bf63;
+}
+
+.copyright::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 0.1px;
+  width: 83%;
+  background-color: rgb(122, 122, 122);
+}

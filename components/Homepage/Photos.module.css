@@ -1,0 +1,8 @@
+.container {
+  display: grid;
+  padding: 2rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 5rem;
+  margin-bottom: 5rem;
+  margin-top: 3rem;
+}

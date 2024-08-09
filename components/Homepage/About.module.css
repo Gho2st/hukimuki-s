@@ -1,0 +1,49 @@
+.back {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 2rem 9%;
+  margin: auto;
+}
+.container h2 {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+}
+.star {
+  margin-top: 0.8rem;
+  font-size: 1.5rem;
+  fill: gold;
+}
+
+.textContainer {
+  max-width: 65%;
+  margin: auto;
+  margin-top: 2.5rem;
+}
+
+.container p {
+  color: #b4b4b4;
+}
+
+.icons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-top: 6rem;
+}
+.icons svg {
+  font-size: 3.5rem;
+  color: #00bf63;
+  margin-bottom: 1rem;
+}
+
+.icons p {
+  text-transform: uppercase;
+  font-weight: bold;
+}

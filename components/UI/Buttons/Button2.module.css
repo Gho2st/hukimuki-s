@@ -1,0 +1,10 @@
+.container div {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  color: white;
+  font-weight: bold;
+  background: transparent;
+  border: 0.1rem solid white;
+}

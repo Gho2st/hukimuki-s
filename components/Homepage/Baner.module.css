@@ -1,0 +1,40 @@
+.banerContainer {
+  background-image: url("/baner.jpg");
+  background-size: cover;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banerContainer::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: black;
+  opacity: 0.5; /* Optional: Adjust opacity to see the image through the overlay */
+  z-index: 2;
+}
+
+.headerContainer {
+  opacity: 1;
+  z-index: 3;
+  text-align: center;
+}
+
+.headerContainer h1 {
+  font-size: 3.4rem;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+}
+
+.headerContainer p {
+  font-size: 1.45rem;
+  color: #b4b4b4;
+}

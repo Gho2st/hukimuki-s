@@ -1,0 +1,53 @@
+.menuContainer {
+  margin: auto;
+  padding: 2rem 9%;
+}
+
+.logo {
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.logo h1 {
+  color: #00bf63;
+  font-size: 5.5rem;
+}
+
+.logo h2 {
+  transform: translateY(-0.7rem);
+  margin-bottom: 3rem;
+}
+
+.buttons {
+  margin-top: 3rem;
+  margin-bottom: 5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons button {
+  padding: 1rem 2rem;
+  border: 2px solid #00bf63;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  background: black;
+  color: white;
+}
+
+.buttons button:hover {
+  background: rgb(0, 37, 12);
+  cursor: pointer;
+  transform: translateY(-1px);
+}
+
+.menuImages {
+  max-width: 50%;
+  margin: auto;
+}
+
+/* usuniecie minimalnej przerwy miedzy zdjeciami */
+.menuImages img {
+  display: block;
+}
