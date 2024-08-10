@@ -1,7 +1,8 @@
 .container {
-  height: 1000px;
-  width: 1000px;
-  background: orangered;
+  width: 100%;
   margin: auto;
   margin-top: 4rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr;
 }

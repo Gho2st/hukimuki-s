@@ -1,0 +1,52 @@
+.container {
+  text-align: center;
+  padding: 3rem;
+}
+.container h2 {
+  margin-top: 6rem;
+  font-size: 2.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.container a {
+  display: inline-block;
+  padding: 0.9rem 1.3rem;
+  border-radius: 0.5rem;
+  background: #18970d;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  border: 0px;
+  font-size: 0.9rem;
+  margin-right: 1rem;
+  transition: all 0.3s ease;
+}
+
+.container button {
+  padding: 0.9rem 1.3rem;
+  border-radius: 0.5rem;
+  background: #fa7070;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  border: 0px;
+  font-size: 0.9rem;
+  margin-right: 1rem;
+  transition: all 0.3s ease;
+}
+.container button:hover,
+.container a:hover {
+  cursor: pointer;
+  transform: translateY(-1.5px);
+  scale: 1.1;
+}
+
+@media (max-width: 800px) {
+  .container h2 {
+    font-size: 2.1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .container a {
+    margin-bottom: 1rem;
+  }
+}

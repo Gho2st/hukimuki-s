@@ -1,0 +1,33 @@
+/* #00bf63 */
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: 0.1rem solid rgb(255, 255, 255);
+  border-radius: 0.5rem;
+  padding: 3rem 1.5rem;
+  background: rgb(20, 20, 20);
+}
+
+.container h3 {
+  color: #00bf63;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+}
+
+.text2 {
+  margin-bottom: 0;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.container p {
+  margin-bottom: 1.5rem;
+}
+
+.container button div {
+  font-size: 1rem;
+  margin-right: 0;
+}
