@@ -1,0 +1,39 @@
+.container {
+  text-align: center;
+  padding: 2rem 9%;
+}
+
+.logo {
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.logo h1 {
+  color: #00bf63;
+  font-size: 5.5rem;
+}
+
+.container h3 {
+  font-size: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.container button {
+  margin-top: 1.5rem;
+  display: inline-block;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 1.3rem;
+  color: black;
+  font-weight: bold;
+  background: white;
+  transition: all 0.3s ease;
+  border: 0;
+}
+
+.container button:hover {
+  cursor: pointer;
+  scale: 1.1;
+  background: rgb(219, 219, 219);
+}

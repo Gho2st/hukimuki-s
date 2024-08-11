@@ -10,7 +10,6 @@ export default function Reservationitem(props) {
         <p className={classes.text2}>{props.lvl}</p>
         <h3>{props.price}</h3>
         <p>{props.when}</p>
-        {/* <Button text="Rezerwuj" href="/"></Button> */}
         <ButtonOnClick onClick={props.onClick} text="Rezerwuj" />
       </div>
     </>

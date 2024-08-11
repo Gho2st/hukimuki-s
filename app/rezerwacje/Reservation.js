@@ -27,7 +27,12 @@ export default function Reservation() {
           price="250zł"
           when="Rezerwacja dostępna tylko w piątki i soboty."
           onClick={() =>
-            openModal({ title: "CLUB - 5 osób", price: "250zł", isClub: true })
+            openModal({
+              title: "CLUB - 5 osób",
+              price: 250,
+              isClub: true,
+              lvl: "Poziom -1",
+            })
           }
         />
         <Reservationitem
@@ -36,7 +41,26 @@ export default function Reservation() {
           price="300zł"
           when="Rezerwacja dostępna tylko w piątki i soboty."
           onClick={() =>
-            openModal({ title: "CLUB - 6 osób", price: "300zł", isClub: true })
+            openModal({
+              title: "CLUB - 6 osób",
+              price: 300,
+              isClub: true,
+              lvl: "Poziom -1",
+            })
+          }
+        />
+        <Reservationitem
+          title="Antresola - 4 osoby"
+          lvl="Poziom 0"
+          price="300zł"
+          when="Rezerwacja dostępna przez 7 dni w tygodniu."
+          onClick={() =>
+            openModal({
+              title: "Antresola - 4 osoby",
+              price: 300,
+              isClub: false,
+              lvl: "Poziom 0",
+            })
           }
         />
         {/* Dodaj kolejne Reservationitem z odpowiednimi danymi */}
@@ -49,6 +73,7 @@ export default function Reservation() {
           title={selectedReservation.title}
           price={selectedReservation.price}
           isClub={selectedReservation.isClub}
+          lvl={selectedReservation.lvl}
         />
       )}
     </>

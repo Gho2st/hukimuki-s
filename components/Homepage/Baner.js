@@ -11,7 +11,7 @@ export default function Baner() {
   // Hook useScroll do śledzenia przewijania
   const { scrollY } = useScroll();
   const scale = useTransform(scrollY, [0, 400], [1, 0.85]); // Skalowanie
-  const y = useTransform(scrollY, [0, 600], [0, 550]); // Zmienia zakresy wartości według potrzeb
+  const y = useTransform(scrollY, [0, 550], [0, 580]); // Zmienia zakresy wartości według potrzeb
 
   return (
     <>
