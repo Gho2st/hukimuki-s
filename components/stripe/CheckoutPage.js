@@ -1,5 +1,6 @@
 "use client";
-import { useEffect, useState } from "react";
+
+import React, { useEffect, useState } from "react";
 import {
   useStripe,
   useElements,
@@ -7,25 +8,20 @@ import {
 } from "@stripe/react-stripe-js";
 import convertToSubcurrency from "./convertToSubcurrency";
 
-const CheckoutPage = ({ amount, name, email, phone }) => {
+const CheckoutPage = ({ amount }) => {
   const stripe = useStripe();
   const elements = useElements();
-  const [errorMessage, setErrorMessage] = useState();
+  const [errorMessage, setErrorMessage] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetch("api/create-payment-intent", {
+    fetch("/api/invoices", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        amount: convertToSubcurrency(amount),
-        name: name,
-        phone: phone,
-        email: email,
-      }),
+      body: JSON.stringify({ amount: convertToSubcurrency(amount) }),
     })
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
@@ -39,7 +35,7 @@ const CheckoutPage = ({ amount, name, email, phone }) => {
       return;
     }
 
-    const { submitError } = await elements.submit();
+    const { error: submitError } = await elements.submit();
 
     if (submitError) {
       setErrorMessage(submitError.message);
@@ -56,16 +52,26 @@ const CheckoutPage = ({ amount, name, email, phone }) => {
     });
 
     if (error) {
+      // This point is only reached if there's an immediate error when
+      // confirming the payment. Show the error to your customer (for example, payment details incomplete)
       setErrorMessage(error.message);
     } else {
-      //redirect user after success
-      setLoading(false);
+      // The payment UI automatically closes with a success animation.
+      // Your customer is redirected to your `return_url`.
     }
 
-    if (!clientSecret || !stripe || !elements) {
-      return <div>Loading...</div>;
-    }
+    setLoading(false);
   };
+
+  if (!clientSecret || !stripe || !elements) {
+    return (
+      <div>
+        <div role="status">
+          <span>Loading...</span>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -73,13 +79,11 @@ const CheckoutPage = ({ amount, name, email, phone }) => {
 
       {errorMessage && <div>{errorMessage}</div>}
 
-      <div>
-        <button disabled={!stripe || loading}>
-          {!loading ? `Pay $${amount}` : "Processing..."}
-        </button>
-        <p>Anuluj</p>
-      </div>
+      <button disabled={!stripe || loading}>
+        {!loading ? `Pay $${amount}` : "Processing..."}
+      </button>
     </form>
   );
 };
+
 export default CheckoutPage;

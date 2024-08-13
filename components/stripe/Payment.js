@@ -13,16 +13,7 @@ if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
-export default function Payment({
-  title,
-  lvl,
-  selectedDate,
-  selectedTime,
-  amount,
-  name,
-  email,
-  phone,
-}) {
+export default function Payment({ title, amount, name, email }) {
   return (
     <>
       <div className={classes.container}>

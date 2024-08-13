@@ -10,6 +10,8 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+  max-height: 90vh; /* Maksymalna wysokość modala */
+  overflow-y: auto; /* Włącz przewijanie w pionie */
 }
 .overlay {
   position: fixed;
@@ -19,28 +21,30 @@
   bottom: 0;
   background-color: rgba(40, 40, 40, 0.85);
 }
-.disabledDate {
-  background-color: #f0f0f0;
-  cursor: not-allowed;
-  color: #ccc;
+.calendar {
+  margin: auto;
 }
-
+.enableDate {
+  background-color: #00bf63; /* Jasnoszary kolor dla niedostępnych dat */
+  color: #ffffff; /* Szary kolor tekstu */
+  font-weight: bold;
+  font-size: 1.02rem;
+}
+.selectedDate {
+  background-color: #006edc;
+  font-size: 1.02rem;
+}
 .modal select {
   width: 80%;
   border: 1px solid #ccc;
   padding: 8px;
   border-radius: 0.5rem;
   margin: auto;
-  margin-bottom: 1.5rem;
 }
 
 .modal label {
   margin-top: 2rem;
   margin-bottom: 0.5rem;
-}
-
-.calendar {
-  margin: auto;
 }
 
 .modal h2 {
@@ -80,4 +84,17 @@
 }
 .buttons button:nth-child(2) {
   background: #ee4e4e;
+}
+
+.personalInfo {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+}
+
+.personalInfo input {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 0px;
 }
