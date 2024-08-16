@@ -24,7 +24,7 @@ export default function Payment({ title, amount, name, email }) {
         <p>{lvl}</p>
         <p>
           Rezerwacja na godzine {selectedTime} w dniu
-          {selectedDate.toLocaleDateString()} dla {name} z adresem mailowym{" "}
+          {selectedDate.toLocaleDateString()} dla {name} z adresem mailowym
           {email} i nr {phone}
         </p>
         <h3>{amount} PLN</h3>

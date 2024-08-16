@@ -4,6 +4,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import classes from "./ReservationModal.module.css";
 import Link from "next/link";
+import CheckoutPage from "@/components/stripe/CheckoutPage";
 
 const ReservationModal = ({
   isOpen,
@@ -17,9 +18,28 @@ const ReservationModal = ({
   const [selectedTime, setSelectedTime] = useState("");
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [name, setName] = useState("Dominik Jojczyk");
+  const [address, setAddress] = useState("Niskowa 36");
   const [email, setEmail] = useState("dominik.jojczyk@gmail.com");
   const [phone, setPhone] = useState("576985894");
+  const [NIP, setNIP] = useState("");
+  const [formattedDate, setFormattedDate] = useState(null);
   const [occupiedDates, setOccupiedDates] = useState([]);
+  const [isCompany, setIsCompany] = useState(false);
+
+  const reservationData = {
+    name,
+    email,
+    phone,
+    date: formattedDate,
+    time: selectedTime,
+    isCompany,
+    address,
+    NIP,
+    price,
+    lvl,
+    isClub,
+    title,
+  };
 
   useEffect(() => {
     const fetchOccupiedDates = async () => {
@@ -77,7 +97,11 @@ const ReservationModal = ({
     const localDate = new Date(date);
     localDate.setHours(0, 0, 0, 0);
 
-    const formattedDate = localDate.toLocaleDateString("en-CA"); // format 'YYYY-MM-DD'
+    // const formattedDate = localDate.toLocaleDateString("en-CA"); // format 'YYYY-MM-DD'
+
+    setFormattedDate(localDate.toLocaleDateString("en-CA"));
+    console.log(formattedDate);
+    console.log(selectedDate);
 
     if (isAvailableDate(localDate)) {
       setSelectedDate(localDate);
@@ -96,36 +120,37 @@ const ReservationModal = ({
       return;
     }
 
-    const reservationData = {
-      name,
-      email,
-      phone,
-      date: formattedDate,
-      time: selectedTime,
-      price,
-      lvl,
-      isClub,
-      title,
-    };
+    // const reservationData = {
+    //   name,
+    //   email,
+    //   phone,
+    //   date: formattedDate,
+    //   time: selectedTime,
+    //   price,
+    //   lvl,
+    //   isClub,
+    //   title,
+    // };
+    // try {
+    //   const response = await fetch("http://localhost:3000/api/reserve", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(reservationData),
+    //   });
 
-    try {
-      const response = await fetch("http://localhost:3000/api/reserve", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(reservationData),
-      });
+    //   if (!response.ok) {
+    //     throw new Error("Nie udało się zrealizować rezerwacji");
+    //   }
 
-      if (!response.ok) {
-        throw new Error("Nie udało się zrealizować rezerwacji");
-      }
+    //   setShowConfirmation(true);
+    // } catch (error) {
+    //   console.error("Błąd podczas rezerwacji:", error);
+    //   alert("Wystąpił problem podczas rezerwacji. Spróbuj ponownie później.");
+    // }
 
-      setShowConfirmation(true);
-    } catch (error) {
-      console.error("Błąd podczas rezerwacji:", error);
-      alert("Wystąpił problem podczas rezerwacji. Spróbuj ponownie później.");
-    }
+    setShowConfirmation(true);
   };
 
   const getAvailableTimes = () => {
@@ -154,7 +179,7 @@ const ReservationModal = ({
         ];
   };
 
-  const formattedDate = selectedDate.toLocaleDateString();
+  // const formattedDate = selectedDate.toLocaleDateString();
 
   return (
     <Modal
@@ -201,7 +226,9 @@ const ReservationModal = ({
           </select>
 
           <div className={classes.personalInfo}>
-            <label>Imię:</label>
+            {!isCompany && <label>Imię:</label>}
+            {isCompany && <label>Nazwa firmy:</label>}
+
             <input
               type="text"
               value={name}
@@ -214,12 +241,62 @@ const ReservationModal = ({
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
+
             <label>Numer telefonu:</label>
             <input
               type="text"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
             />
+
+            <label>
+              <input
+                type="checkbox"
+                checked={isCompany}
+                onChange={() => setIsCompany(!isCompany)}
+              />
+              Zakup na firmę?
+            </label>
+            {isCompany && (
+              <>
+                <label>NIP:</label>
+                <input
+                  type="text"
+                  value={NIP}
+                  onChange={(e) => setNIP(e.target.value)}
+                />
+                <label>Kraj:</label>
+                <input
+                  type="text"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                />
+                <label>Adres firmy:</label>
+                <input
+                  type="text"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                />
+                <label>Ulica</label>
+                <input
+                  type="text"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                />
+                <label>Numer</label>
+                <input
+                  type="text"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                />
+                <label>Kod pocztowy</label>
+                <input
+                  type="text"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                />
+              </>
+            )}
           </div>
 
           <div className={classes.buttons}>
@@ -232,12 +309,12 @@ const ReservationModal = ({
           <h3>{name}</h3>
           <p>
             Twoja rezerwacja na {title} {lvl} o godzinie {selectedTime} w dniu
-            {formattedDate} jest przygotowana
+            {formattedDate} jest przygotowana, opłać a następnie wydrukuj sobie
+            potwierdzenie.
+            <br></br>
+            Dziękujemy!
           </p>
-          <p>Zapłać aby ją potwierdzić</p>
-          <Link href="https://buy.stripe.com/test_dR69BCeze1TQ3QIeV7">
-            Zaplać
-          </Link>
+          <CheckoutPage amount={price} reservationData={reservationData} />
         </div>
       )}
     </Modal>

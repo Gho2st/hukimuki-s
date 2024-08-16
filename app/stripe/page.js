@@ -1,38 +1,38 @@
 "use client";
-
 import CheckoutPage from "@/components/stripe/CheckoutPage";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
-import convertToSubcurrency from "@/components/stripe/convertToSubcurrency";
-
-if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
-  throw new Error("NEXT_PUBLIC_STRIPE_PUBLIC_KEY is not defined");
-}
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 
 export default function Home() {
-  const amount = 49.99;
+  const amount = 250; // Amount in dollars
+  const searchParams = useSearchParams();
+  const [isAllowed, setIsAllowed] = useState(false);
+
+  useEffect(() => {
+    const token = searchParams.get("token");
+    const validToken = "token"; // This should be dynamic in a real application
+
+    if (token === validToken) {
+      setIsAllowed(true);
+    } else {
+      setIsAllowed(false);
+    }
+  }, [searchParams]);
+
+  if (!isAllowed) {
+    return <p>The payment page is no longer valid.</p>;
+  }
 
   return (
     <main>
       <div>
-        <h1>Sonny</h1>
+        <h1>HukiMuki</h1>
         <h2>
-          has requested
+          Potwierdz swoja rezerwacje :)
           <span> ${amount}</span>
         </h2>
       </div>
-
-      <Elements
-        stripe={stripePromise}
-        options={{
-          mode: "payment",
-          amount: convertToSubcurrency(amount),
-          currency: "usd",
-        }}
-      >
-        <CheckoutPage amount={amount} />
-      </Elements>
+      {/* <CheckoutPage amount={amount} /> */}
     </main>
   );
 }
