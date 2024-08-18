@@ -1,8 +1,11 @@
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import TransitionProvider from "@/components/animations/TransitionProvider";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({
+  weight: ["200", "300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+});
 
 export const metadata = {
   title: "HukiMuki - Pub i Klub Muzyczny w Krakowie",
@@ -13,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="pl">
-      <body className={inter.className}>
+      <body className={poppins.className}>
         <TransitionProvider>{children}</TransitionProvider>
       </body>
     </html>

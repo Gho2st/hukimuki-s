@@ -1,8 +1,37 @@
 .container {
+  margin-bottom: 5rem;
+  margin-top: 3rem;
+}
+
+.textContainer {
+  text-align: center;
+  max-width: 60%;
+  margin: auto;
+}
+
+.textContainer h4 {
+  text-transform: uppercase;
+  font-size: 3rem;
+}
+
+.textContainer p {
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  color: #b4b4b4;
+}
+
+.imagesContainer {
   display: grid;
   padding: 2rem;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 5rem;
-  margin-bottom: 5rem;
-  margin-top: 3rem;
+}
+
+.instagram {
+  display: inline-block;
+}
+.instagram svg {
+  color: orangered !important;
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
 }

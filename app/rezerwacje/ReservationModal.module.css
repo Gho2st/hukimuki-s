@@ -98,3 +98,9 @@
   border-radius: 0.5rem;
   border: 0px;
 }
+
+.errorMessage {
+  margin-top: 1rem;
+  color: #ee4e4e !important;
+  font-size: 1.1rem;
+}

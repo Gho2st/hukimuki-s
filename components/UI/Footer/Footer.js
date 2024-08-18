@@ -21,7 +21,7 @@ export default function Footer() {
               <FaFacebook />
             </Link>
             <Link
-              href={"https://www.instagram.com/p/C9R6AvGgwDA/"}
+              href={"https://www.instagram.com/hukimuki/"}
               className={classes.instagram}
             >
               <FaInstagram />
@@ -67,8 +67,9 @@ export default function Footer() {
         </div>
       </div>
       <h6 className={classes.copyright}>
-        &copy; HukiMuki & <a href="https://www.dominikjojczyk.pl">Dominik</a>{" "}
-        Wszelkie prawa zastrzezone.{" "}
+        &copy; HukiMuki 2024 &{" "}
+        <a href="https://www.dominikjojczyk.pl">Dominik.</a> Wszelkie prawa
+        zastrzeżone.{" "}
       </h6>
     </>
   );

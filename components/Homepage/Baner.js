@@ -27,11 +27,17 @@ export default function Baner() {
               <motion.span
                 key={index}
                 initial={{ opacity: 0.5, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
+                animate={{
+                  opacity: 1,
+                  scale: 1,
+                  color: ["#00bf63"],
+                }}
                 transition={{
-                  duration: 0.8,
+                  duration: 1,
                   ease: "easeInOut",
                   delay: index * 0.1,
+                  repeat: Infinity,
+                  repeatType: "reverse",
                 }}
               >
                 {letter}

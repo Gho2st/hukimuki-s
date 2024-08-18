@@ -25,6 +25,7 @@ const ReservationModal = ({
   const [formattedDate, setFormattedDate] = useState(null);
   const [occupiedDates, setOccupiedDates] = useState([]);
   const [isCompany, setIsCompany] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const reservationData = {
     name,
@@ -78,19 +79,25 @@ const ReservationModal = ({
   }, [title]);
 
   const isAvailableDate = (date) => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
     const day = date.toLocaleDateString("en-CA"); // format 'YYYY-MM-DD'
     const dayOfWeek = date.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+
+    const isDateInPast = date < today;
 
     // Check if the date is occupied
     const isDateOccupied = occupiedDates.includes(day);
 
     // Club is only available on Friday and Saturday
     if (isClub) {
-      return !isDateOccupied && (dayOfWeek === 5 || dayOfWeek === 6);
+      return (
+        !isDateInPast && !isDateOccupied && (dayOfWeek === 5 || dayOfWeek === 6)
+      );
     }
-
     // Non-club is available every day
-    return !isDateOccupied;
+    return !isDateOccupied && !isDateInPast;
   };
 
   const handleDateChange = (date) => {
@@ -105,8 +112,9 @@ const ReservationModal = ({
 
     if (isAvailableDate(localDate)) {
       setSelectedDate(localDate);
+      setErrorMessage(null);
     } else {
-      alert("Wybrana data jest niedostępna.");
+      setErrorMessage("Wybrana data jest niedostępna");
     }
   };
 
@@ -116,40 +124,12 @@ const ReservationModal = ({
 
   const handlePayment = async () => {
     if (!selectedDate || !selectedTime || !name || !phone || !email) {
-      alert("Proszę wypełnić wszystkie pola przed dokonaniem płatności.");
+      setErrorMessage(
+        "Proszę wypełnić wszystkie pola przed dokonaniem płatności."
+      );
       return;
     }
-
-    // const reservationData = {
-    //   name,
-    //   email,
-    //   phone,
-    //   date: formattedDate,
-    //   time: selectedTime,
-    //   price,
-    //   lvl,
-    //   isClub,
-    //   title,
-    // };
-    // try {
-    //   const response = await fetch("http://localhost:3000/api/reserve", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(reservationData),
-    //   });
-
-    //   if (!response.ok) {
-    //     throw new Error("Nie udało się zrealizować rezerwacji");
-    //   }
-
-    //   setShowConfirmation(true);
-    // } catch (error) {
-    //   console.error("Błąd podczas rezerwacji:", error);
-    //   alert("Wystąpił problem podczas rezerwacji. Spróbuj ponownie później.");
-    // }
-
+    setErrorMessage(null);
     setShowConfirmation(true);
   };
 
@@ -179,8 +159,6 @@ const ReservationModal = ({
         ];
   };
 
-  // const formattedDate = selectedDate.toLocaleDateString();
-
   return (
     <Modal
       isOpen={isOpen}
@@ -192,7 +170,7 @@ const ReservationModal = ({
         <>
           <h2>{title}</h2>
           <p>{lvl}</p>
-          <h3>{price}</h3>
+          <h3>{price}zł</h3>
           <Calendar
             onChange={handleDateChange}
             value={selectedDate}
@@ -215,6 +193,9 @@ const ReservationModal = ({
             }}
             className={classes.calendar}
           />
+          {errorMessage && (
+            <p className={classes.errorMessage}>{errorMessage}</p>
+          )}
           <label>Wybierz godzinę:</label>
           <select value={selectedTime} onChange={handleTimeChange}>
             <option value="">Wybierz godzinę</option>
