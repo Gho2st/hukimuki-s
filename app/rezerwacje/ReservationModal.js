@@ -18,10 +18,15 @@ const ReservationModal = ({
   const [selectedTime, setSelectedTime] = useState("");
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [name, setName] = useState("Dominik Jojczyk");
-  const [address, setAddress] = useState("Niskowa 36");
+  const [city, setCity] = useState("Kraków");
+  const [country, setCountry] = useState("Polska");
+  const [region, setRegion] = useState("Małopolska");
+  const [postal_code, setPostalCode] = useState("33-395");
+  const [line1, setLine1] = useState("Armii Krajowej");
+  const [line2, setLine2] = useState("85/85");
   const [email, setEmail] = useState("dominik.jojczyk@gmail.com");
   const [phone, setPhone] = useState("576985894");
-  const [NIP, setNIP] = useState("");
+  const [NIP, setNIP] = useState("PL1234567890");
   const [formattedDate, setFormattedDate] = useState(null);
   const [occupiedDates, setOccupiedDates] = useState([]);
   const [isCompany, setIsCompany] = useState(false);
@@ -34,8 +39,13 @@ const ReservationModal = ({
     date: formattedDate,
     time: selectedTime,
     isCompany,
-    address,
+    city,
     NIP,
+    country,
+    region,
+    postal_code,
+    line1,
+    line2,
     price,
     lvl,
     isClub,
@@ -124,9 +134,7 @@ const ReservationModal = ({
 
   const handlePayment = async () => {
     if (!selectedDate || !selectedTime || !name || !phone || !email) {
-      setErrorMessage(
-        "Proszę wypełnić wszystkie pola przed dokonaniem płatności."
-      );
+      setErrorMessage("Proszę wypełnić wszystkie pola przed kontynuacją.");
       return;
     }
     setErrorMessage(null);
@@ -196,6 +204,7 @@ const ReservationModal = ({
           {errorMessage && (
             <p className={classes.errorMessage}>{errorMessage}</p>
           )}
+
           <label>Wybierz godzinę:</label>
           <select value={selectedTime} onChange={handleTimeChange}>
             <option value="">Wybierz godzinę</option>
@@ -205,6 +214,25 @@ const ReservationModal = ({
               </option>
             ))}
           </select>
+          <label>
+            <input
+              type="checkbox"
+              checked={isCompany}
+              onChange={() => setIsCompany(!isCompany)}
+            />
+            Zakup na firmę?
+          </label>
+
+          {isCompany && (
+            <>
+              <label>NIP:</label>
+              <input
+                type="text"
+                value={NIP}
+                onChange={(e) => setNIP(e.target.value)}
+              />
+            </>
+          )}
 
           <div className={classes.personalInfo}>
             {!isCompany && <label>Imię:</label>}
@@ -230,54 +258,42 @@ const ReservationModal = ({
               onChange={(e) => setPhone(e.target.value)}
             />
 
-            <label>
-              <input
-                type="checkbox"
-                checked={isCompany}
-                onChange={() => setIsCompany(!isCompany)}
-              />
-              Zakup na firmę?
-            </label>
-            {isCompany && (
-              <>
-                <label>NIP:</label>
-                <input
-                  type="text"
-                  value={NIP}
-                  onChange={(e) => setNIP(e.target.value)}
-                />
-                <label>Kraj:</label>
-                <input
-                  type="text"
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-                />
-                <label>Adres firmy:</label>
-                <input
-                  type="text"
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-                />
-                <label>Ulica</label>
-                <input
-                  type="text"
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-                />
-                <label>Numer</label>
-                <input
-                  type="text"
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-                />
-                <label>Kod pocztowy</label>
-                <input
-                  type="text"
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-                />
-              </>
-            )}
+            <label>Kraj:</label>
+            <input
+              type="text"
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+            />
+            <label>Województwo:</label>
+            <input
+              type="text"
+              value={region}
+              onChange={(e) => setRegion(e.target.value)}
+            />
+            <label>Miasto:</label>
+            <input
+              type="text"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+            />
+            <label>Ulica</label>
+            <input
+              type="text"
+              value={line1}
+              onChange={(e) => setLine1(e.target.value)}
+            />
+            <label>Numer</label>
+            <input
+              type="text"
+              value={line2}
+              onChange={(e) => setLine2(e.target.value)}
+            />
+            <label>Kod pocztowy</label>
+            <input
+              type="text"
+              value={postal_code}
+              onChange={(e) => setPostalCode(e.target.value)}
+            />
           </div>
 
           <div className={classes.buttons}>
@@ -290,7 +306,7 @@ const ReservationModal = ({
           <h3>{name}</h3>
           <p>
             Twoja rezerwacja na {title} {lvl} o godzinie {selectedTime} w dniu
-            {formattedDate} jest przygotowana, opłać a następnie wydrukuj sobie
+            {formattedDate} jest przygotowana, opłać a następnie pobierz sobie
             potwierdzenie.
             <br></br>
             Dziękujemy!

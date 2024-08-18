@@ -5,7 +5,9 @@ import convertToSubcurrency from "./convertToSubcurrency";
 import Link from "next/link";
 
 const CheckoutPage = ({ amount, reservationData }) => {
-  const [invoice_url, setInvoiceUrl] = useState("");
+  const [invoiceUrl, setInvoiceUrl] = useState("");
+  const [error, setError] = useState(null); // Stan do przechowywania błędu
+
   console.log(reservationData);
 
   useEffect(() => {
@@ -19,19 +21,31 @@ const CheckoutPage = ({ amount, reservationData }) => {
         reservationData: reservationData,
       }),
     })
-      .then((res) => res.json())
-
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Nie udało się utworzyć linku do płatności.");
+        }
+        return res.json();
+      })
       .then((data) => {
         console.log(data);
         setInvoiceUrl(data.invoice_url);
+      })
+      .catch((err) => {
+        console.error(err);
+        setError(err.message); // Ustawienie błędu
       });
   }, [amount]);
 
   return (
     <div>
       <div role="status">
-        {!invoice_url && <span>Wczytywanie linku do płatności</span>}
-        {invoice_url && <Link href={invoice_url}>Zapłać</Link>}
+        {!invoiceUrl && !error && (
+          <span>Wczytywanie linku do płatności...</span>
+        )}
+        {invoiceUrl && <Link href={invoiceUrl}>Zapłać</Link>}
+        {error && <span style={{ color: "red" }}>{error}</span>}{" "}
+        {/* Wyświetlenie błędu */}
       </div>
     </div>
   );

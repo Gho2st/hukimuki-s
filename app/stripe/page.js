@@ -1,38 +1,32 @@
 "use client";
-import CheckoutPage from "@/components/stripe/CheckoutPage";
-import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import React, { useCallback } from "react";
+import { loadStripe } from "@stripe/stripe-js";
+import {
+  EmbeddedCheckoutProvider,
+  EmbeddedCheckout,
+} from "@stripe/react-stripe-js";
 
-export default function Home() {
-  const amount = 250; // Amount in dollars
-  const searchParams = useSearchParams();
-  const [isAllowed, setIsAllowed] = useState(false);
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+);
 
-  useEffect(() => {
-    const token = searchParams.get("token");
-    const validToken = "token"; // This should be dynamic in a real application
+export default function App() {
+  const fetchClientSecret = useCallback(() => {
+    // Create a Checkout Session
+    return fetch("/api/checkout", {
+      method: "POST",
+    })
+      .then((res) => res.json())
+      .then((data) => data.clientSecret);
+  }, []);
 
-    if (token === validToken) {
-      setIsAllowed(true);
-    } else {
-      setIsAllowed(false);
-    }
-  }, [searchParams]);
-
-  if (!isAllowed) {
-    return <p>The payment page is no longer valid.</p>;
-  }
+  const options = { fetchClientSecret };
 
   return (
-    <main>
-      <div>
-        <h1>HukiMuki</h1>
-        <h2>
-          Potwierdz swoja rezerwacje :)
-          <span> ${amount}</span>
-        </h2>
-      </div>
-      {/* <CheckoutPage amount={amount} /> */}
-    </main>
+    <div id="checkout">
+      <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
+        <EmbeddedCheckout />
+      </EmbeddedCheckoutProvider>
+    </div>
   );
 }

@@ -31,7 +31,12 @@ export async function POST(request) {
       name: reservationData.name,
       phone: "+48" + reservationData.phone,
       address: {
-        city: reservationData.address,
+        city: reservationData.city,
+        country: reservationData.country,
+        line1: reservationData.line1,
+        line2: reservationData.line2,
+        postal_code: reservationData.postal_code,
+        state: reservationData.state,
       },
     });
     console.log(customer);
@@ -40,41 +45,63 @@ export async function POST(request) {
     // console.log(customers.data[0].id);
 
     // klient nie chce na firme wiec usuwam nip przypisany do niego zeby go nie bylo na fakturze
-    if (isCompany === false) {
-      const customerTaxId = await stripe.customers.listTaxIds(customer.id, {
-        limit: 1,
-      });
-
-      console.log("customer tax id", customerTaxId);
-
-      if (customerTaxId.data.length > 0) {
-        const deleted = await stripe.customers.deleteTaxId(
+    if (!isCompany) {
+      try {
+        const customerTaxIdList = await stripe.customers.listTaxIds(
           customer.id,
-          customerTaxId.data[0].id
+          { limit: 1 }
         );
+        console.log("customer tax id list", customerTaxIdList);
+
+        if (customerTaxIdList.data.length > 0) {
+          const taxIdToDelete = customerTaxIdList.data[0].id;
+          const deleted = await stripe.customers.deleteTaxId(
+            customer.id,
+            taxIdToDelete
+          );
+          console.log("Deleted tax id:", deleted);
+        } else {
+          console.log("No tax ID found for the customer.");
+        }
+      } catch (error) {
+        console.error("Error occurred while removing tax ID:", error);
       }
     }
 
-    if (isCompany === true) {
-      const customerTaxId = await stripe.customers.listTaxIds(customer.id, {
-        limit: 1,
-      });
+    if (isCompany) {
+      try {
+        // Pobranie listy NIP-ów przypisanych do klienta
+        const customerTaxIdList = await stripe.customers.listTaxIds(
+          customer.id,
+          { limit: 1 }
+        );
+        console.log("Customer tax ID list:", customerTaxIdList);
 
-      console.log("customer tax id", customerTaxId);
+        // Jeśli klient ma przypisany NIP, usuń go
+        if (customerTaxIdList.data.length > 0) {
+          const taxIdToDelete = customerTaxIdList.data[0].id;
+          const deletedTaxId = await stripe.customers.deleteTaxId(
+            customer.id,
+            taxIdToDelete
+          );
+          console.log("Deleted tax ID:", deletedTaxId);
+        } else {
+          console.log("No tax ID found to delete.");
+        }
 
-      const deleted = await stripe.customers.deleteTaxId(
-        customer.id,
-        customerTaxId.data[0].id
-      );
-
-      console.log(deleted);
-
-      console.log("jest tax id (NIP wiec przypisuje do klienta)");
-      const taxId = await stripe.customers.createTaxId(customer.id, {
-        type: "eu_vat",
-        value: reservationData.NIP,
-      });
-      console.log(taxId);
+        // Dodaj nowy NIP do klienta
+        if (reservationData && reservationData.NIP) {
+          const newTaxId = await stripe.customers.createTaxId(customer.id, {
+            type: "eu_vat",
+            value: reservationData.NIP,
+          });
+          console.log("Created tax ID:", newTaxId);
+        } else {
+          console.log("No NIP provided in reservation data.");
+        }
+      } catch (error) {
+        console.error("Error occurred while managing tax ID:", error);
+      }
     }
 
     if (customers.data.length === 0) {
@@ -85,7 +112,12 @@ export async function POST(request) {
         email: reservationData.email,
         phone: reservationData.phone,
         address: {
-          city: reservationData.address,
+          city: reservationData.city,
+          country: reservationData.country,
+          line1: reservationData.line1,
+          line2: reservationData.line2,
+          postal_code: reservationData.postal_code,
+          state: reservationData.state,
         },
       });
 
