@@ -5,9 +5,10 @@ import { query } from "@/lib/db";
 
 export async function POST(req) {
   console.log("hej tu api/webhook");
+  console.log(process.env.STRIPE_WEBHOOK_SECRET);
   const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
   const body = await req.text();
-  const signature = req.headers["stripe-signature"];
+  const signature = headers().get("Stripe-Signature");
 
   console.log(signature);
 
