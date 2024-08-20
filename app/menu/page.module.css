@@ -43,11 +43,7 @@
 }
 
 .menuImages {
-  max-width: 50%;
-  margin: auto;
-}
-
-/* usuniecie minimalnej przerwy miedzy zdjeciami */
-.menuImages img {
-  display: block;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr;
 }

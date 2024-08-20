@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import classes from './Which.module.css'
+import classes from "./Which.module.css";
 
 export default function Coctails({ which }) {
   const [images, setImages] = useState([]);
@@ -32,22 +32,21 @@ export default function Coctails({ which }) {
   if (error) return <p className={classes.error}>Error: {error}</p>;
 
   return (
-    <div>
+    <>
       {images.length > 0 ? (
         images.map((file, index) => (
-          <div key={file}>
-            <Image
-              src={`/menu/${which}/${file}`}
-              width={100}
-              height={100}
-              alt={`Cocktail ${index}`}
-              layout="responsive"
-            />
-          </div>
+          <Image
+            key={file}
+            src={`/menu/${which}/${file}`}
+            width={100}
+            height={100}
+            alt={`Cocktail ${index}`}
+            layout="responsive"
+          />
         ))
       ) : (
         <div>No images found</div>
       )}
-    </div>
+    </>
   );
 }

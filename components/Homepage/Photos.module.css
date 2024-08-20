@@ -1,6 +1,7 @@
 .container {
   margin-bottom: 5rem;
   margin-top: 3rem;
+  min-height: 100vh;
 }
 
 .textContainer {
@@ -17,14 +18,19 @@
 .textContainer p {
   margin-top: 2rem;
   margin-bottom: 1.5rem;
-  color: #b4b4b4;
+  color: #919993;
 }
 
 .imagesContainer {
   display: grid;
   padding: 2rem;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 5rem;
+  gap: 2rem;
+}
+.imagesContainer img {
+  width: 75% !important;
+  margin: auto;
+  border-radius: 0.5rem;
 }
 
 .instagram {
@@ -34,4 +40,73 @@
   color: orangered !important;
   font-size: 3.5rem;
   margin-bottom: 1rem;
+}
+
+@media (max-width: 1200px) {
+  .textContainer h4 {
+    font-size: 2.5rem;
+  }
+
+  .textContainer p {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .textContainer {
+    max-width: 80%;
+  }
+
+  .textContainer p {
+    font-size: 0.9rem;
+  }
+  .imagesContainer {
+    display: grid;
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+  .imagesContainer img {
+    width: 100% !important;
+  }
+
+  .instagram svg {
+    font-size: 2.7rem;
+  }
+  .container {
+    margin-bottom: 0rem;
+    margin-top: 7rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .textContainer {
+    max-width: 80%;
+  }
+  .textContainer h4 {
+    font-size: 2.3rem;
+  }
+  .textContainer p {
+    font-size: 0.85rem;
+  }
+  .imagesContainer {
+    grid-template-columns: 1fr 1fr;
+    padding: 0rem;
+    gap: 1rem;
+  }
+  .imagesContainer img {
+    width: 100% !important;
+    border-radius: 0;
+  }
+
+  .instagram svg {
+    font-size: 2.7rem;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+  }
+  .container {
+    margin-bottom: 0rem;
+    margin-top: 5rem;
+  }
 }

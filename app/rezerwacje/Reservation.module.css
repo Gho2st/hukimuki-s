@@ -3,6 +3,6 @@
   margin: auto;
   margin-top: 4rem;
   display: grid;
-  gap: 1rem;
+  gap: 3rem;
   grid-template-columns: 1fr 1fr 1fr;
 }

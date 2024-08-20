@@ -41,7 +41,7 @@ export default function Header() {
           className={classes.navigation__checkbox}
           id="navi-toggle"
         ></input>
-        <label for="navi-toggle" className={classes.navigation__button}>
+        <label htmlFor="navi-toggle" className={classes.navigation__button}>
           <span className={classes.navigation__icon}>&nbsp;</span>
         </label>
         <div className={classes.navigation__background}>&nbsp;</div>

@@ -38,17 +38,15 @@ export async function POST(req) {
 
     console.log("Testing database connection");
 
+    console.log(data);
+
     try {
-      if (data.isClub === true) {
-        data.isClub = 1;
-      } else {
-        data.isClub = 0;
-      }
-      if (data.isCompany === true) {
-        data.isCompany = 1;
-      } else {
-        data.isCompany = 0;
-      }
+      // Zamiana wartości na boolean
+      data.isClub = data.isClub === "true" || data.isClub === true ? 1 : 0;
+      data.isCompany =
+        data.isCompany === "true" || data.isCompany === true ? 1 : 0;
+
+      console.log(data); // Zapisz wynik do konsoli, aby sprawdzić
 
       // Przygotowanie zapytania SQL do dodania danych
       const insertQuery = `

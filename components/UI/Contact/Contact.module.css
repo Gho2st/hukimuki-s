@@ -1,8 +1,9 @@
 .container {
   padding: 2rem 9%;
+  min-height: 100vh;
 }
 
-.container h3 {
+.container h4 {
   text-transform: uppercase;
   font-size: 3rem;
   text-align: center;
@@ -20,7 +21,7 @@
 }
 
 .container p {
-  color: rgb(173, 172, 172);
+  color: #919993;
 }
 
 .formContainer {
@@ -85,4 +86,54 @@
 .thanksMessageContainer p {
   color: #b4b4b4;
   margin-top: 1rem;
+}
+
+@media (max-width: 1200px) {
+  .container h4 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .textContainer {
+    max-width: 90%;
+  }
+  .container p {
+    font-size: 0.9rem;
+  }
+  .formContainer {
+    width: 100%;
+  }
+
+  .inputs input::placeholder {
+    color: rgb(173, 172, 172);
+    font-size: 0.8rem;
+  }
+
+  .formContainer textarea {
+    min-height: 120px;
+  }
+
+  .formContainer textarea::placeholder {
+    font-size: 0.8rem;
+  }
+
+  .buttonContainer div {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .container h4 {
+    font-size: 2.3rem;
+  }
+  .container {
+    margin-top: 8rem;
+  }
+  .inputs {
+    flex-direction: column;
+  }
+  .formContainer textarea {
+    margin-top: 1rem;
+  }
 }

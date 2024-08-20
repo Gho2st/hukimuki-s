@@ -2,19 +2,17 @@ import { NextResponse } from "next/server";
 import { query } from "@/lib/db";
 
 export async function POST(request) {
-  const { searchParams } = new URL(request.url);
-  const which = searchParams.get("email");
-  console.log("Received email:", email);
-
+  const data = await request.json();
+  console.log(data);
   try {
     // Dostosowane zapytanie SQL do formatu 'YYYY-MM-DD'
     const selectQuery = `
       SELECT *
-      FROM reservations 
+      FROM reservations
       WHERE EMAIL = ?;
     `;
 
-    const results = await query(selectQuery, [email]);
+    const results = await query(selectQuery, [data.email]);
     console.log("Query results:", results);
 
     return NextResponse.json({ results });

@@ -17,7 +17,7 @@
 .container li,
 .container a {
   margin-top: 0.5rem;
-  color: rgb(173, 172, 172);
+  color: #919993;
 }
 
 .container li:hover,
@@ -64,4 +64,27 @@
   height: 0.1px;
   width: 83%;
   background-color: rgb(122, 122, 122);
+}
+
+@media (max-width: 1200px) {
+  .container {
+    padding: 2rem 9%;
+    flex-direction: column;
+    gap: 3rem;
+  }
+}
+@media (max-width: 900px) {
+  .container h5 {
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .container svg {
+    font-size: 2.3rem;
+  }
+
+  .container li,
+  .container a {
+    font-size: 0.9rem;
+  }
 }

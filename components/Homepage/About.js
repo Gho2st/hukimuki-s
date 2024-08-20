@@ -42,21 +42,15 @@ export default function About() {
   return (
     <div className={classes.back}>
       <div className={classes.container}>
-        {/* <h2>Huki Muki pub & club</h2> */}
-        {/* <div>
-          {[...Array(5)].map((_, index) => (
-            <FaStar key={index} className={classes.star} />
-          ))}
-        </div> */}
         <div className={classes.textContainer}>
-          {/* <p>
+          <p>
             Zapraszamy do Huki Muki, wyjątkowego pubu i baru zlokalizowanego w
             samym sercu Krakowa! Oferujemy przytulną atmosferę, doskonałe ceny i
             atrakcyjne zniżki studenckie. Na dole naszego lokalu znajduje się
             klub, w którym zabawa trwa do białego rana. Przyjdź i przekonaj się
             sam, dlaczego Huki Muki to idealne miejsce na wieczór z
             przyjaciółmi!
-          </p> */}
+          </p>
         </div>
         <div className={classes.icons} ref={skillRef}>
           {icons.map((item, index) => (

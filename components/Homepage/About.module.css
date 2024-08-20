@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
+  margin-top: 6rem;
 }
 .container {
   display: flex;
@@ -16,27 +16,23 @@
   text-transform: uppercase;
   font-size: 2.5rem;
 }
-.star {
-  margin-top: 0.8rem;
-  font-size: 1.5rem;
-  fill: gold;
-}
 
 .textContainer {
-  max-width: 65%;
+  max-width: 70%;
   margin: auto;
-  margin-top: 2.5rem;
+  margin-top: 12.5rem;
 }
 
 .container p {
-  color: #b4b4b4;
+  color: #919993;
+  margin-bottom: 2rem;
 }
 
 .icons {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 3rem;
-  margin-top: 6rem;
+  margin-top: 4rem;
 }
 .icons svg {
   font-size: 3.5rem;
@@ -47,4 +43,78 @@
 .icons p {
   text-transform: uppercase;
   font-weight: bold;
+}
+
+@media (max-width: 1640px) {
+  .back {
+    margin-top: 0rem;
+  }
+
+  .container p {
+    margin-bottom: 2rem;
+  }
+
+  .icons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .textContainer {
+    margin-top: 6rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .textContainer {
+    max-width: 90%;
+  }
+  .icons {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin-top: 4rem;
+  }
+  .icons svg {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .icons p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .textContainer {
+    max-width: 100%;
+    margin-top: 4rem;
+  }
+  .icons {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .icons svg {
+    margin-bottom: 0.5rem;
+  }
+
+  .icons p {
+    font-size: 0.8rem !important;
+  }
+  .container p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .textContainer {
+    margin-top: 10rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .textContainer {
+    margin-top: 5rem;
+  }
 }

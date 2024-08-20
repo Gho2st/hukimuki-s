@@ -4,10 +4,16 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  border: 0.1rem solid rgb(255, 255, 255);
   border-radius: 0.5rem;
   padding: 3rem 1.5rem;
   background: rgb(20, 20, 20);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: all 0.2s ease-in;
+}
+
+.container:hover {
+  scale: 1.03;
+
 }
 
 .container h3 {

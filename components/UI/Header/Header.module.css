@@ -37,7 +37,7 @@
   position: fixed;
   top: 1.5rem;
   right: 1.6rem;
-  background: linear-gradient(to bottom, #323232 0%, #3f3f3f 40%, #1c1c1c 150%),
+  background: linear-gradient(to bottom, #323232 0%, #3f3f3f 40%, #1c1c1c 100%),
     linear-gradient(
       to top,
       rgba(255, 255, 255, 0.4) 0%,
@@ -46,6 +46,7 @@
   background-blend-mode: multiply;
   z-index: 1000;
   transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+  scale: 1.1;
 }
 
 .navigation__button {

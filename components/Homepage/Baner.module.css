@@ -38,3 +38,36 @@
   font-size: 1.45rem;
   color: #b4b4b4;
 }
+
+@media (max-width: 1450px) {
+  .headerContainer h1 {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .headerContainer h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .headerContainer p {
+    font-size: 1.25rem;
+    color: #b4b4b4;
+  }
+}
+
+@media (max-width: 600px) {
+  .headerContainer h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    margin-top: 0.8rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .headerContainer h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    margin-top: 0.8rem;
+  }
+}

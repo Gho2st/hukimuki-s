@@ -1,59 +1,55 @@
 "use client";
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import classes from "./page.module.css";
 
-export default function Reservations({ which }) {
-  const [reservations, setReservations] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [email, setEmail] = useState("dominik.jojczyk@gmail.com");
+import { useState } from "react";
 
-  const fetchReservations = async () => {
-    setLoading(true);
-    setError(null);
+export default function Reservations() {
+  const [email, setEmail] = useState("");
+  const [reservationData, setReservationData] = useState(null);
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    console.log(email);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      const response = await fetch(
-        `/api/get_reservations?email=${encodeURIComponent(email)}`
-      );
-      if (!response.ok) {
-        throw new Error("Failed to fetch reservations");
+      const response = await fetch("/api/get_reservations", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        setReservationData(data);
+      } else {
+        console.error("Error fetching reservations");
       }
-      const data = await response.json();
-      setReservations(data);
     } catch (error) {
-      setError(error.message);
-    } finally {
-      setLoading(false);
+      console.error("Error:", error);
     }
   };
 
-  useEffect(() => {
-    fetchReservations();
-  }, [email]);
-
-  if (loading) return <p className={classes.loading}>Wczytywanie..</p>;
-  if (error) return <p className={classes.error}>Error: {error}</p>;
-
   return (
-    <div>
-      <h1>Twoje rezerwacje</h1>
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Wprowadź swój email"
-      />
-      <button onClick={fetchReservations}>Fetch Reservations</button>
-      {reservations.length > 0 ? (
-        <ul>
-          {reservations.map((reservation) => (
-            <li key={reservation.id}>{reservation.details}</li>
-          ))}
-        </ul>
-      ) : (
-        <p>Brak rezerwacji</p>
+    <>
+      <h1>Sprawdź swoje rezerwacje</h1>
+      <form onSubmit={handleSubmit}>
+        <label>Podaj maila</label>
+        <input
+          type="email"
+          value={email}
+          onChange={handleEmailChange}
+          required
+        />
+        <button type="submit">Sprawdź rezerwacje</button>
+      </form>
+      {reservationData && (
+        <div>
+          <h2>Twoje rezerwacje:</h2>
+        </div>
       )}
-    </div>
+    </>
   );
 }

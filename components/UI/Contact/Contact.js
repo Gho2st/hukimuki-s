@@ -81,7 +81,7 @@ export default function Contact() {
           transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
           className={classes.container}
         >
-          <h3 ref={skillRef}>Podejmij Kontakt!</h3>
+          <h4 ref={skillRef}>Podejmij Kontakt!</h4>
           <div className={classes.textContainer}>
             <Image src={"/gifs/contact.gif"} width={180} height={150} />
             <p>

@@ -1,0 +1,39 @@
+.menu {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.buttons {
+  margin-top: 3rem;
+  margin-bottom: 5rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.buttons button {
+  padding: 1rem 2rem;
+  border: 2px solid #00bf63;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  background: black;
+  color: white;
+}
+
+.buttons button:hover {
+  background: rgb(0, 37, 12);
+  cursor: pointer;
+  transform: translateY(-1px);
+}
+
+.menuImages {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+}
+
+/* .menuImages img {
+  width: 30% !important;
+} */

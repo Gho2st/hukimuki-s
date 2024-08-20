@@ -1,6 +1,7 @@
 "use client";
 
 import classes from "./Baner.module.css";
+import React, { useEffect, useState } from "react";
 import { useScroll, useTransform, motion } from "framer-motion";
 import Button from "../UI/Buttons/Button";
 import Button2 from "../UI/Buttons/Button2";
@@ -8,10 +9,37 @@ import Button2 from "../UI/Buttons/Button2";
 export default function Baner() {
   const text = "HukiMuki.";
 
+  const [windowWidth, setWindowWidth] = useState(1400);
+
+  // Ustawienie początkowej szerokości okna i nasłuchiwanie zmian
+  useEffect(() => {
+    const updateWindowWidth = () => setWindowWidth(window.innerWidth);
+
+    updateWindowWidth(); // Ustaw początkową wartość
+    window.addEventListener("resize", updateWindowWidth);
+
+    return () => window.removeEventListener("resize", updateWindowWidth);
+  }, []);
+
   // Hook useScroll do śledzenia przewijania
   const { scrollY } = useScroll();
-  const scale = useTransform(scrollY, [0, 400], [1, 0.85]); // Skalowanie
-  const y = useTransform(scrollY, [0, 550], [0, 580]); // Zmienia zakresy wartości według potrzeb
+
+  // Ustawienie wartości dla trzech rozmiarów ekranu
+  let scale, y;
+
+  if (windowWidth > 1640) {
+    scale = useTransform(scrollY, [0, 400], [1, 0.92]);
+    y = useTransform(scrollY, [0, 880], [0, 710]);
+  } else if (windowWidth > 900) {
+    scale = useTransform(scrollY, [0, 300], [1, 0.85]);
+    y = useTransform(scrollY, [0, 600], [0, 510]);
+  } else if (windowWidth > 380) {
+    scale = useTransform(scrollY, [0, 300], [1, 0.85]);
+    y = useTransform(scrollY, [0, 600], [0, 460]);
+  } else {
+    scale = useTransform(scrollY, [0, 200], [0.9, 0.9]);
+    y = useTransform(scrollY, [0, 550], [0, 370]);
+  }
 
   return (
     <>

@@ -8,3 +8,9 @@
   background: white;
   margin-right: 1rem;
 }
+
+@media (max-width: 900px) {
+  .container div {
+    font-size: 1rem;
+  }
+}
