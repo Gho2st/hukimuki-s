@@ -33,13 +33,21 @@
   border-radius: 0.5rem;
 }
 
-.instagram {
+.icons {
   display: inline-block;
 }
-.instagram svg {
-  color: orangered !important;
+.icons svg {
   font-size: 3.5rem;
   margin-bottom: 1rem;
+}
+
+.instagram {
+  color: orangered;
+}
+
+.facebook {
+  color: #4267b2 !important;
+  margin-left: 1rem;
 }
 
 @media (max-width: 1200px) {
@@ -71,7 +79,7 @@
     width: 100% !important;
   }
 
-  .instagram svg {
+  .icons svg {
     font-size: 2.7rem;
   }
   .container {
@@ -93,14 +101,12 @@
   .imagesContainer {
     grid-template-columns: 1fr 1fr;
     padding: 0rem;
-    gap: 1rem;
   }
   .imagesContainer img {
-    width: 100% !important;
-    border-radius: 0;
+    width: 80% !important;
   }
 
-  .instagram svg {
+  .icons svg {
     font-size: 2.7rem;
     margin-top: 1rem;
     margin-bottom: 3rem;

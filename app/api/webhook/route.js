@@ -7,7 +7,9 @@ export async function POST(req) {
   console.log("hej tu api/webhook");
   const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
   const body = await req.text();
-  const signature = headers().get("Stripe-Signature");
+  const signature = req.headers["stripe-signature"];
+
+  console.log(signature);
 
   let event;
 

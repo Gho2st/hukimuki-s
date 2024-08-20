@@ -1,7 +1,7 @@
 import classes from "./Photos.module.css";
 import Image from "next/image";
 import { useRef } from "react";
-import { FaInstagram } from "react-icons/fa";
+import { FaInstagram, FaFacebook } from "react-icons/fa";
 import { useInView, motion } from "framer-motion";
 import Link from "next/link";
 export default function Photos() {
@@ -32,14 +32,23 @@ export default function Photos() {
           </p>
 
           <motion.div
-            className={classes.instagram}
+            className={classes.icons}
             whileHover={{ scale: 1.15 }}
             whileTap={{
               scale: 0.8,
             }}
           >
-            <Link href={"https://www.instagram.com/hukimuki/"}>
+            <Link
+              className={classes.instagram}
+              href={"https://www.instagram.com/hukimuki/"}
+            >
               <FaInstagram />
+            </Link>
+            <Link
+              href={"https://www.facebook.com/hukimukikrakow"}
+              className={classes.facebook}
+            >
+              <FaFacebook />
             </Link>
           </motion.div>
         </div>

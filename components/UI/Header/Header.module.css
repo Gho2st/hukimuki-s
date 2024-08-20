@@ -182,13 +182,13 @@
 
 @media (max-width: 800px) {
   .navigation__background {
-    height: 2.5rem;
-    width: 2.5rem;
+    height: 2rem;
+    width: 2rem;
   }
 
   .navigation__button {
-    height: 2.9rem;
-    width: 2.9rem;
+    height: 2.5rem;
+    width: 2.5rem;
   }
 
   .navigation__icon::before {
@@ -208,7 +208,7 @@
   }
 
   .navigation__icon {
-    margin-top: 1.5rem;
+    margin-top: 1.25rem;
   }
 
   .navigation__link {
@@ -218,5 +218,9 @@
 
   .navigation__link span {
     margin-right: 0.6rem;
+  }
+  .logo {
+    top: 1.5rem;
+    left: 1.5rem;
   }
 }
