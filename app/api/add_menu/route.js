@@ -1,10 +1,9 @@
-// Import necessary modules
 import { NextResponse } from "next/server";
 import path from "path";
 import { writeFile } from "fs/promises";
 
 // Define the POST handler for the file upload
-export const POST = async (req, res) => {
+export async function POST(req) {
   // Parse the incoming form data
   const formData = await req.formData();
   console.log(formData);
@@ -48,4 +47,4 @@ export const POST = async (req, res) => {
     console.log("Error occurred ", error);
     return NextResponse.json({ Message: "Failed", status: 500 });
   }
-};
+}
