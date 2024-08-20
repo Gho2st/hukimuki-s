@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useEffect, useState } from "react";
 import convertToSubcurrency from "./convertToSubcurrency";
 import Link from "next/link";
@@ -35,7 +33,7 @@ const CheckoutPage = ({ amount, reservationData }) => {
         console.error(err);
         setError(err.message); // Ustawienie błędu
       });
-  }, [amount]);
+  }, [amount, reservationData]); // Add reservationData to the dependency array
 
   return (
     <div>

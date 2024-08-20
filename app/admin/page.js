@@ -7,11 +7,11 @@ import ButtonOnClick from "@/components/UI/Buttons/ButtonOnClick";
 import AdminMenu from "./AdminMenu";
 
 export default function Admin() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    if (password === "admin123") {
+    if (password === "1232") {
       // Tu możesz zmienić hasło na inne
       setIsLoggedIn(true);
     } else {
@@ -28,15 +28,16 @@ export default function Admin() {
     return (
       <div className={classes.container}>
         <div>
-          <h1>Logowanie do Panelu Admina</h1>
+          <h1>HukiMuki</h1>
+          <h2>Logowanie do Panelu Admina</h2>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Wprowadź hasło"
           />
-          <button onClick={handleLogin}>Zaloguj się</button>
         </div>
+        <ButtonOnClick text="Wprowadź hasło" onClick={handleLogin} />
       </div>
     );
   }

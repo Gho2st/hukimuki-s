@@ -21,8 +21,9 @@
 .buttons {
   margin-top: 3rem;
   margin-bottom: 5rem;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 2rem;
 }
 
 .buttons button {
@@ -46,4 +47,35 @@
   display: grid;
   gap: 1rem;
   grid-template-columns: 1fr 1fr 1fr;
+}
+
+@media (max-width: 1200px) {
+  .buttons {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .menuImages {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .logo h1 {
+    color: #00bf63;
+    font-size: 3.5rem;
+  }
+  .logo h2 {
+    margin-bottom: 0rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .buttons {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .menuImages {
+    grid-template-columns: 1fr;
+    gap: 0rem;
+  }
 }

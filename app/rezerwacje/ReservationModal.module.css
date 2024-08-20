@@ -1,6 +1,6 @@
 .modal {
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: rgb(0, 0, 0);
@@ -21,12 +21,28 @@
   bottom: 0;
   background-color: rgba(40, 40, 40, 0.85);
 }
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  font-size: 3rem;
+  cursor: pointer;
+  color: red;
+}
+
+.closeButton:hover {
+  color: darkred;
+}
+
 .calendar {
   margin: auto;
 }
 .enableDate {
-  background-color: #00bf63; /* Jasnoszary kolor dla niedostępnych dat */
-  color: #ffffff; /* Szary kolor tekstu */
+  background-color: #00bf63;
+  color: #ffffff;
   font-weight: bold;
   font-size: 1.02rem;
 }
@@ -35,11 +51,12 @@
   font-size: 1.02rem;
 }
 .modal select {
-  width: 80%;
+  width: 50%;
   border: 1px solid #ccc;
   padding: 8px;
   border-radius: 0.5rem;
   margin: auto;
+  margin-top: 3rem;
 }
 
 .modal label {
@@ -60,6 +77,11 @@
   font-size: 1.9rem;
   margin-bottom: 1rem;
   color: #00bf63;
+}
+
+.buttons {
+  margin-top: 1rem;
+  padding-bottom: 2rem;
 }
 
 .buttons button {
@@ -87,14 +109,21 @@
 }
 
 .personalInfo {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
+  width: 50%;
   margin: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.2rem;
+  text-align: left;
+}
+
+.personalInfo div {
+  display: flex;
+  justify-content: space-between;
 }
 
 .personalInfo input {
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   border: 0px;
 }
@@ -103,4 +132,49 @@
   margin-top: 1rem;
   color: #ee4e4e !important;
   font-size: 1.1rem;
+}
+
+@media (max-width: 1200px) {
+  .modal {
+    padding: 3rem 1rem;
+    border-radius: 0.5rem;
+    width: 70%;
+    top: 60%;
+  }
+}
+
+@media (max-width: 900px) {
+  .personalInfo {
+    width: 80%;
+  }
+  .modal select {
+    width: 80%;
+  }
+  .modal h2 {
+    font-size: 2rem;
+  }
+
+  .modal p {
+    margin-bottom: 1.2rem;
+  }
+
+  .modal h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .modal {
+    width: 90%;
+  }
+  .personalInfo {
+    width: 100%;
+  }
+  .modal select {
+    width: 100%;
+  }
+  .modal label {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
 }

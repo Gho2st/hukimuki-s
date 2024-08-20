@@ -16,3 +16,20 @@
 .text {
   margin-top: 1rem;
 }
+
+@media (max-width: 1200px) {
+  .container h1 {
+    font-size: 2.7rem;
+    margin-top: 8rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .container h1 {
+    font-size: 2.3rem;
+  }
+  .container p {
+    color: #b4b4b4;
+    font-size: 0.9rem;
+  }
+}

@@ -67,9 +67,11 @@ export default function Footer() {
         </div>
       </div>
       <h6 className={classes.copyright}>
-        &copy; HukiMuki 2024 &{" "}
-        <a href="https://www.dominikjojczyk.pl">Dominik.</a> Wszelkie prawa
-        zastrzeżone.{" "}
+        &copy; HukiMuki 2024 &
+        <a href="https://www.dominikjojczyk.pl">
+          <span> Dominik. </span>
+        </a>
+        Wszelkie prawa zastrzeżone.
       </h6>
     </>
   );

@@ -49,6 +49,7 @@ export default function Photos() {
             width={500}
             height={300}
             layout="responsive"
+            alt="zdjecie z klubu&pubu hukimuki"
           ></Image>
 
           <Image
@@ -56,18 +57,21 @@ export default function Photos() {
             width={500}
             height={300}
             layout="responsive"
+            alt="zdjecie z klubu&pubu hukimuki"
           ></Image>
           <Image
             src={"/photos/2.jpg"}
             width={500}
             height={300}
             layout="responsive"
+            alt="zdjecie z klubu&pubu hukimuki"
           ></Image>
           <Image
             src={"/photos/4.jpg"}
             width={500}
             height={300}
             layout="responsive"
+            alt="zdjecie z klubu&pubu hukimuki"
           ></Image>
         </div>
       </div>

@@ -174,6 +174,9 @@ const ReservationModal = ({
       className={classes.modal}
       overlayClassName={classes.overlay}
     >
+      <button onClick={onRequestClose} className={classes.closeButton}>
+        &times;
+      </button>
       {!showConfirmation ? (
         <>
           <h2>{title}</h2>
@@ -205,7 +208,6 @@ const ReservationModal = ({
             <p className={classes.errorMessage}>{errorMessage}</p>
           )}
 
-          <label>Wybierz godzinę:</label>
           <select value={selectedTime} onChange={handleTimeChange}>
             <option value="">Wybierz godzinę</option>
             {getAvailableTimes().map((time) => (
@@ -223,18 +225,18 @@ const ReservationModal = ({
             Zakup na firmę?
           </label>
 
-          {isCompany && (
-            <>
-              <label>NIP:</label>
-              <input
-                type="text"
-                value={NIP}
-                onChange={(e) => setNIP(e.target.value)}
-              />
-            </>
-          )}
-
           <div className={classes.personalInfo}>
+            {isCompany && (
+              <>
+                <label>NIP:</label>
+                <input
+                  type="text"
+                  value={NIP}
+                  onChange={(e) => setNIP(e.target.value)}
+                />
+              </>
+            )}
+
             {!isCompany && <label>Imię:</label>}
             {isCompany && <label>Nazwa firmy:</label>}
 
@@ -306,8 +308,9 @@ const ReservationModal = ({
           <h3>{name}</h3>
           <p>
             Twoja rezerwacja na {title} {lvl} o godzinie {selectedTime} w dniu
-            {formattedDate} jest przygotowana, opłać a następnie pobierz sobie
-            potwierdzenie.
+            {"  "}
+            {formattedDate} jest przygotowana, opłać a następnie pobierz
+            potwierdzenie aby je pokazać w dniu rezerwacji!
             <br></br>
             Dziękujemy!
           </p>

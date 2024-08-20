@@ -3,7 +3,31 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  text-align: center;
+  flex-direction: column;
 }
+
+.container input {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 0;
+  width: 50%;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.container button div {
+  font-size: 1rem;
+}
+
+.container h1 {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 3rem;
+  color: #00bf63;
+}
+
+/*TUTAJ ZACZYNA SIE SEKCJA CSS DLA JUZ ZALOGOWANYCH UZYTKOWNIKOW */
 
 .container2 {
   min-height: 90vh;
@@ -19,8 +43,8 @@
   font-size: 4rem;
 }
 
-.container2 h2{
-    margin-top: 2rem;
+.container2 h2 {
+  margin-top: 2rem;
 }
 
 .container2 p {

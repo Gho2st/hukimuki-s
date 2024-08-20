@@ -71,12 +71,6 @@ export default function Header() {
                 Kontakt
               </Link>
             </li>
-            <li className={classes.navigation__item}>
-              <Link className={classes.navigation__link} href={"/twoje-rezerwacje"}>
-                <span>05</span>
-                Twoje Rezerwacje
-              </Link>
-            </li>
           </ul>
         </nav>
       </div>

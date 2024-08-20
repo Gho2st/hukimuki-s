@@ -44,17 +44,20 @@
   font-size: 1rem;
   font-weight: 400;
   text-align: center;
-  color: rgb(173, 172, 172);
+  color: #919993;
   position: relative;
 }
 
 .copyright a {
-  color: rgb(173, 172, 172);
-}
-.copyright a:hover {
-  color: #00bf63;
+  color: #919993;
 }
 
+.copyright span {
+  color: #00bf63;
+}
+.copyright a:hover {
+  color: #007c40 !important;
+}
 .copyright::before {
   content: "";
   position: absolute;
@@ -85,6 +88,9 @@
 
   .container li,
   .container a {
+    font-size: 0.9rem;
+  }
+  .copyright {
     font-size: 0.9rem;
   }
 }

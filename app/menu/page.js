@@ -20,7 +20,12 @@ export default function Menu() {
         <div className={classes.logo}>
           <h1>Huki Muki</h1>
           <h2>Menu</h2>
-          <Image src={"/gifs/3.gif"} width={200} height={200}></Image>
+          <Image
+            src={"/gifs/3.gif"}
+            width={200}
+            height={200}
+            alt="stukajace sie butelki"
+          ></Image>
         </div>
         <div className={classes.buttons}>
           <button

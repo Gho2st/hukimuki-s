@@ -83,7 +83,12 @@ export default function Contact() {
         >
           <h4 ref={skillRef}>Podejmij Kontakt!</h4>
           <div className={classes.textContainer}>
-            <Image src={"/gifs/contact.gif"} width={180} height={150} />
+            <Image
+              src={"/gifs/contact.gif"}
+              width={180}
+              height={150}
+              alt="animacja wysylania listu"
+            />
             <p>
               Masz pytania dotyczące rezerwacji, menu, czy specjalnych wydarzeń?
               Wypełnij formularz poniżej, a nasz zespół z Hukimuki odpowie na
@@ -162,7 +167,12 @@ export default function Contact() {
         <div className={classes.thanksMessageContainer}>
           <h4>Dziękujemy za wiadomość!</h4>
           <p>Nasz zespół skontaktuje się z Tobą najszybciej, jak to możliwe!</p>
-          <Image src={"/gifs/5.gif"} width={240} height={260} />
+          <Image
+            src={"/gifs/5.gif"}
+            width={240}
+            height={260}
+            alt="animacja wysylania listu"
+          />
         </div>
       )}
     </>
