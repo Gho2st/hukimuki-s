@@ -10,6 +10,7 @@ const CheckoutPage = ({ amount, reservationData }) => {
 
   useEffect(() => {
     fetch("/api/invoices", {
+      mode: "no-cors",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
