@@ -25,13 +25,13 @@ export default function Baner() {
   const yLarge = useTransform(scrollY, [0, 880], [0, 710]);
 
   const scaleMedium = useTransform(scrollY, [0, 300], [1, 0.85]);
-  const yMedium = useTransform(scrollY, [0, 600], [0, 510]);
+  const yMedium = useTransform(scrollY, [0, 600], [0, 450]);
 
   const scaleSmall = useTransform(scrollY, [0, 300], [1, 0.85]);
-  const ySmall = useTransform(scrollY, [0, 600], [0, 470]);
+  const ySmall = useTransform(scrollY, [0, 600], [0, 430]);
 
   const scaleExtraSmall = useTransform(scrollY, [0, 200], [0.9, 0.9]);
-  const yExtraSmall = useTransform(scrollY, [0, 600], [0, 400]);
+  const yExtraSmall = useTransform(scrollY, [0, 300], [0, 330]);
 
   // Determine which transform to use based on windowWidth
   const scale =
@@ -39,7 +39,7 @@ export default function Baner() {
       ? scaleLarge
       : windowWidth > 900
       ? scaleMedium
-      : windowWidth > 390
+      : windowWidth > 395
       ? scaleSmall
       : scaleExtraSmall;
 

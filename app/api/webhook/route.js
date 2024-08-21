@@ -1,7 +1,8 @@
 import Stripe from "stripe";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
-import { query } from "@/lib/db";
+// import { query } from "@/lib/db"; nieaktulane bo chce postgres
+import { db } from "@vercel/postgres";
 
 export async function POST(req) {
   console.log("hej tu api/webhook");
@@ -45,15 +46,17 @@ export async function POST(req) {
 
     try {
       // Zamiana wartości na boolean
-      data.isClub = data.isClub === "true" || data.isClub === true ? 1 : 0;
-      data.isCompany =
-        data.isCompany === "true" || data.isCompany === true ? 1 : 0;
+      const isClub =
+        data.isClub === "true" || data.isClub === true ? true : false;
+      const isCompany =
+        data.isCompany === "true" || data.isCompany === true ? true : false;
 
-      console.log(data); // Zapisz wynik do konsoli, aby sprawdzić
+      console.log({ ...data, isClub, isCompany }); // Zapisz wynik do konsoli, aby sprawdzić
 
       // Przygotowanie zapytania SQL do dodania danych
       const insertQuery = `
-        INSERT INTO reservations (date, name, time, email, phone, title, isClub, isCompany) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO reservations (date, name, time, email, phone, title, isclub, iscompany)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
       `;
       const values = [
         data.date,
@@ -62,18 +65,18 @@ export async function POST(req) {
         data.email,
         data.phone,
         data.title,
-        data.isClub,
-        data.isCompany,
+        isClub,
+        isCompany,
       ];
 
       // Wykonanie zapytania
-      const results = await query(insertQuery, values);
-      console.log("Query results:", results);
+      const result = await db.query(insertQuery, values);
+      console.log("Query results:", result);
 
       // Zwracanie pozytywnej odpowiedzi
       return NextResponse.json({
         message: "Data added successfully!",
-        data: results,
+        data: result,
       });
     } catch (error) {
       console.log("Error: ", error);

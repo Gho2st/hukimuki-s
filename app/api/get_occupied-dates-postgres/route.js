@@ -1,8 +1,5 @@
 import { NextResponse } from "next/server";
-// import { query } from "@/lib/db"; nieaktualne bo chce postgres 
 import { db } from "@vercel/postgres";
-
-
 
 export async function POST(request) {
   const { title } = await request.json();
@@ -10,14 +7,14 @@ export async function POST(request) {
   console.log("Received title:", title);
 
   try {
-    // Dostosowane zapytanie SQL do formatu 'YYYY-MM-DD'
+    // Dostosowane zapytanie SQL do formatu 'YYYY-MM-DD' w PostgreSQL
     const selectQuery = `
-      SELECT DATE_FORMAT(date, '%Y-%m-%d') AS date
+      SELECT TO_CHAR(date, 'YYYY-MM-DD') AS date
       FROM reservations 
-      WHERE TITLE = ?;
+      WHERE title = $1;
     `;
 
-    const results = await query(selectQuery, [title]);
+    const { rows: results } = await db.query(selectQuery, [title]);
     console.log("Query results:", results);
 
     const occupiedTimes = Array.isArray(results)

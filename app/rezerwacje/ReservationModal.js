@@ -17,15 +17,15 @@ const ReservationModal = ({
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState("");
   const [showConfirmation, setShowConfirmation] = useState(false);
-  const [name, setName] = useState("Dominik Jojczyk");
-  const [city, setCity] = useState("Kraków");
-  const [country, setCountry] = useState("Polska");
-  const [region, setRegion] = useState("Małopolska");
-  const [postal_code, setPostalCode] = useState("33-395");
-  const [line1, setLine1] = useState("Armii Krajowej");
-  const [line2, setLine2] = useState("85/85");
-  const [email, setEmail] = useState("dominik.jojczyk@gmail.com");
-  const [phone, setPhone] = useState("576985894");
+  const [name, setName] = useState("");
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
+  const [region, setRegion] = useState("");
+  const [postal_code, setPostalCode] = useState("");
+  const [line1, setLine1] = useState("");
+  const [line2, setLine2] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [NIP, setNIP] = useState("PL1234567890");
   const [formattedDate, setFormattedDate] = useState(null);
   const [occupiedDates, setOccupiedDates] = useState([]);
@@ -56,7 +56,7 @@ const ReservationModal = ({
     const fetchOccupiedDates = async () => {
       try {
         const response = await fetch(
-          "http://localhost:3000/api/get-occupied-dates",
+          "http://localhost:3000/api/get_occupied-dates-postgres",
           {
             method: "POST",
             headers: {
