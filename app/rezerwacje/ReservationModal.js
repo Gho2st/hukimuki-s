@@ -56,7 +56,8 @@ const ReservationModal = ({
     const fetchOccupiedDates = async () => {
       try {
         const response = await fetch(
-          "http://localhost:3000/api/get_occupied-dates-postgres",
+          // "http://localhost:3000/api/get_occupied-dates-postgres"
+          "/api/get_occupied-dates-postgres",
           {
             mode: "no-cors",
             method: "POST",
