@@ -18,15 +18,15 @@ const ReservationModal = ({
   const [selectedTime, setSelectedTime] = useState("");
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [name, setName] = useState("");
-  const [city, setCity] = useState("");
-  const [country, setCountry] = useState("");
-  const [region, setRegion] = useState("");
+  const [city, setCity] = useState("Kraków");
+  const [country, setCountry] = useState("Polska");
+  const [region, setRegion] = useState("małopolska");
   const [postal_code, setPostalCode] = useState("");
   const [line1, setLine1] = useState("");
   const [line2, setLine2] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [NIP, setNIP] = useState("PL1234567890");
+  const [NIP, setNIP] = useState("");
   const [formattedDate, setFormattedDate] = useState(null);
   const [occupiedDates, setOccupiedDates] = useState([]);
   const [isCompany, setIsCompany] = useState(false);
@@ -233,6 +233,7 @@ const ReservationModal = ({
                   type="text"
                   value={NIP}
                   onChange={(e) => setNIP(e.target.value)}
+                  placeholder="we formacie PL1234567890"
                 />
               </>
             )}
@@ -283,18 +284,21 @@ const ReservationModal = ({
               type="text"
               value={line1}
               onChange={(e) => setLine1(e.target.value)}
+              placeholder="np. Floriańska"
             />
             <label>Numer</label>
             <input
               type="text"
               value={line2}
               onChange={(e) => setLine2(e.target.value)}
+              placeholder="numer adresu np. 26"
             />
             <label>Kod pocztowy</label>
             <input
               type="text"
               value={postal_code}
               onChange={(e) => setPostalCode(e.target.value)}
+              placeholder="np. 31-021"
             />
           </div>
 
