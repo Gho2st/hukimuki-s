@@ -43,8 +43,14 @@ export default function About() {
     <div className={classes.back}>
       <div className={classes.container}>
         <div className={classes.textContainer}>
+          <h2>Pub & Club</h2>
+          <div>
+            {[...Array(5)].map((_, index) => (
+              <FaStar key={index} className={classes.star} />
+            ))}
+          </div>
           <p>
-            Zapraszamy do Huki Muki, wyjątkowego pubu i baru zlokalizowanego w
+            Zapraszamy do Huki Muki, wyjątkowego pubu i baru oraz klubu zlokalizowanego w
             samym sercu Krakowa! Oferujemy przytulną atmosferę, doskonałe ceny i
             atrakcyjne zniżki studenckie. Na dole naszego lokalu znajduje się
             klub, w którym zabawa trwa do białego rana. Przyjdź i przekonaj się

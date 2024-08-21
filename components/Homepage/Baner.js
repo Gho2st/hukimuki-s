@@ -7,56 +7,56 @@ import classes from "./Baner.module.css";
 export default function Baner() {
   const text = "HukiMuki.";
 
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  // const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  // Ustawienie początkowej szerokości okna i nasłuchiwanie zmian
-  useEffect(() => {
-    const updateWindowWidth = () => setWindowWidth(window.innerWidth);
+  // // Ustawienie początkowej szerokości okna i nasłuchiwanie zmian
+  // useEffect(() => {
+  //   const updateWindowWidth = () => setWindowWidth(window.innerWidth);
 
-    window.addEventListener("resize", updateWindowWidth);
-    return () => window.removeEventListener("resize", updateWindowWidth);
-  }, []);
+  //   window.addEventListener("resize", updateWindowWidth);
+  //   return () => window.removeEventListener("resize", updateWindowWidth);
+  // }, []);
 
-  // Hook useScroll do śledzenia przewijania
-  const { scrollY } = useScroll();
+  // // Hook useScroll do śledzenia przewijania
+  // const { scrollY } = useScroll();
 
-  // Always create all transforms, but only use the relevant one based on windowWidth
-  const scaleLarge = useTransform(scrollY, [0, 400], [1, 0.92]);
-  const yLarge = useTransform(scrollY, [0, 880], [0, 710]);
+  // // Always create all transforms, but only use the relevant one based on windowWidth
+  // const scaleLarge = useTransform(scrollY, [0, 400], [1, 0.92]);
+  // const yLarge = useTransform(scrollY, [0, 880], [0, 710]);
 
-  const scaleMedium = useTransform(scrollY, [0, 300], [1, 0.85]);
-  const yMedium = useTransform(scrollY, [0, 600], [0, 450]);
+  // const scaleMedium = useTransform(scrollY, [0, 300], [1, 0.85]);
+  // const yMedium = useTransform(scrollY, [0, 600], [0, 450]);
 
-  const scaleSmall = useTransform(scrollY, [0, 300], [1, 0.85]);
-  const ySmall = useTransform(scrollY, [0, 600], [0, 430]);
+  // const scaleSmall = useTransform(scrollY, [0, 300], [1, 0.85]);
+  // const ySmall = useTransform(scrollY, [0, 600], [0, 430]);
 
-  const scaleExtraSmall = useTransform(scrollY, [0, 200], [0.9, 0.9]);
-  const yExtraSmall = useTransform(scrollY, [0, 300], [0, 330]);
+  // const scaleExtraSmall = useTransform(scrollY, [0, 200], [0.9, 0.9]);
+  // const yExtraSmall = useTransform(scrollY, [0, 300], [0, 330]);
 
-  // Determine which transform to use based on windowWidth
-  const scale =
-    windowWidth > 1640
-      ? scaleLarge
-      : windowWidth > 900
-      ? scaleMedium
-      : windowWidth > 395
-      ? scaleSmall
-      : scaleExtraSmall;
+  // // Determine which transform to use based on windowWidth
+  // const scale =
+  //   windowWidth > 1640
+  //     ? scaleLarge
+  //     : windowWidth > 900
+  //     ? scaleMedium
+  //     : windowWidth > 395
+  //     ? scaleSmall
+  //     : scaleExtraSmall;
 
-  const y =
-    windowWidth > 1640
-      ? yLarge
-      : windowWidth > 900
-      ? yMedium
-      : windowWidth > 380
-      ? ySmall
-      : yExtraSmall;
+  // const y =
+  //   windowWidth > 1640
+  //     ? yLarge
+  //     : windowWidth > 900
+  //     ? yMedium
+  //     : windowWidth > 380
+  //     ? ySmall
+  //     : yExtraSmall;
 
   return (
     <div className={classes.banerContainer}>
       <motion.div
         className={classes.headerContainer}
-        style={{ y, scale }} // Stylowanie z interpolowanymi wartościami
+        // style={{ y, scale }} // Stylowanie z interpolowanymi wartościami
       >
         <p>Perfekcyjne życie nocne.</p>
         <h1>

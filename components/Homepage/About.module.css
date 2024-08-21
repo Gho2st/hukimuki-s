@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 6rem;
+  /* margin-top: 6rem; */
 }
 .container {
   display: flex;
@@ -12,15 +12,22 @@
   padding: 2rem 9%;
   margin: auto;
 }
+
 .container h2 {
   text-transform: uppercase;
   font-size: 2.5rem;
+}
+.star {
+  margin-top: 0.8rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  fill: gold;
 }
 
 .textContainer {
   max-width: 70%;
   margin: auto;
-  margin-top: 12.5rem;
+  /* margin-top: 12.5rem; */
 }
 
 .container p {
@@ -61,9 +68,9 @@
     margin-top: 1rem;
   }
 
-  .textContainer {
+  /* .textContainer {
     margin-top: 6rem;
-  }
+  } */
 }
 
 @media (max-width: 900px) {
@@ -88,7 +95,7 @@
 @media (max-width: 700px) {
   .textContainer {
     max-width: 100%;
-    margin-top: 4rem;
+    /* margin-top: 4rem; */
   }
   .icons {
     grid-template-columns: 1fr 1fr;
@@ -105,16 +112,19 @@
   .container p {
     font-size: 0.95rem;
   }
+  .container h2 {
+    font-size: 1.8rem;
+  }
 }
-
+/* 
 @media (max-width: 500px) {
   .textContainer {
     margin-top: 10rem;
   }
-}
+} */
 
-@media (max-width: 350px) {
+/* @media (max-width: 350px) {
   .textContainer {
     margin-top: 5rem;
   }
-}
+} */
