@@ -15,7 +15,7 @@
 
 .container h2 {
   text-transform: uppercase;
-  font-size: 2.5rem;
+  font-size: 3rem;
 }
 .star {
   margin-top: 0.8rem;
@@ -73,9 +73,21 @@
   } */
 }
 
+@media (max-width: 1200px) {
+  .container h2 {
+    font-size: 2.5rem;
+  }
+  .container p {
+    font-size: 0.95rem;
+  }
+}
+
 @media (max-width: 900px) {
   .textContainer {
     max-width: 90%;
+  }
+  .container p {
+    font-size: 0.9rem;
   }
   .icons {
     grid-template-columns: 1fr 1fr 1fr;
@@ -92,11 +104,17 @@
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 600px) {
   .textContainer {
     max-width: 100%;
-    /* margin-top: 4rem; */
   }
+  .container h2 {
+    font-size: 1.8rem;
+  }
+  .container p {
+    font-size: 0.85rem;
+  }
+
   .icons {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
@@ -105,26 +123,7 @@
   .icons svg {
     margin-bottom: 0.5rem;
   }
-
   .icons p {
     font-size: 0.8rem !important;
   }
-  .container p {
-    font-size: 0.95rem;
-  }
-  .container h2 {
-    font-size: 1.8rem;
-  }
 }
-/* 
-@media (max-width: 500px) {
-  .textContainer {
-    margin-top: 10rem;
-  }
-} */
-
-/* @media (max-width: 350px) {
-  .textContainer {
-    margin-top: 5rem;
-  }
-} */

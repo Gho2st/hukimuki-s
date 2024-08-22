@@ -240,7 +240,7 @@ const ReservationModal = ({
               </>
             )}
 
-            {!isCompany && <label>Imię:</label>}
+            {!isCompany && <label>Imię i Nazwisko:</label>}
             {isCompany && <label>Nazwa firmy:</label>}
 
             <input

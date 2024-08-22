@@ -1,6 +1,13 @@
-import fs from "fs";
-import path from "path";
+import { S3Client, ListObjectsV2Command } from "@aws-sdk/client-s3";
 import { NextResponse } from "next/server";
+
+const s3Client = new S3Client({
+  region: "eu-central-1",
+  credentials: {
+    accessKeyId: process.env.AWS_ID,
+    secretAccessKey: process.env.AWS_SECRET,
+  },
+});
 
 export async function GET(request) {
   try {
@@ -8,55 +15,31 @@ export async function GET(request) {
     const which = searchParams.get("which");
 
     if (!which) {
-      return NextResponse.json(
-        { message: "Missing directory parameter" },
-        { status: 400 }
-      );
+      return NextResponse.json([], { status: 400 });
     }
 
-    const directoryPath = path.join(process.cwd(), `public/menu/${which}`);
-    const orderFilePath = path.join(directoryPath, "order.json");
-    let files = [];
-    let orderedFiles = [];
+    const params = {
+      Bucket: "hukimuki",
+      Prefix: `${which}/`,
+    };
 
-    try {
-      // Read all image files
-      files = fs
-        .readdirSync(directoryPath)
-        .filter((file) => /\.(jpg|jpeg|png|gif)$/i.test(file));
+    const command = new ListObjectsV2Command(params);
+    const s3Data = await s3Client.send(command);
 
-      // Check if order.json exists
-      if (fs.existsSync(orderFilePath)) {
-        const orderData = JSON.parse(fs.readFileSync(orderFilePath, "utf-8"));
-
-        // Ensure only files that actually exist are in the ordered list
-        orderedFiles = orderData.filter((file) => files.includes(file));
-
-        // Include any new files that are not in order.json at the end
-        const unorderedFiles = files.filter(
-          (file) => !orderedFiles.includes(file)
-        );
-        orderedFiles = [...orderedFiles, ...unorderedFiles];
-      } else {
-        // If order.json does not exist, use default alphabetical order
-        orderedFiles = files;
-      }
-    } catch (err) {
-      return NextResponse.json(
-        { message: "Failed to read directory", error: err.message },
-        { status: 500 }
-      );
+    if (!s3Data.Contents || s3Data.Contents.length === 0) {
+      return NextResponse.json([], { status: 404 });
     }
 
-    return NextResponse.json(orderedFiles);
+    const imageUrls = s3Data.Contents.filter((item) => item.Size > 0) // Exclude the folder object
+      .map(
+        (item) => `https://hukimuki.s3.eu-central-1.amazonaws.com/${item.Key}`
+      );
+
+    console.log(imageUrls);
+
+    return NextResponse.json(imageUrls);
   } catch (error) {
-    console.log("Error: ", error);
-    return NextResponse.json(
-      {
-        message: "An error occurred",
-        error: error.message,
-      },
-      { status: 500 }
-    );
+    console.log("Error occurred:", error);
+    return NextResponse.json([], { status: 500 });
   }
 }

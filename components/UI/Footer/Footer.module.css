@@ -10,10 +10,6 @@
   font-weight: 400;
 }
 
-.container svg {
-  font-size: 2.5rem;
-}
-
 .container li,
 .container a {
   margin-top: 0.5rem;
@@ -30,13 +26,24 @@
   margin-right: 0.5rem;
   vertical-align: middle;
 }
+
+.socials {
+  font-size: 2.5rem;
+}
+
 .facebook {
   color: #4267b2 !important;
   margin-right: 1rem;
 }
 
+.tiktok {
+  margin-right: 1rem;
+  color: #24ccc7 !important;
+}
+
 .instagram {
   color: orangered !important;
+  font-size: 2.6rem;
 }
 .copyright {
   padding-top: 2rem;

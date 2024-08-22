@@ -33,21 +33,29 @@
   border-radius: 0.5rem;
 }
 
-.icons {
-  display: inline-block;
-}
-.icons svg {
+.socialsIcons svg {
   font-size: 3.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  transition: all 0.1s ease-in;
+}
+
+.socialsIcons svg:hover {
+  scale: 1.1;
 }
 
 .instagram {
   color: orangered;
+  margin-left: 2rem;
+}
+
+.tiktok {
+  color: #24ccc7 !important;
 }
 
 .facebook {
   color: #4267b2 !important;
-  margin-left: 1rem;
+  margin-right: 2rem;
 }
 
 @media (max-width: 1200px) {

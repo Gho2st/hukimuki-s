@@ -1,14 +1,20 @@
+import ButtonOnClick from "../UI/Buttons/ButtonOnClick";
 import classes from "./Adult.module.css";
 import Image from "next/image";
 
 export default function Adult(props) {
   return (
     <div className={classes.container}>
-      <Image src={"/logo.png"} width={380} height={280} alt="logo"></Image>
+      <div className={classes.logo} href={"/"}>
+        <p>
+          <i>Huki Muki</i>
+        </p>
+        <p>Club</p>
+      </div>
       <h1>Czy jesteś pełnoletni?</h1>
       <div className={classes.buttonsContainer}>
-        <button onClick={props.ageHandler}>Tak</button>
-        <button onClick={props.negativeAge}>Nie</button>
+        <ButtonOnClick text="Tak" onClick={props.ageHandler} />
+        <ButtonOnClick text="Nie" onClick={props.negativeAge} />
       </div>
       <Image
         src={"/gifs/1.gif"}

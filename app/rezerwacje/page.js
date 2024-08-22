@@ -16,7 +16,7 @@ export default function Rezerwacje() {
     <>
       <Header />
       <div className={classes.container}>
-        <h1>Rezerwacja loży online</h1>
+        <h1>Rezerwacja miejsc online</h1>
         <p className={classes.text}>
           *kwota rezerwacji do wykorzystania w barze
         </p>

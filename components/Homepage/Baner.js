@@ -5,7 +5,7 @@ import Button2 from "../UI/Buttons/Button2";
 import classes from "./Baner.module.css";
 
 export default function Baner() {
-  const text = "HukiMuki.";
+  const text = "Huki Muki";
 
   // const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -58,9 +58,9 @@ export default function Baner() {
         className={classes.headerContainer}
         // style={{ y, scale }} // Stylowanie z interpolowanymi wartościami
       >
-        <p>Perfekcyjne życie nocne.</p>
+        <p>Perfekcyjne życie nocne</p>
         <h1>
-          Poczujcie atmosferę tutaj. <br />
+          Poczujcie atmosferę tutaj <br />
           {text.split("").map((letter, index) => (
             <motion.span
               key={index}

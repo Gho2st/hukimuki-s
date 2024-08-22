@@ -29,7 +29,7 @@ export default function Header() {
     <>
       <Link className={classes.logo} href={"/"}>
         <p>
-          <i>HukiMuki</i>
+          <i>Huki Muki</i>
         </p>
         <p>Club</p>
       </Link>

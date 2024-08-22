@@ -16,6 +16,7 @@ export default function Coctails({ which }) {
         throw new Error("Failed to fetch images");
       }
       const data = await response.json();
+      console.log(data);
       setImages(data); // data should include ordered list of images
     } catch (error) {
       setError(error.message);
@@ -117,7 +118,7 @@ export default function Coctails({ which }) {
         images.map((file, index) => (
           <div key={file} className={classes.imageWrapper}>
             <Image
-              src={`/menu/${which}/${file}`}
+              src={file} // Use the full URL here
               width={100}
               height={100}
               alt={`Cocktail ${index}`}

@@ -22,6 +22,62 @@ export default function Reservation() {
     <>
       <div className={classes.container}>
         <Reservationitem
+          title="Antresola - 4 osoby"
+          lvl="Poziom 0"
+          price="300zł"
+          when="Rezerwacja dostępna przez 7 dni w tygodniu."
+          onClick={() =>
+            openModal({
+              title: "Antresola - 4 osoby",
+              price: 300,
+              isClub: false,
+              lvl: "Poziom 0",
+            })
+          }
+        />
+        <Reservationitem
+          title="Antresola - 6 osób"
+          lvl="Poziom 0"
+          price="300zł"
+          when="Rezerwacja dostępna przez 7 dni w tygodniu."
+          onClick={() =>
+            openModal({
+              title: "Antresola - 6 osób",
+              price: 300,
+              isClub: false,
+              lvl: "Poziom 0",
+            })
+          }
+        />
+        <Reservationitem
+          title="Antresola - 7 osób"
+          lvl="Poziom 0"
+          price="350zł"
+          when="Rezerwacja dostępna przez 7 dni w tygodniu."
+          onClick={() =>
+            openModal({
+              title: "Antresola - 7 osób",
+              price: 350,
+              isClub: false,
+              lvl: "Poziom 0",
+            })
+          }
+        />
+        <Reservationitem
+          title="Antresola - 8 osób"
+          lvl="Poziom 0"
+          price="400zł"
+          when="Rezerwacja dostępna przez 7 dni w tygodniu."
+          onClick={() =>
+            openModal({
+              title: "Antresola - 8 osób",
+              price: 400,
+              isClub: false,
+              lvl: "Poziom 0",
+            })
+          }
+        />
+        <Reservationitem
           title="CLUB - 5 osób"
           lvl="Poziom -1"
           price="250zł"
@@ -88,62 +144,6 @@ export default function Reservation() {
               price: 600,
               isClub: true,
               lvl: "Poziom -1",
-            })
-          }
-        />
-        <Reservationitem
-          title="Antresola - 4 osoby"
-          lvl="Poziom 0"
-          price="300zł"
-          when="Rezerwacja dostępna przez 7 dni w tygodniu."
-          onClick={() =>
-            openModal({
-              title: "Antresola - 4 osoby",
-              price: 300,
-              isClub: false,
-              lvl: "Poziom 0",
-            })
-          }
-        />
-        <Reservationitem
-          title="Antresola - 6 osób"
-          lvl="Poziom 0"
-          price="300zł"
-          when="Rezerwacja dostępna przez 7 dni w tygodniu."
-          onClick={() =>
-            openModal({
-              title: "Antresola - 6 osób",
-              price: 300,
-              isClub: false,
-              lvl: "Poziom 0",
-            })
-          }
-        />
-        <Reservationitem
-          title="Antresola - 7 osób"
-          lvl="Poziom 0"
-          price="350zł"
-          when="Rezerwacja dostępna przez 7 dni w tygodniu."
-          onClick={() =>
-            openModal({
-              title: "Antresola - 7 osób",
-              price: 350,
-              isClub: false,
-              lvl: "Poziom 0",
-            })
-          }
-        />
-        <Reservationitem
-          title="Antresola - 8 osób"
-          lvl="Poziom 0"
-          price="400zł"
-          when="Rezerwacja dostępna przez 7 dni w tygodniu."
-          onClick={() =>
-            openModal({
-              title: "Antresola - 8 osób",
-              price: 400,
-              isClub: false,
-              lvl: "Poziom 0",
             })
           }
         />

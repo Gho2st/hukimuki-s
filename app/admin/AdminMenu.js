@@ -9,6 +9,8 @@ export default function AdminMenu() {
   const [isShots, setIsShots] = useState(false);
   const [isPromo, setIsPromo] = useState(false);
   const [isPitchers, setIsPitchers] = useState(false);
+  const [isStudentsPromo, setIsStudentsPromo] = useState(false);
+
   return (
     <div className={classes.container}>
       <h3>Zarzadzaj menu</h3>
@@ -19,6 +21,7 @@ export default function AdminMenu() {
             setIsBeers(false);
             setIsPromo(false);
             setIsPitchers(false);
+            setIsStudentsPromo(false);
           }}
         >
           Koktajle
@@ -29,6 +32,7 @@ export default function AdminMenu() {
             setIsPromo(false);
             setIsPitchers(false);
             setIsBeers(!isBeers);
+            setIsStudentsPromo(false);
           }}
         >
           Piwa
@@ -40,6 +44,7 @@ export default function AdminMenu() {
             setIsCoctails(false);
             setIsPitchers(false);
             setIsPromo(!isPromo);
+            setIsStudentsPromo(false);
           }}
         >
           Promocje
@@ -51,6 +56,7 @@ export default function AdminMenu() {
             setIsCoctails(false);
             setIsPitchers(false);
             setIsPromo(false);
+            setIsStudentsPromo(false);
           }}
         >
           Shoty
@@ -60,19 +66,35 @@ export default function AdminMenu() {
             setIsShots(false);
             setIsBeers(false);
             setIsCoctails(false);
+            setIsPitchers(false);
+            setIsPromo(false);
+            setIsStudentsPromo(!isStudentsPromo);
+          }}
+        >
+          Promocje Studenckie
+        </button>
+        {/* <button
+          onClick={() => {
+            setIsShots(false);
+            setIsBeers(false);
+            setIsCoctails(false);
             setIsPitchers(!isPitchers);
             setIsPromo(false);
+            setIsStudentsPromo(false)
+
           }}
         >
           Dzbanki
-        </button>
+        </button> */}
       </div>
       <div className={classes.menuImages}>
         {isCoctails && <Which2 which="coctails" />}
         {isBeers && <Which2 which="beers" />}
         {isShots && <Which2 which="shots" />}
-        {isPitchers && <Which2 which="pitchers" />}
+        {/* {isPitchers && <Which2 which="pitchers" />} */}
         {isPromo && <Which2 which="promo" />}
+        {isStudentsPromo && <Which2 which="students" />}
+
       </div>
     </div>
   );

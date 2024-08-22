@@ -5,7 +5,7 @@ import Link from "next/link";
 import { CiLocationOn } from "react-icons/ci";
 import { MdLocalPhone } from "react-icons/md";
 import { CiMail } from "react-icons/ci";
-import { IoIosTimer } from "react-icons/io";
+import { FaTiktok } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -13,13 +13,20 @@ export default function Footer() {
       <div className={classes.container}>
         <div>
           <h5>Social media</h5>
-          <div>
+          <div className={classes.socials}>
             <Link
               href={"https://www.facebook.com/hukimukikrakow"}
               className={classes.facebook}
             >
               <FaFacebook />
             </Link>
+            <Link
+              href={"https://www.tiktok.com/@hukimukikrakow"}
+              className={classes.tiktok}
+            >
+              <FaTiktok />
+            </Link>
+
             <Link
               href={"https://www.instagram.com/hukimuki/"}
               className={classes.instagram}
@@ -31,10 +38,6 @@ export default function Footer() {
         <div>
           <h5>Dane kontaktowe</h5>
           <ul>
-            <li>
-              <IoIosTimer />
-              14:00 - 5:00
-            </li>
             <li>
               <CiLocationOn />
               Floriańska 26 - Kraków
@@ -56,6 +59,9 @@ export default function Footer() {
           <ul>
             <a href="/info/Polityka-prywatnosci-HukiMuki.pdf" download>
               <li>Polityka prywatności</li>
+            </a>
+            <a href="/info/REGULAMIN HUKI MUKI.docx" download>
+              <li>Regulamin Pubu Huki Muki</li>
             </a>
             <a href="info/Regulamin-hukimuki-1.pdf" download>
               <li>Regulamin sklepu</li>

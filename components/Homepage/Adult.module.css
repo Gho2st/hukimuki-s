@@ -9,8 +9,23 @@
   margin: auto;
 }
 
+.logo {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.logo p:nth-child(1) {
+  font-size: 5.5rem;
+  color: #00bf63;
+  font-weight: bold;
+}
+.logo p:nth-child(2) {
+  transform: translateY(-1.8rem);
+}
+
 .container h1 {
-  font-size: 3rem;
+  margin-top: 2.5rem;
+  font-size: 2rem;
   text-align: center;
 }
 
@@ -18,25 +33,7 @@
   margin-top: 2rem;
 }
 
-.buttonsContainer button {
-  padding: 1rem 2rem;
-  border-radius: 0.5rem;
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-.buttonsContainer button:hover {
-  cursor: pointer;
-}
-
-.buttonsContainer button:nth-child(1) {
-  background: white;
-  color: black;
-  border: 0;
+.buttonsContainer div:nth-child(1) {
   margin-right: 1rem;
 }
 
-.buttonsContainer button:nth-child(2) {
-  border: 1.5px solid white;
-  background: black;
-  color: white;
-}

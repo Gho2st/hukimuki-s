@@ -1,11 +1,9 @@
-import autoCert from "anchor-pki/auto-cert/integrations/next";
-
-const withAutoCert = autoCert({
-  enabledEnv: "development",
-});
-
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: false, // Wyłącza React Strict Mode
+  images: {
+    domains: ["hukimuki.s3.eu-central-1.amazonaws.com"],
+  },
+  reactStrictMode: false,
 };
 
-export default withAutoCert(nextConfig);
+export default nextConfig;
