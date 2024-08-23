@@ -39,7 +39,7 @@ export default function Coctails({ which }) {
     formData.append("position", position); // Send the intended position to the server
 
     try {
-      const response = await fetch("/api/add_menu", {
+      const response = await fetch("/api/s3-upload", {
         method: "POST",
         body: formData,
       });
@@ -50,7 +50,6 @@ export default function Coctails({ which }) {
 
       const data = await response.json();
       console.log(data);
-
       // Fetch the updated list of images with the new order
       await fetchImages(); // <-- odświeżenie listy zdjęć po dodaniu nowego
     } catch (error) {
@@ -59,32 +58,52 @@ export default function Coctails({ which }) {
   };
 
   const moveImage = async (index, direction) => {
-    const newPosition = index + direction;
-    if (newPosition >= 0 && newPosition < images.length) {
-      const updatedImages = [...images];
-      const [movedImage] = updatedImages.splice(index, 1);
-      updatedImages.splice(newPosition, 0, movedImage);
+    try {
+      const newPosition = index + direction;
+      if (newPosition >= 0 && newPosition < images.length) {
+        const updatedImages = [...images];
+        const [movedImage] = updatedImages.splice(index, 1);
+        updatedImages.splice(newPosition, 0, movedImage);
 
-      // Update the server with the new order
-      await fetch("/api/update_image_order", {
-        method: "POST",
-        body: JSON.stringify({
-          which,
-          images: updatedImages,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+        console.log("Moving image:", {
+          index,
+          direction,
+          newPosition,
+          updatedImages,
+        });
 
-      setImages(updatedImages);
+        // Update the server with the new order
+        const response = await fetch("/api/update_image_order", {
+          method: "POST",
+          body: JSON.stringify({
+            which,
+            images: updatedImages,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        console.log("Server response:", await response.json());
+
+        if (!response.ok) {
+          throw new Error(`Server responded with status ${response.status}`);
+        }
+
+        setImages(updatedImages);
+      }
+    } catch (error) {
+      console.error("Error moving image:", error);
     }
   };
 
   const removeImage = async (imageToRemove) => {
     try {
+      // Pobierz nazwę pliku ze ścieżki URL
+      const fileName = imageToRemove.split("/").pop();
+
       const response = await fetch(
-        `/api/delete_menu?which=${which}&file=${imageToRemove}`,
+        `/api/s3-delete?which=${which}&file=${fileName}`,
         {
           method: "DELETE",
         }
