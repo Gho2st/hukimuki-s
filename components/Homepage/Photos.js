@@ -35,10 +35,7 @@ const images = [
     src: "/photos-slider/7.jpg",
     alt: "zdjecie ze srodka Huki Muki",
   },
-  {
-    src: "/photos-slider/8.jpg",
-    alt: "zdjecie ze srodka Huki Muki",
-  },
+
   {
     src: "/photos-slider/9.jpg",
     alt: "zdjecie ze srodka Huki Muki",
@@ -125,40 +122,7 @@ export default function Photos() {
               </Link>
             </div>
           </div>
-          {/* <div className={classes.imagesContainer}>
-          <Image
-            src={"/photos/1.jpg"}
-            width={500}
-            height={300}
-            layout="responsive"
-            alt="zdjecie z klubu&pubu hukimuki"
-          ></Image>
-
-          <Image
-            src={"/photos/3.jpg"}
-            width={500}
-            height={300}
-            layout="responsive"
-            alt="zdjecie z klubu&pubu hukimuki"
-          ></Image>
-          <Image
-            src={"/photos/2.jpg"}
-            width={500}
-            height={300}
-            layout="responsive"
-            alt="zdjecie z klubu&pubu hukimuki"
-          ></Image>
-          <Image
-            src={"/photos/4.jpg"}
-            width={500}
-            height={300}
-            layout="responsive"
-            alt="zdjecie z klubu&pubu hukimuki"
-          ></Image>
-        </div> */}
-          <div className={classes.sliderContainer}>
-            <SliderComponent images={images} />
-          </div>
+          <SliderComponent images={images} />
         </div>
       </motion.div>
     </>

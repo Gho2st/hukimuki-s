@@ -10,9 +10,10 @@ export default function SliderComponent({ images }) {
   const carouselSettings = {
     infinite: true,
     speed: 500,
+    lazyLoad: "ondemand", // Użyj 'ondemand' lub 'progressive'
     slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 3000,
     cssEase: "linear",
     initialSlide: 0,
@@ -57,7 +58,7 @@ export default function SliderComponent({ images }) {
     ],
   };
   return (
-    <div className={classes.container}>
+    <div className={classes.sliderContainer}>
       <Slider {...carouselSettings} className={classes.slider}>
         {images.map((image, index) => (
           <Image

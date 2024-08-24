@@ -1,8 +1,11 @@
-.slider {
-  width: 100%;
-  margin: auto;
-  margin-top: 2rem;
+.sliderContainer {
+  margin-top: 5rem;
 }
+.slider {
+  width: 90%; /* Adjust to 100% for better responsiveness */
+  margin: auto;
+}
+
 .slider img {
   padding: 1rem;
   border-radius: 2rem;
@@ -12,7 +15,7 @@
   margin-right: 2rem;
 }
 .rotate svg {
-  color: black;
+  color: rgb(255, 255, 255);
   font-size: 2rem;
 }
 
@@ -20,7 +23,7 @@
   margin-left: 2rem;
 }
 .rightArrow svg {
-  color: black;
+  color: rgb(255, 255, 255);
   font-size: 2rem;
 }
 
