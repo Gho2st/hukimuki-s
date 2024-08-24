@@ -21,7 +21,12 @@
   color: #919993;
 }
 
-.imagesContainer {
+.sliderContainer {
+  width: 90%;
+  margin: auto;
+}
+
+/* .imagesContainer {
   display: grid;
   padding: 2rem;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -31,7 +36,7 @@
   width: 75% !important;
   margin: auto;
   border-radius: 0.5rem;
-}
+} */
 
 .socialsIcons svg {
   font-size: 3.5rem;
