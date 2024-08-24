@@ -10,10 +10,10 @@ export default function SliderComponent({ images }) {
   const carouselSettings = {
     infinite: true,
     speed: 500,
-    lazyLoad: "ondemand", // Użyj 'ondemand' lub 'progressive'
+    lazyLoad: "ondemand",
     slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 3000,
     cssEase: "linear",
     initialSlide: 0,
@@ -33,23 +33,14 @@ export default function SliderComponent({ images }) {
     ),
     responsive: [
       {
-        breakpoint: 1224,
+        breakpoint: 1334,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
-          infinite: true,
+          slidesToScroll: 1,
         },
       },
       {
         breakpoint: 800,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 680,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,

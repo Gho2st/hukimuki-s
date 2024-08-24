@@ -3,7 +3,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin-top: 6rem; */
 }
 .container {
   display: flex;
@@ -13,9 +12,14 @@
   margin: auto;
 }
 
+
 .container h2 {
   text-transform: uppercase;
   font-size: 3rem;
+  background: -webkit-linear-gradient(#eee, #00bf63);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .star {
   margin-top: 0.8rem;
@@ -27,7 +31,6 @@
 .textContainer {
   max-width: 70%;
   margin: auto;
-  /* margin-top: 12.5rem; */
 }
 
 .container p {
@@ -67,10 +70,6 @@
     gap: 1.5rem;
     margin-top: 1rem;
   }
-
-  /* .textContainer {
-    margin-top: 6rem;
-  } */
 }
 
 @media (max-width: 1200px) {

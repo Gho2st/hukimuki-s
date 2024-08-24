@@ -13,6 +13,10 @@
 .textContainer h4 {
   text-transform: uppercase;
   font-size: 3rem;
+  background: -webkit-linear-gradient(#eee, #00bf63);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .textContainer p {

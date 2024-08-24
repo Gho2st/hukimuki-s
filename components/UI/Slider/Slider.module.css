@@ -1,57 +1,82 @@
 .sliderContainer {
-  margin-top: 5rem;
+  margin-top: 4rem;
 }
 .slider {
-  width: 90%; /* Adjust to 100% for better responsiveness */
+  height: 380px !important;
+  width: 90%;
   margin: auto;
 }
 
 .slider img {
   padding: 1rem;
-  border-radius: 2rem;
+  border-radius: 1.5rem;
 }
 .rotate {
   transform: rotate(180deg);
-  margin-right: 2rem;
+  margin-right: 1rem;
 }
 .rotate svg {
   color: rgb(255, 255, 255);
   font-size: 2rem;
 }
-
 .rightArrow {
-  margin-left: 2rem;
+  margin-left: 1rem;
 }
+
 .rightArrow svg {
   color: rgb(255, 255, 255);
   font-size: 2rem;
 }
 
-@media (max-width: 1215px) {
-  .rotate {
-    margin-right: -1rem;
-  }
+@media (max-width: 1550px) {
   .slider {
-    width: 90%;
+    height: 300px !important;
   }
+  .rotate {
+    margin-right: 0rem;
+  }
+
   .rightArrow {
-    margin-left: -1rem;
+    margin-left: 0rem;
   }
 }
-@media (max-width: 680px) {
+
+@media (max-width: 1000px) {
+  .slider {
+    height: 300px !important;
+  }
+}
+
+@media (max-width: 800px) {
+  .slider {
+    width: 70%;
+    height: 350px !important;
+  }
   .slider img {
     padding-right: 0.3rem;
     padding-left: 0.3rem;
   }
-}
-@media (max-width: 465px) {
   .rotate {
     margin-right: 1rem;
   }
-  .slider {
-    width: 84%;
-  }
   .rightArrow {
     margin-left: 1rem;
+  }
+}
+@media (max-width: 600px) {
+  .slider {
+    width: 100%;
+    height: 350px !important;
+    overflow: hidden;
+  }
+  .slider img {
+    border-radius: 0rem;
+  }
+
+  .rotate {
+    display: none;
+  }
+  .rightArrow {
+    display: none;
   }
 }

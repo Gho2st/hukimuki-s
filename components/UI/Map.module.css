@@ -8,5 +8,5 @@
   border: 0;
   width: 100%;
   height: 500px;
-  filter: grayscale(100%) invert(100%) contrast(83%);
+  filter: grayscale(50%) invert(100%) contrast(83%);
 }

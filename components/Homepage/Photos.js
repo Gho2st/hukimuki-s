@@ -7,64 +7,22 @@ import Link from "next/link";
 import SliderComponent from "../UI/Slider/Slider";
 
 const images = [
-  {
-    src: "/photos-slider/1.jpg",
-    alt: "zdjecie ze srodka Huki Muki",
-  },
-  {
-    src: "/photos-slider/2.jpg",
-    alt: "zdjecie ze srodka Huki Muki",
-  },
-  {
-    src: "/photos-slider/3.jpg",
-    alt: "zdjecie ze srodka Huki Muki",
-  },
-  {
-    src: "/photos-slider/4.jpg",
-    alt: "zdjecie ze srodka Huki Muki",
-  },
-  {
-    src: "/photos-slider/5.jpg",
-    alt: "zdjecie ze srodka Huki Muki",
-  },
-  {
-    src: "/photos-slider/6.jpg",
-    alt: "zdjecie ze srodka Huki Muki",
-  },
-  {
-    src: "/photos-slider/7.jpg",
-    alt: "zdjecie ze srodka Huki Muki",
-  },
-
-  {
-    src: "/photos-slider/9.jpg",
-    alt: "zdjecie ze srodka Huki Muki",
-  },
-  {
-    src: "/photos-slider/10.jpg",
-    alt: "zdjecie ze srodka Huki Muki",
-  },
-  {
-    src: "/photos-slider/11.jpg",
-    alt: "zdjecie ze srodka Huki Muki",
-  },
-  {
-    src: "/photos-slider/12.jpg",
-    alt: "zdjecie ze srodka Huki Muki",
-  },
-  {
-    src: "/photos-slider/13.jpg",
-    alt: "zdjecie ze srodka Huki Muki",
-  },
-
-  {
-    src: "/photos-slider/15.jpg",
-    alt: "zdjecie ze srodka Huki Muki",
-  },
-  {
-    src: "/photos-slider/17.jpg",
-    alt: "zdjecie ze srodka Huki Muki",
-  },
+  { src: "/photos-slider/1.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/2.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/3.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/4.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/5.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/6.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/7.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/8.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/9.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/10.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/11.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/12.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/13.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/14.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/15.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/17.jpg", alt: "zdjecie ze srodka Huki Muki" },
 ];
 
 export default function Photos() {
