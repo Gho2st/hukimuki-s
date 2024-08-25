@@ -1,3 +1,4 @@
+// Zmieniony komponent front-endowy obsługujący wiele plików
 import { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 import classes from "./Which2.module.css";
@@ -6,6 +7,7 @@ export default function Coctails({ which }) {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isAdding, setIsAdding] = useState(false);
 
   const fetchImages = useCallback(async () => {
     setLoading(true);
@@ -17,7 +19,7 @@ export default function Coctails({ which }) {
       }
       const data = await response.json();
       console.log(data);
-      setImages(data); // data should include ordered list of images
+      setImages(data);
     } catch (error) {
       setError(error.message);
     } finally {
@@ -29,14 +31,15 @@ export default function Coctails({ which }) {
     fetchImages();
   }, [fetchImages]);
 
-  // rest of the code remains the same
-
-  const handleFileUpload = async (event, position) => {
-    const file = event.target.files[0];
+  const handleFileUpload = async (event) => {
+    setIsAdding(true);
+    const files = event.target.files;
     const formData = new FormData();
-    formData.append("file", file);
+
+    for (const file of files) {
+      formData.append("files", file);
+    }
     formData.append("which", which);
-    formData.append("position", position); // Send the intended position to the server
 
     try {
       const response = await fetch("/api/s3-upload", {
@@ -45,13 +48,13 @@ export default function Coctails({ which }) {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to upload image");
+        throw new Error("Failed to upload images");
       }
 
       const data = await response.json();
       console.log(data);
-      // Fetch the updated list of images with the new order
-      await fetchImages(); // <-- odświeżenie listy zdjęć po dodaniu nowego
+      setIsAdding(false);
+      await fetchImages(); // Odśwież listę zdjęć po dodaniu nowych
     } catch (error) {
       console.error(error);
     }
@@ -99,7 +102,6 @@ export default function Coctails({ which }) {
 
   const removeImage = async (imageToRemove) => {
     try {
-      // Pobierz nazwę pliku ze ścieżki URL
       const fileName = imageToRemove.split("/").pop();
 
       const response = await fetch(
@@ -125,13 +127,16 @@ export default function Coctails({ which }) {
 
   return (
     <>
-      <div>
+      <div className={classes.addingContainer}>
         <h4>Dodaj fotke :)</h4>
+        <p>proszę wziąć pod uwagę aby sprawdzić rozmiar zdjęć (dbać o optymalizację)</p>
         <input
           id="fileInput"
           type="file"
-          onChange={(e) => handleFileUpload(e, images.length)}
+          multiple // Pozwala na wybór wielu plików
+          onChange={handleFileUpload}
         />
+        {isAdding && <h5>Dodawanie zdjęć trwa...</h5>}
       </div>
       {images.length > 0 ? (
         images.map((file, index) => (
