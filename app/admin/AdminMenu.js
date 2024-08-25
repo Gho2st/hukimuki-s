@@ -94,7 +94,6 @@ export default function AdminMenu() {
         {/* {isPitchers && <Which2 which="pitchers" />} */}
         {isPromo && <Which2 which="promo" />}
         {isStudentsPromo && <Which2 which="students" />}
-
       </div>
     </div>
   );

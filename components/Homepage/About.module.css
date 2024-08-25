@@ -12,11 +12,10 @@
   margin: auto;
 }
 
-
 .container h2 {
   text-transform: uppercase;
   font-size: 3rem;
-  background: -webkit-linear-gradient(#eee, #00bf63);
+  background: -webkit-linear-gradient(#0ae657, #028646);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -25,9 +24,23 @@
   margin-top: 0.8rem;
   margin-bottom: 1.5rem;
   font-size: 1.5rem;
+  margin-right: 0.25rem;
   fill: gold;
+  animation: pulse 1.5s infinite;
+  transition: transform 0.2s;
 }
 
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 .textContainer {
   max-width: 70%;
   margin: auto;
@@ -53,6 +66,7 @@
 .icons p {
   text-transform: uppercase;
   font-weight: bold;
+  text-shadow: 0 0 100px rgba(0, 255, 0, 0.6);
 }
 
 @media (max-width: 1640px) {
