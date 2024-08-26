@@ -14,7 +14,7 @@ export default function AdminMenu() {
 
   return (
     <div className={classes.container}>
-      <h3>Zarzadzaj menu</h3>
+      <h3>Zarządzaj menu</h3>
       <div className={classes.buttons}>
         <button
           onClick={() => {

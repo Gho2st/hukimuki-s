@@ -29,6 +29,11 @@
 
 .socials {
   font-size: 2.5rem;
+  transition: 0.2s all ease-in-out;
+}
+
+.socials svg:hover {
+  color: #00bf63;
 }
 
 .facebook {

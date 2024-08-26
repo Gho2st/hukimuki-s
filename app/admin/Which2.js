@@ -129,7 +129,10 @@ export default function Coctails({ which }) {
     <>
       <div className={classes.addingContainer}>
         <h4>Dodaj fotke :)</h4>
-        <p>proszę wziąć pod uwagę aby sprawdzić rozmiar zdjęć (dbać o optymalizację)</p>
+        <p>
+          proszę wziąć pod uwagę aby sprawdzić rozmiar zdjęć (dbać o
+          optymalizację)
+        </p>
         <input
           id="fileInput"
           type="file"
@@ -161,7 +164,7 @@ export default function Coctails({ which }) {
           </div>
         ))
       ) : (
-        <div>No images found</div>
+        <div>Nie znaleziono menu (puste)</div>
       )}
     </>
   );

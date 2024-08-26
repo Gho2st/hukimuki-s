@@ -2,8 +2,29 @@
   font-size: 2rem;
 }
 
+.addingContainer p {
+  font-size: 1rem;
+}
+
 .addingContainer h5 {
   color: green;
   margin-top: 1rem;
   font-size: 1.4rem;
+}
+
+.imageWrapper button {
+  margin: 0.2rem;
+  padding: 0.2rem;
+  border: 0;
+  border-radius: 0.2rem;
+  background: #00bf63;
+  color: white;
+  font-size: 0.9rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.imageWrapper button:hover {
+  color: #00bf63;
+  background: white;
+  cursor: pointer;
 }
