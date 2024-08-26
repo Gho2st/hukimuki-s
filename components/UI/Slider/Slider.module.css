@@ -48,6 +48,9 @@
 }
 
 @media (max-width: 800px) {
+  .sliderContainer {
+    margin-top: 0;
+  }
   .slider {
     width: 70%;
     height: 350px !important;

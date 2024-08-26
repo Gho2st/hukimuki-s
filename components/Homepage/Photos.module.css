@@ -71,7 +71,7 @@
     font-size: 0.9rem;
   }
 
-  .icons svg {
+  .socialsIcons svg {
     font-size: 2.7rem;
   }
   .container {
@@ -91,10 +91,10 @@
     font-size: 0.85rem;
   }
 
-  .icons svg {
-    font-size: 2.7rem;
-    margin-top: 1rem;
-    margin-bottom: 3rem;
+  .socialsIcons svg {
+    font-size: 2.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.8rem;
   }
   .container {
     margin-bottom: 0rem;
