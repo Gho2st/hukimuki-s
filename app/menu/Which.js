@@ -47,7 +47,7 @@ export default function Coctails({ which }) {
           </div>
         ))
       ) : (
-        <div>No images found</div>
+        <div>Nie znaleziono menu.</div>
       )}
     </>
   );

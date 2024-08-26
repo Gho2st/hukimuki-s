@@ -12,6 +12,7 @@ export default function Menu() {
   const [isBeers, setIsBeers] = useState(false);
   const [isShots, setIsShots] = useState(false);
   const [isPromo, setIsPromo] = useState(false);
+  const [isSets, setIsSets] = useState(false);
   const [isPitchers, setIsPitchers] = useState(false);
   const [isStudentsPromo, setIsStudentsPromo] = useState(false);
 
@@ -72,6 +73,7 @@ export default function Menu() {
                   setIsPromo(false);
                   setIsPitchers(false);
                   setIsStudentsPromo(false);
+                  setIsSets(false);
                 }}
               >
                 Koktajle
@@ -83,6 +85,7 @@ export default function Menu() {
                   setIsPitchers(false);
                   setIsBeers(!isBeers);
                   setIsStudentsPromo(false);
+                  setIsSets(false);
                 }}
               >
                 Piwa
@@ -95,6 +98,7 @@ export default function Menu() {
                   setIsPitchers(false);
                   setIsPromo(!isPromo);
                   setIsStudentsPromo(false);
+                  setIsSets(false);
                 }}
               >
                 Promocje
@@ -107,6 +111,7 @@ export default function Menu() {
                   setIsPitchers(false);
                   setIsPromo(false);
                   setIsStudentsPromo(false);
+                  setIsSets(false);
                 }}
               >
                 Shoty
@@ -119,9 +124,23 @@ export default function Menu() {
                   setIsCoctails(false);
                   setIsPitchers(false);
                   setIsPromo(false);
+                  setIsSets(false);
                 }}
               >
                 Promocje Studenckie
+              </button>
+              <button
+                onClick={() => {
+                  setIsStudentsPromo(false);
+                  setIsShots(false);
+                  setIsBeers(false);
+                  setIsCoctails(false);
+                  setIsPitchers(false);
+                  setIsPromo(false);
+                  setIsSets(!isSets);
+                }}
+              >
+                Zestawy
               </button>
               {/* <button
                 onClick={() => {
@@ -142,6 +161,7 @@ export default function Menu() {
               {/* {isPitchers && <Which which="pitchers" />} */}
               {isPromo && <Which which="promo" />}
               {isStudentsPromo && <Which which="students" />}
+              {isSets && <Which which="sets" />}
             </div>
           </div>
           <Footer />

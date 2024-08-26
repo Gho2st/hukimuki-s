@@ -10,6 +10,7 @@ export default function AdminMenu() {
   const [isPromo, setIsPromo] = useState(false);
   const [isPitchers, setIsPitchers] = useState(false);
   const [isStudentsPromo, setIsStudentsPromo] = useState(false);
+  const [isSets, setIsSets] = useState(false);
 
   return (
     <div className={classes.container}>
@@ -22,6 +23,7 @@ export default function AdminMenu() {
             setIsPromo(false);
             setIsPitchers(false);
             setIsStudentsPromo(false);
+            setIsSets(false);
           }}
         >
           Koktajle
@@ -33,6 +35,7 @@ export default function AdminMenu() {
             setIsPitchers(false);
             setIsBeers(!isBeers);
             setIsStudentsPromo(false);
+            setIsSets(false);
           }}
         >
           Piwa
@@ -44,6 +47,7 @@ export default function AdminMenu() {
             setIsCoctails(false);
             setIsPitchers(false);
             setIsPromo(!isPromo);
+            setIsSets(false);
             setIsStudentsPromo(false);
           }}
         >
@@ -56,6 +60,7 @@ export default function AdminMenu() {
             setIsCoctails(false);
             setIsPitchers(false);
             setIsPromo(false);
+            setIsSets(false);
             setIsStudentsPromo(false);
           }}
         >
@@ -68,10 +73,24 @@ export default function AdminMenu() {
             setIsCoctails(false);
             setIsPitchers(false);
             setIsPromo(false);
+            setIsSets(false);
             setIsStudentsPromo(!isStudentsPromo);
           }}
         >
           Promocje Studenckie
+        </button>
+        <button
+          onClick={() => {
+            setIsShots(false);
+            setIsBeers(false);
+            setIsCoctails(false);
+            setIsPitchers(false);
+            setIsPromo(false);
+            setIsStudentsPromo(false);
+            setIsSets(!isSets);
+          }}
+        >
+          Zestawy
         </button>
         {/* <button
           onClick={() => {
@@ -94,6 +113,7 @@ export default function AdminMenu() {
         {/* {isPitchers && <Which2 which="pitchers" />} */}
         {isPromo && <Which2 which="promo" />}
         {isStudentsPromo && <Which2 which="students" />}
+        {isSets && <Which2 which="sets" />}
       </div>
     </div>
   );
