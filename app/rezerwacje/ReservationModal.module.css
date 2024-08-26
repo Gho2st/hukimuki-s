@@ -126,6 +126,7 @@
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   border: 0px;
+  font-size: 16px;
 }
 
 .errorMessage {
@@ -176,5 +177,8 @@
   .modal label {
     margin-top: 1rem;
     margin-bottom: 0.5rem;
+  }
+  .closeButton {
+    top: 3px !important;
   }
 }
