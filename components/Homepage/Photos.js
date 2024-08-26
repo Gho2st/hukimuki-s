@@ -6,28 +6,47 @@ import { useInView, motion } from "framer-motion";
 import Link from "next/link";
 import SliderComponent from "../UI/Slider/Slider";
 
+const images = [
+  { src: "/photos-slider/1.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/2.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/3.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/4.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/5.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/6.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/7.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/8.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/9.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/10.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/11.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/12.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/13.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/14.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/15.jpg", alt: "zdjecie ze srodka Huki Muki" },
+  { src: "/photos-slider/17.jpg", alt: "zdjecie ze srodka Huki Muki" },
+];
+
 export default function Photos() {
   const skillRef = useRef();
   const isSkillRefinView = useInView(skillRef);
-  const [images, setImages] = useState([]);
+  // const [images, setImages] = useState([]);
 
-  // Fetch images from the API route
-  useEffect(() => {
-    async function fetchImages() {
-      try {
-        const response = await fetch("/api/get_slider_images");
-        if (!response.ok) {
-          throw new Error("Failed to fetch images");
-        }
-        const imageUrls = await response.json();
-        setImages(imageUrls); // Set the fetched images to the state
-      } catch (error) {
-        console.error("Error occurred:", error);
-      }
-    }
+  // // Fetch images from the API route
+  // useEffect(() => {
+  //   async function fetchImages() {
+  //     try {
+  //       const response = await fetch("/api/get_slider_images");
+  //       if (!response.ok) {
+  //         throw new Error("Failed to fetch images");
+  //       }
+  //       const imageUrls = await response.json();
+  //       setImages(imageUrls); // Set the fetched images to the state
+  //     } catch (error) {
+  //       console.error("Error occurred:", error);
+  //     }
+  //   }
 
-    fetchImages(); // Fetch images when the component mounts
-  }, []); // Empty dependency array ensures this runs only once on mount
+  //   fetchImages(); // Fetch images when the component mounts
+  // }, []); // Empty dependency array ensures this runs only once on mount
 
   return (
     <>
@@ -81,7 +100,7 @@ export default function Photos() {
               </Link>
             </div>
           </div>
-          <SliderComponent images={images} /> {/* Pass images to the slider */}
+          <SliderComponent images={images} />
         </div>
       </motion.div>
     </>

@@ -54,11 +54,11 @@ export default function SliderComponent({ images }) {
         {images.map((image, index) => (
           <Image
             key={index}
-            src={image}
+            src={image.src}
             height={image.height || 550}
             width={image.width || 450}
             layout="responsive"
-            alt={`Slider Image ${index + 1}`}
+            alt={image.alt}
           />
         ))}
       </Slider>
