@@ -128,15 +128,21 @@ export default function Coctails({ which }) {
   return (
     <>
       <div className={classes.addingContainer}>
-        <h4>Dodaj fotke :)</h4>
+        <h4>Dodaj :)</h4>
         <p>
           proszę wziąć pod uwagę aby sprawdzić rozmiar zdjęć (dbać o
           optymalizację)
         </p>
+        <p>
+          pliki, które mozesz dodac to po prostu zdjecia/zrzuty ekranu jak jpg,
+          png, jpeg
+        </p>
+
         <input
           id="fileInput"
           type="file"
           multiple // Pozwala na wybór wielu plików
+          accept=".jpg,.jpeg,.png" // Restricts file types to JPG, JPEG, and PNG
           onChange={handleFileUpload}
         />
         {isAdding && <h5>Dodawanie zdjęć trwa...</h5>}
