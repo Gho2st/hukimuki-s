@@ -1,3 +1,7 @@
+.imageWrapper img {
+  display: block;
+}
+
 .loading {
   text-align: center;
 }
