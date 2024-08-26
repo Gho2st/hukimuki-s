@@ -246,11 +246,13 @@ const ReservationModal = ({
             <input
               type="text"
               value={name}
+              inputMode="text"
               onChange={(e) => setName(e.target.value)}
             />
 
             <label>Email:</label>
             <input
+              inputMode="email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -259,6 +261,7 @@ const ReservationModal = ({
             <label>Numer telefonu:</label>
             <input
               type="text"
+              inputMode="tel"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
             />
