@@ -8,7 +8,7 @@ export default function robots() {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/admin", "privacy"],
+        disallow: ["/admin", "/privacy"],
       },
     ],
     sitemap: `https://hukimuki.pl/sitemap.xml`,

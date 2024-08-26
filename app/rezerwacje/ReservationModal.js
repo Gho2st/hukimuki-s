@@ -264,6 +264,8 @@ const ReservationModal = ({
               inputMode="tel"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
+              placeholder="w formacie 666111222"
+
             />
 
             <label>Kraj:</label>

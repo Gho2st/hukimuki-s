@@ -166,13 +166,13 @@
 
 @media (max-width: 600px) {
   .modal {
-    width: 90%;
+    width: 100%;
   }
   .personalInfo {
-    width: 100%;
+    width: 70%;
   }
   .modal select {
-    width: 100%;
+    width: 70%;
   }
   .modal label {
     margin-top: 1rem;
@@ -180,5 +180,12 @@
   }
   .closeButton {
     top: 3px !important;
+  }
+  .modal h2 {
+    padding-top: 2rem;
+  }
+  .buttons {
+    margin-top: 1rem;
+    padding-bottom: 6rem;
   }
 }
