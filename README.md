@@ -2,8 +2,7 @@
 
 ![Project](/public/github/desktop.png)
 ![Project](/public/github/reservation.png)
-![Project](/public/github/adult.png)
-![Project](/public/github/panel-admina.pngs.png)
+![Project](/public/github/panel-admina.png)
 
 ## Overview
 
