@@ -74,6 +74,7 @@ export default function Menu() {
                   setIsPitchers(false);
                   setIsStudentsPromo(false);
                   setIsSets(false);
+                  setIsShots(false);
                 }}
               >
                 Koktajle
@@ -81,6 +82,7 @@ export default function Menu() {
               <button
                 onClick={() => {
                   setIsCoctails(false);
+                  setIsShots(false);
                   setIsPromo(false);
                   setIsPitchers(false);
                   setIsBeers(!isBeers);
