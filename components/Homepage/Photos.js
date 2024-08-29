@@ -36,6 +36,7 @@ export default function Photos() {
             : { opacity: 0, scale: 0.85 }
         }
         transition={{ delay: 0.3, duration: 1, ease: "easeOut" }}
+        className={classes.back}
       >
         <div className={classes.container} ref={skillRef}>
           <div className={classes.textContainer}>

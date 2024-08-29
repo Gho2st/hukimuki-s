@@ -1,3 +1,6 @@
+.back {
+  margin: auto;
+}
 .container {
   margin-bottom: 5rem;
   margin-top: 3rem;
@@ -12,6 +15,7 @@
 
 .textContainer h4 {
   text-transform: uppercase;
+  padding-top: 4rem;
   font-size: 3rem;
   background: -webkit-linear-gradient(#0ae657, #028646);
   background-clip: text;
