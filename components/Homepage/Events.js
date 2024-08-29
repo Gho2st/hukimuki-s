@@ -57,7 +57,7 @@ export default function Events() {
               ? { x: 0, opacity: 1, rotate: 0 }
               : { x: "-900px", opacity: 0, rotate: 10 }
           }
-          transition={{ delay: 0.1, duration: 0.7, ease: "easeOut" }}
+          transition={{ delay: 0.9, duration: 0.9, ease: "easeOut" }}
           className={classes.imageContainer}
         >
           <Image
@@ -69,13 +69,11 @@ export default function Events() {
           />
         </motion.div>
         <motion.div
-          initial={{ x: "900px", opacity: 0, rotate: 10 }}
+          initial={{ x: "900px", opacity: 0 }}
           animate={
-            isSkillRefinView
-              ? { x: 0, opacity: 1, rotate: 0 }
-              : { x: "900px", opacity: 0, rotate: 10 }
+            isSkillRefinView ? { x: 0, opacity: 1 } : { x: "900px", opacity: 0 }
           }
-          transition={{ delay: 0.1, duration: 0.7, ease: "easeOut" }}
+          transition={{ delay: 0.9, duration: 0.9, ease: "easeOut" }}
           className={classes.textContainer}
         >
           <div>

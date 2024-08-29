@@ -90,7 +90,7 @@ export default function NewEvent() {
       <div>
         <h4>Dodaj nowe zdjęcie i opis do eventu :)</h4>
         <p>
-          Najlepiej uzyj tego linku wykonaj grafike i dodaj zeby zachowac
+          Najlepiej uzyj linku ponizej wykonaj grafike i dodaj zeby zachowac
           wymiary :)
         </p>
         <Link

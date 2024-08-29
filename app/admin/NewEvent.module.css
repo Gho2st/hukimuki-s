@@ -2,14 +2,29 @@
   margin-top: 3rem;
 }
 
+.addingContainer h4 {
+  font-size: 1.5rem;
+}
+
 .addingContainer textarea {
-  min-width: 300px;
-  min-height: 100px;
+  min-width: 500px;
+  min-height: 150px;
   margin-top: 2rem;
+  background: grey;
+  padding: 1rem;
+  color: white;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
 }
 
 .addingContainer button {
   display: block;
+  padding: 0.5rem 1rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background: green;
+  color: white;
+  font-size: 1.2rem;
 }
 
 .addingContainer input {
@@ -19,6 +34,8 @@
 .addingContainer a {
   color: green;
   display: block;
+  font-size: 1.5rem;
+  padding: 1rem;
 }
 
 .error {
