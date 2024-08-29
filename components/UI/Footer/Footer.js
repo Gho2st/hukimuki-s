@@ -74,8 +74,8 @@ export default function Footer() {
       </div>
       <h6 className={classes.copyright}>
         &copy; HukiMuki 2024 &
-        <a href="https://www.dominikjojczyk.pl">
-          <span> Dominik. </span>
+        <a href="https://www.domiweb.pl">
+          <span> Domiweb. </span>
         </a>
         Wszelkie prawa zastrzeżone.
       </h6>

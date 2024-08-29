@@ -66,7 +66,7 @@ export default function Header() {
               </Link>
             </li>
             <li className={classes.navigation__item}>
-              <Link className={classes.navigation__link} href={"/#kontakt"}>
+              <Link className={classes.navigation__link} href={"/kontakt"}>
                 <span>04</span>
                 Kontakt
               </Link>

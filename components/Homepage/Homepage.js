@@ -14,7 +14,6 @@ export default function Homepage() {
       <Baner />
       <About />
       <Photos />
-      <Contact />
       <Map />
       <Footer />
     </>

@@ -3,11 +3,7 @@ import SubmitButton from "../Buttons/SubmitButton";
 import { useState } from "react";
 import classes from "./Contact.module.css";
 import Image from "next/image";
-import { useRef } from "react";
-import { useInView, motion } from "framer-motion";
 export default function Contact() {
-  const skillRef = useRef();
-  const isSkillRefinView = useInView(skillRef, { once: true });
   const [text, setText] = useState("");
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -70,18 +66,8 @@ export default function Contact() {
   return (
     <>
       {!formSubmitted ? (
-        <motion.div
-          id="kontakt"
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={
-            isSkillRefinView
-              ? { opacity: 1, scale: 1 }
-              : { opacity: 0, scale: 0.85 }
-          }
-          transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
-          className={classes.container}
-        >
-          <h4 ref={skillRef}>Podejmij Kontakt!</h4>
+        <div className={classes.container}>
+          <h1>Podejmij Kontakt!</h1>
           <div className={classes.textContainer}>
             <Image
               src={"/gifs/contact.gif"}
@@ -162,7 +148,7 @@ export default function Contact() {
               </div>
             </form>
           </div>
-        </motion.div>
+        </div>
       ) : (
         <div className={classes.thanksMessageContainer}>
           <h4>Dziękujemy za wiadomość!</h4>
