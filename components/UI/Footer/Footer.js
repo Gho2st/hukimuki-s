@@ -6,6 +6,7 @@ import { CiLocationOn } from "react-icons/ci";
 import { MdLocalPhone } from "react-icons/md";
 import { CiMail } from "react-icons/ci";
 import { FaTiktok } from "react-icons/fa";
+import { GrContact } from "react-icons/gr";
 
 export default function Footer() {
   return (
@@ -52,6 +53,12 @@ export default function Footer() {
               <CiMail />
               hukimukiflorianska@gmail.com
             </li>
+            <Link href={"/kontakt"}>
+              <li>
+                <GrContact />
+                Formularz kontaktowy
+              </li>
+            </Link>
           </ul>
         </div>
         <div>

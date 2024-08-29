@@ -98,12 +98,15 @@
 }
 
 @media (max-width: 1200px) {
-  .container h4 {
+  .container h1 {
     font-size: 2.5rem;
   }
 }
 
 @media (max-width: 900px) {
+  .container h1 {
+    font-size: 2rem;
+  }
   .textContainer {
     max-width: 90%;
   }
@@ -133,8 +136,9 @@
 }
 
 @media (max-width: 600px) {
-  .container h4 {
+  .container h1 {
     font-size: 1.8rem;
+    margin-top: 0rem;
   }
   .container {
     margin-top: 8rem;
