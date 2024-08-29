@@ -6,6 +6,7 @@ import Footer from "../UI/Footer/Footer";
 import About from "./About";
 import Contact from "../UI/Contact/Contact";
 import Map from "../UI/Map";
+import Events from "./Events";
 
 export default function Homepage() {
   return (
@@ -13,6 +14,7 @@ export default function Homepage() {
       <Header />
       <Baner />
       <About />
+      <Events />
       <Photos />
       <Map />
       <Footer />

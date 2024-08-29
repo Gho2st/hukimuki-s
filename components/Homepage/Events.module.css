@@ -1,0 +1,142 @@
+.container {
+  min-height: 100vh;
+  padding: 2rem 9%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  color: #919993;
+  overflow-x: hidden;
+}
+
+.container h3 {
+  text-transform: uppercase;
+  font-size: 3rem;
+  background: -webkit-linear-gradient(#0ae657, #028646);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.description {
+  text-transform: uppercase;
+  margin-top: 1rem;
+}
+
+.content {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  margin-top: 5rem;
+}
+
+.imageContainer {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageContainer img {
+  border-radius: 1rem;
+}
+
+.textContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 50%;
+  text-align: left;
+  font-size: 1.1rem;
+}
+
+.date {
+  color: rgb(105, 105, 105) !important;
+  margin-bottom: 2rem;
+}
+
+.text {
+  margin-bottom: 3rem;
+}
+
+.textContainer p {
+  color: #a8b3ab;
+}
+
+.buttonsContainer {
+  margin-top: 2rem;
+}
+
+.buttonsContainer div {
+  font-size: 1.2rem !important;
+}
+
+@media (max-width: 1400px) {
+  .imageContainer {
+    width: 35%;
+  }
+  .container h3 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .imageContainer {
+    width: 40%;
+  }
+  .textContainer {
+    width: 45%;
+    font-size: 1rem;
+  }
+  .buttonsContainer div {
+    font-size: 1rem !important;
+  }
+}
+@media (max-width: 900px) {
+  .imageContainer {
+    width: 60%;
+    margin: auto;
+  }
+  .content {
+    flex-direction: column;
+    gap: 5rem;
+    margin-top: 5rem;
+  }
+  .textContainer {
+    width: 100%;
+    font-size: 0.95rem;
+  }
+  .description {
+    text-transform: uppercase;
+    width: 80%;
+    margin: auto;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .container h3 {
+    font-size: 1.8rem;
+  }
+  .description {
+    font-size: 0.9rem;
+  }
+
+  .imageContainer {
+    width: 80%;
+    margin: auto;
+  }
+  .content {
+    flex-direction: column;
+    gap: 5rem;
+    margin-top: 5rem;
+  }
+  .textContainer {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+  .buttonsContainer div {
+    font-size: 0.9rem !important;
+  }
+}

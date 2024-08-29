@@ -1,0 +1,34 @@
+.addingContainer {
+  margin-top: 3rem;
+}
+
+.addingContainer textarea {
+  min-width: 300px;
+  min-height: 100px;
+  margin-top: 2rem;
+}
+
+.addingContainer button {
+  display: block;
+}
+
+.addingContainer input {
+  margin-top: 1rem;
+}
+
+.addingContainer a {
+  color: green;
+  display: block;
+}
+
+.error {
+  color: red !important;
+  font-size: 1.2rem !important;
+  margin-top: 1rem;
+}
+
+.success {
+  color: green !important;
+  font-size: 1.2rem !important;
+  margin-top: 1rem;
+}

@@ -50,8 +50,8 @@ export default function About() {
             ))}
           </div>
           <p>
-            Zapraszamy do Huki Muki, wyjątkowego pubu i baru oraz klubu
-            zlokalizowanego w samym sercu Krakowa! Oferujemy przytulną
+            Zapraszamy do <span>Huki Muki</span>, wyjątkowego pubu i baru oraz
+            klubu zlokalizowanego w samym sercu Krakowa! Oferujemy przytulną
             atmosferę, doskonałe ceny i atrakcyjne zniżki studenckie. Na dole
             naszego lokalu znajduje się klub, w którym zabawa trwa do białego
             rana. Przyjdź i przekonaj się sam, dlaczego Huki Muki to idealne

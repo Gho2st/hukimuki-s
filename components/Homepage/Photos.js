@@ -41,7 +41,7 @@ export default function Photos() {
           <div className={classes.textContainer}>
             <h4>Galeria Klubu</h4>
             <p>
-              Poczuj klimat imprez w Huki Muki Pub Club! To tylko przedsmak –
+              Poczuj klimat imprez w Huki Muki Pub & Club! To tylko przedsmak –
               więcej zdjęć znajdziesz na naszym Instagramie. Sprawdź, jak bawimy
               się co weekend, i dołącz do nas, aby przeżyć niezapomniane chwile.
               Nasze wydarzenia to połączenie najlepszej muzyki, wyjątkowej

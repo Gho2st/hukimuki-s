@@ -18,6 +18,11 @@ ul {
   list-style: none;
 }
 
+span {
+  color: #00bf63;
+  font-weight: 600;
+}
+
 ::-webkit-scrollbar {
   height: 4px;
   width: 4px;
