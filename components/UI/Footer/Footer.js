@@ -80,11 +80,10 @@ export default function Footer() {
         </div>
       </div>
       <h6 className={classes.copyright}>
-        &copy; HukiMuki 2024 &
+        &copy; 2024 HukiMuki | Projekt i realizacja:
         <a href="https://www.domiweb.pl">
           <span> Domiweb. </span>
         </a>
-        Wszelkie prawa zastrzeżone.
       </h6>
     </>
   );
