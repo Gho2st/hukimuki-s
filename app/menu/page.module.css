@@ -19,8 +19,8 @@
 }
 
 .buttons {
-  margin-top: 3rem;
-  margin-bottom: 5rem;
+  margin-top: 5rem;
+  margin-bottom: 7rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 2rem;
@@ -43,19 +43,10 @@
   transform: translateY(-1px);
 }
 
-.menuImages {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: 1fr 1fr 1fr;
-}
-
 @media (max-width: 1200px) {
   .buttons {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
-  }
-  .menuImages {
-    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -67,15 +58,20 @@
   .logo h2 {
     margin-bottom: 0rem;
   }
+  .buttons {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+  }
+  .buttons button {
+    padding: 0.7rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 600px) {
   .buttons {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
-  }
-  .menuImages {
-    grid-template-columns: 1fr;
-    gap: 0rem;
   }
 }

@@ -34,21 +34,26 @@ export default function Coctails({ which }) {
 
   return (
     <>
-      {images.length > 0 ? (
-        images.map((file, index) => (
-          <div key={file} className={classes.imageWrapper}>
-            <Image
-              src={file} // Use the full URL here
-              width={100}
-              height={100}
-              alt={`Cocktail ${index}`}
-              layout="responsive"
-            />
+      <div>
+        {images.length > 0 ? (
+          <div className={classes.imagesContainer}>
+            {/* Kontener dla wszystkich zdjęć */}
+            {images.map((file, index) => (
+              <div key={file} className={classes.imageWrapper}>
+                <Image
+                  src={file} // Użyj pełnego URL tutaj
+                  width={100}
+                  height={100}
+                  alt={`Cocktail ${index}`}
+                  layout="responsive"
+                />
+              </div>
+            ))}
           </div>
-        ))
-      ) : (
-        <div>Nie znaleziono menu.</div>
-      )}
+        ) : (
+          <div>Nie znaleziono menu.</div>
+        )}
+      </div>
     </>
   );
 }

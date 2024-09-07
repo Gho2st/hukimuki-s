@@ -58,12 +58,12 @@ export default function Menu() {
                 <i>Huki Muki</i>
               </h1>
               <h2>Menu</h2>
-              <Image
+              {/* <Image
                 src={"/gifs/3.gif"}
                 width={200}
                 height={200}
                 alt="stukajace sie butelki"
-              />
+              /> */}
             </div>
             <div className={classes.buttons}>
               <button

@@ -1,12 +1,33 @@
+.imagesContainer {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
 .imageWrapper img {
   display: block;
 }
 
 .loading {
   text-align: center;
+  font-size: 1.3rem;
 }
 
 .error {
   text-align: center;
   color: red;
+  font-size: 1.3rem;
+}
+
+@media (max-width: 1200px) {
+  .imagesContainer {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .imagesContainer {
+    grid-template-columns: 1fr;
+    gap: 0rem;
+  }
 }
