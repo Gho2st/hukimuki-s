@@ -68,7 +68,7 @@ export default function NewEvent() {
     formData.append("date", date); // Add date to FormData
 
     try {
-      const response = await fetch("/api/s3-upload-events", {
+      const response = await fetch("/api/events-aws/s3-upload-events", {
         method: "POST",
         body: formData,
       });

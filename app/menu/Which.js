@@ -11,7 +11,7 @@ export default function Coctails({ which }) {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`/api/get_admin_menu?which=${which}`);
+      const response = await fetch(`/api/menu/get_admin_menu?which=${which}`);
       if (!response.ok) {
         throw new Error("Failed to fetch images");
       }

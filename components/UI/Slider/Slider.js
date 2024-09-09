@@ -54,7 +54,7 @@ export default function SliderComponent({ images }) {
         {images.map((image, index) => (
           <Image
             key={index}
-            src={image.src}
+            src={image.imageUrl}
             height={image.height || 550}
             width={image.width || 450}
             layout="responsive"

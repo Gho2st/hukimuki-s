@@ -5,11 +5,16 @@ import React, { useState } from "react";
 import classes from "./Admin.module.css";
 import ButtonOnClick from "@/components/UI/Buttons/ButtonOnClick";
 import AdminMenu from "./AdminMenu";
+import NewEvent from "./NewEvent";
+import AdminGallery from "./AdminGallery";
 
 export default function Admin() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isMenu, setIsMenu] = useState(false);
+  const [isGallery, setIsGallery] = useState(false);
+  const [isEvents, setIsEvents] = useState(false);
 
   const handleLogin = async () => {
     const response = await fetch("/api/login", {
@@ -59,7 +64,35 @@ export default function Admin() {
         <h1>Panel Admina</h1>
         <p>Witaj w panelu admina!</p>
         <ButtonOnClick onClick={handleLogout} text="Wyloguj się" />
-        <AdminMenu />
+        <div className={classes.buttons}>
+          <ButtonOnClick
+            onClick={() => {
+              setIsEvents(!isEvents);
+              setIsGallery(false);
+              setIsMenu(false);
+            }}
+            text="Eventy"
+          />
+          <ButtonOnClick
+            onClick={() => {
+              setIsMenu(!isMenu);
+              setIsGallery(false);
+              setIsEvents(false);
+            }}
+            text="Menu"
+          />
+          <ButtonOnClick
+            onClick={() => {
+              setIsGallery(!isGallery);
+              setIsEvents(false);
+              setIsMenu(false);
+            }}
+            text="Galeria"
+          />
+        </div>
+        {isEvents && <NewEvent />}
+        {isMenu && <AdminMenu />}
+        {isGallery && <AdminGallery />}
       </div>
       <Footer />
     </>

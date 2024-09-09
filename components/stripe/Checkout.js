@@ -8,7 +8,7 @@ const Checkout = ({ amount, reservationData }) => {
   console.log(reservationData);
 
   useEffect(() => {
-    fetch("/api/add_reservation", {
+    fetch("/api/reservations/add_reservation", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

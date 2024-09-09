@@ -2,7 +2,6 @@
 import classes from "./AdminMenu.module.css";
 import { useState } from "react";
 import Which2 from "./Which2";
-import NewEvent from "./NewEvent";
 
 export default function AdminMenu() {
   const [isCoctails, setIsCoctails] = useState(false);
@@ -116,9 +115,6 @@ export default function AdminMenu() {
         {isStudentsPromo && <Which2 which="students" />}
         {isSets && <Which2 which="sets" />}
       </div>
-
-      <h3>Dodaj wpis o nowym evencie</h3>
-      <NewEvent />
     </div>
   );
 }

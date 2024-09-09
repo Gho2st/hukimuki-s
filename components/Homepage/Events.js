@@ -18,7 +18,7 @@ export default function Events() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch("/api/get_events", {
+        const response = await fetch("/api/events-aws/get_events", {
           headers: {
             "Cache-Control": "no-cache",
           },

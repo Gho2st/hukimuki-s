@@ -77,7 +77,7 @@ const ReservationModal = ({
   useEffect(() => {
     const fetchOccupiedDates = async () => {
       try {
-        const response = await fetch("/api/get_occupied-dates-postgres", {
+        const response = await fetch("/api/reservations/get_occupied-dates-postgres", {
           mode: "no-cors",
           method: "POST",
           headers: {

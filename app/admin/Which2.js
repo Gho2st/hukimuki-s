@@ -13,7 +13,7 @@ export default function Coctails({ which }) {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`/api/get_admin_menu?which=${which}`);
+      const response = await fetch(`/api/menu/get_admin_menu?which=${which}`);
       if (!response.ok) {
         throw new Error("Failed to fetch images");
       }
@@ -42,7 +42,7 @@ export default function Coctails({ which }) {
     formData.append("which", which);
 
     try {
-      const response = await fetch("/api/s3-upload", {
+      const response = await fetch("/api/menu/s3-upload", {
         method: "POST",
         body: formData,
       });
@@ -76,7 +76,7 @@ export default function Coctails({ which }) {
         });
 
         // Update the server with the new order
-        const response = await fetch("/api/update_image_order", {
+        const response = await fetch("/api/menu/update_image_order", {
           method: "POST",
           body: JSON.stringify({
             which,
@@ -105,7 +105,7 @@ export default function Coctails({ which }) {
       const fileName = imageToRemove.split("/").pop();
 
       const response = await fetch(
-        `/api/s3-delete?which=${which}&file=${fileName}`,
+        `/api/menu/s3-delete?which=${which}&file=${fileName}`,
         {
           method: "DELETE",
         }

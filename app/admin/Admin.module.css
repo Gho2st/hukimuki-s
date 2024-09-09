@@ -37,6 +37,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-top: 6rem;
 }
 
 .container2 h1 {
@@ -44,17 +45,29 @@
 }
 
 .container2 h2 {
-  margin-top: 2rem;
+  margin-top: 4rem;
 }
 
 .container2 p {
   color: grey;
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin-bottom: 1rem;
 }
 
 .container2 button div {
   font-size: 1rem !important;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+.buttons {
+  margin-top: 1rem;
+}
+
+.buttons button div {
+  background: green;
+  color: white;
 }
 
 .error {
