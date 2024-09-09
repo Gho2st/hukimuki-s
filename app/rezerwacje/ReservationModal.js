@@ -32,6 +32,27 @@ const ReservationModal = ({
   const [isCompany, setIsCompany] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
 
+  // Funkcje walidacyjne
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validatePhone = (phone) => {
+    const phoneRegex = /^[0-9]{9}$/; // polski format numeru telefonu 9 cyfr
+    return phoneRegex.test(phone);
+  };
+
+  const validateNIP = (nip) => {
+    const nipRegex = /^PL[0-9]{10}$/; // format NIPu z prefixem PL
+    return nipRegex.test(nip);
+  };
+
+  const validatePostalCode = (postalCode) => {
+    const postalCodeRegex = /^[0-9]{2}-[0-9]{3}$/; // format XX-XXX
+    return postalCodeRegex.test(postalCode);
+  };
+
   const reservationData = {
     name,
     email,
@@ -139,6 +160,23 @@ const ReservationModal = ({
       setErrorMessage("Proszę wypełnić wszystkie pola przed kontynuacją.");
       return;
     }
+    if (!validateEmail(email)) {
+      setErrorMessage("Nieprawidłowy adres email.");
+      return;
+    }
+    if (!validatePhone(phone)) {
+      setErrorMessage("Nieprawidłowy numer telefonu.");
+      return;
+    }
+    if (isCompany && !validateNIP(NIP)) {
+      setErrorMessage("Nieprawidłowy NIP.");
+      return;
+    }
+    if (!validatePostalCode(postal_code)) {
+      setErrorMessage("Nieprawidłowy kod pocztowy.");
+      return;
+    }
+
     setErrorMessage(null);
     setShowConfirmation(true);
   };
@@ -265,7 +303,6 @@ const ReservationModal = ({
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="w formacie 666111222"
-
             />
 
             <label>Kraj:</label>
@@ -308,7 +345,9 @@ const ReservationModal = ({
               placeholder="np. 31-021"
             />
           </div>
-
+          {errorMessage && (
+            <p className={classes.errorMessage}>{errorMessage}</p>
+          )}
           <div className={classes.buttons}>
             <button onClick={handlePayment}>Kontynuuj</button>
             <button onClick={onRequestClose}>Anuluj</button>
@@ -319,7 +358,6 @@ const ReservationModal = ({
           <h3>{name}</h3>
           <p>
             Twoja rezerwacja na {title} {lvl} o godzinie {selectedTime} w dniu
-            {"  "}
             {formattedDate} jest przygotowana, opłać a następnie pobierz
             potwierdzenie aby je pokazać w dniu rezerwacji!
             <br></br>

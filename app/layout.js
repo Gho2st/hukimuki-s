@@ -10,6 +10,18 @@ const poppins = Poppins({
 
 export const metadata = {
   metadataBase: new URL("https://hukimuki.pl"),
+  keywords: [
+    "HukiMuki",
+    "pub Kraków",
+    "klub muzyczny Kraków",
+    "imprezy Kraków",
+    "nocne życie Kraków",
+    "drinki Kraków",
+    "dj Kraków",
+    "promocje Kraków",
+    "piwo Kraków",
+    "shoty Kraków",
+  ],
   title: {
     default: "HukiMuki - Pub i Klub Muzyczny w Krakowie",
     template: "%s - HukiMuki Kraków",
@@ -17,11 +29,20 @@ export const metadata = {
   alternates: {
     canonical: "/",
   },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
+    type: "website",
+    url: "https://hukimuki.pl/",
+    title: "HukiMuki - Pub i Klub Muzyczny w Krakowie",
+    description:
+      "Dołącz do nas w HukiMuki, najlepszym klubie w Krakowie. Sprawdź nasze drinki, promocje i wyjątkowe imprezy z muzyką na żywo.",
     images: "/opengraph-image.png",
   },
   description:
-    "HukiMuki to pub i klub w sercu Krakowa, gdzie czeka na Ciebie doskonałe piwo, kreatywne drinki i wyjątkowe shoty. Zanurz się w żywej atmosferze z muzyką i świetnym towarzystwie. ",
+    "HukiMuki to pub i klub w sercu Krakowa, gdzie czeka na Ciebie doskonałe piwo, kreatywne drinki i wyjątkowe shoty. Zanurz się w żywej atmosferze z muzyką i świetnym towarzystwie.",
 };
 
 export default function RootLayout({ children }) {

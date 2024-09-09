@@ -130,9 +130,14 @@
 }
 
 .errorMessage {
-  margin-top: 1rem;
+  margin-top: 2.5rem;
   color: #ee4e4e !important;
   font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.invalidInput {
+  border: 2px solid red;
 }
 
 @media (max-width: 1200px) {
