@@ -24,7 +24,7 @@ export async function POST(request) {
     });
 
     const mailOption = {
-      from: "biosite.praca@gmail.com",
+      from: "hukimuki.rezerwacje@gmail.com",
       to: "hukimukiflorianska@gmail.com",
       subject: "Email ze strony HukiMuki od klienta",
       html: `

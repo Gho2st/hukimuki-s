@@ -52,7 +52,7 @@ export async function POST(request) {
 
     // Prepare email options
     const mailOptions = {
-      from: "biosite.praca@gmail.com",
+      from: "hukimuki.rezerwacje@gmail.com",
       to: `${data.email}, jestemfajny1244@gmail.com`,
       subject: "Rezerwacja Huki Muki",
       html: `
