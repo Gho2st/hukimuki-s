@@ -9,21 +9,22 @@ import AdminMenu from "./AdminMenu";
 export default function Admin() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const handleLogin = () => {
-    // Ensure environment variables are properly loaded
-    const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
+  const handleLogin = async () => {
+    const response = await fetch("/api/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password }),
+    });
 
-    if (!adminPassword) {
-      console.error("Admin password environment variable is not set.");
-      alert("System error: Admin password is not configured.");
-      return;
-    }
+    const result = await response.json();
 
-    if (password === adminPassword) {
+    if (response.ok) {
       setIsLoggedIn(true);
+      setError("");
     } else {
-      alert("Nieprawidłowe hasło");
+      setError(result.message);
     }
   };
 
@@ -44,6 +45,7 @@ export default function Admin() {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Wprowadź hasło"
           />
+          {error && <p className={classes.error}>{error}</p>}
         </div>
         <ButtonOnClick text="Wprowadź hasło" onClick={handleLogin} />
       </div>
@@ -57,10 +59,8 @@ export default function Admin() {
         <h1>Panel Admina</h1>
         <p>Witaj w panelu admina!</p>
         <ButtonOnClick onClick={handleLogout} text="Wyloguj się" />
-
         <AdminMenu />
       </div>
-
       <Footer />
     </>
   );
