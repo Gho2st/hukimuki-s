@@ -103,14 +103,7 @@ export async function GET(request) {
       })
     );
 
-    return new NextResponse.json(
-      { metadata },
-      {
-        headers: {
-          "Cache-Control": "no-store",
-        },
-      }
-    );
+    return NextResponse.json({ metadata });
   } catch (error) {
     console.error("Error fetching data from S3:", error);
     return NextResponse.json(
