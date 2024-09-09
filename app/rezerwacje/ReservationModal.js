@@ -5,6 +5,7 @@ import "react-calendar/dist/Calendar.css";
 import classes from "./ReservationModal.module.css";
 import Link from "next/link";
 import CheckoutPage from "@/components/stripe/CheckoutPage";
+import Checkout from "@/components/stripe/Checkout";
 
 const ReservationModal = ({
   isOpen,
@@ -17,15 +18,15 @@ const ReservationModal = ({
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState("");
   const [showConfirmation, setShowConfirmation] = useState(false);
-  const [name, setName] = useState("");
+  const [name, setName] = useState("Dominik Jojczyk");
   const [city, setCity] = useState("Kraków");
   const [country, setCountry] = useState("Polska");
   const [region, setRegion] = useState("małopolska");
-  const [postal_code, setPostalCode] = useState("");
-  const [line1, setLine1] = useState("");
-  const [line2, setLine2] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const [postal_code, setPostalCode] = useState("33-395");
+  const [line1, setLine1] = useState("Niskowa");
+  const [line2, setLine2] = useState("12");
+  const [email, setEmail] = useState("dominik.jojczyk@gmail.com");
+  const [phone, setPhone] = useState("123123123");
   const [NIP, setNIP] = useState("");
   const [formattedDate, setFormattedDate] = useState(null);
   const [occupiedDates, setOccupiedDates] = useState([]);
@@ -76,18 +77,14 @@ const ReservationModal = ({
   useEffect(() => {
     const fetchOccupiedDates = async () => {
       try {
-        const response = await fetch(
-          // "http://localhost:3000/api/get_occupied-dates-postgres"
-          "/api/get_occupied-dates-postgres",
-          {
-            mode: "no-cors",
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ title }),
-          }
-        );
+        const response = await fetch("/api/get_occupied-dates-postgres", {
+          mode: "no-cors",
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ title }),
+        });
 
         if (response.ok) {
           const { occupiedTimes } = await response.json();
@@ -356,14 +353,22 @@ const ReservationModal = ({
       ) : (
         <div>
           <h3>{name}</h3>
-          <p>
+          {/* <p>
             Twoja rezerwacja na {title} {lvl} o godzinie {selectedTime} w dniu
             {formattedDate} jest przygotowana, opłać a następnie pobierz
             potwierdzenie aby je pokazać w dniu rezerwacji!
             <br></br>
             Dziękujemy!
+          </p> */}
+          <p>
+            Twoja rezerwacja na {title} {lvl} o godzinie {selectedTime} w dniu
+            {formattedDate} jest przygotowywana, zapisz sobie maila aby go
+            pokazać w dniu rezerwacji!
+            <br></br>
+            Dziękujemy!
           </p>
-          <CheckoutPage amount={price} reservationData={reservationData} />
+          {/* <CheckoutPage amount={price} reservationData={reservationData} /> */}
+          <Checkout amount={price} reservationData={reservationData} />
         </div>
       )}
     </Modal>

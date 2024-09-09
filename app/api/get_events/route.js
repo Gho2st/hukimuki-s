@@ -49,6 +49,8 @@ async function getObjectContent(key) {
 }
 
 export async function GET(request) {
+  console.log("api get");
+
   try {
     const folder = "events";
 

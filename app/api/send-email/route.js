@@ -25,7 +25,7 @@ export async function POST(request) {
 
     const mailOption = {
       from: "biosite.praca@gmail.com",
-      to: "biosite.praca@gmail.com",
+      to: "hukimukiflorianska@gmail.com",
       subject: "Email ze strony HukiMuki od klienta",
       html: `
         <h2>Wiadomosc od klienta ze strony HukiMuki</h2>

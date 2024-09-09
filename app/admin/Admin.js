@@ -11,8 +11,16 @@ export default function Admin() {
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    if (password === "1232") {
-      // Tu możesz zmienić hasło na inne
+    // Ensure environment variables are properly loaded
+    const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
+
+    if (!adminPassword) {
+      console.error("Admin password environment variable is not set.");
+      alert("System error: Admin password is not configured.");
+      return;
+    }
+
+    if (password === adminPassword) {
       setIsLoggedIn(true);
     } else {
       alert("Nieprawidłowe hasło");

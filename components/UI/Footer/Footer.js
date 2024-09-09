@@ -67,14 +67,11 @@ export default function Footer() {
             <a href="/info/Polityka-prywatnosci-HukiMuki.pdf" download>
               <li>Polityka prywatności</li>
             </a>
-            <a href="/info/REGULAMIN HUKI MUKI.docx" download>
+            <a href="/info/regulamin Huki Muki.docx" download>
               <li>Regulamin Pubu Huki Muki</li>
             </a>
-            <a href="info/Regulamin-hukimuki-1.pdf" download>
-              <li>Regulamin sklepu</li>
-            </a>
-            <a href="info/Regulamin fanpage – Huki Muki.html">
-              <li>Regulamin fanpage</li>
+            <a href="info/Regulamin szatni.docx" download>
+              <li>Regulamin szatni</li>
             </a>
           </ul>
         </div>

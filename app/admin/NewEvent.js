@@ -31,19 +31,27 @@ export default function NewEvent() {
     setIsAdding(true);
     setLoading(true);
     setError(null);
+    setSuccess(false); // Reset success message
+
     // Validation: Ensure all fields are filled
     if (!selectedFiles || selectedFiles.length === 0) {
       setError("Proszę wybierz zdjęcie.");
+      setLoading(false);
+      setIsAdding(false);
       return;
     }
 
     if (!text.trim()) {
       setError("Proszę dodaj jakiś opis.");
+      setLoading(false);
+      setIsAdding(false);
       return;
     }
 
     if (!date) {
       setError("Proszę wybierz jakąś datę.");
+      setLoading(false);
+      setIsAdding(false);
       return;
     }
 
@@ -72,16 +80,19 @@ export default function NewEvent() {
       const data = await response.json();
       console.log(data);
 
+      // Reset state after successful submission
       setText("");
       setSelectedFiles(null);
       setDate(""); // Reset date
-      setIsAdding(false);
+      setSuccess(true);
     } catch (error) {
       console.error(error);
-      setError("Failed to upload files.");
+      setError(
+        "Wystąpił błąd podczas przesyłania plików. Spróbuj ponownie później."
+      );
     } finally {
       setLoading(false);
-      setSuccess(true);
+      setIsAdding(false);
     }
   };
 
@@ -132,7 +143,7 @@ export default function NewEvent() {
       {isAdding && <h5>Dodawanie zdjęć trwa...</h5>}
       {loading && <p className={classes.loading}>Wczytywanie...</p>}
       {error && <p className={classes.error}>Error: {error}</p>}
-      {success && <p className={classes.success}>pomyslnie przeslano dane</p>}
+      {success && <p className={classes.success}>Pomyslnie przesłano dane</p>}
     </div>
   );
 }

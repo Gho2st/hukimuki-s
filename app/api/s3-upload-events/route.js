@@ -60,6 +60,8 @@ async function uploadFileToS3(fileBuffer, fileName, which, contentType) {
 export async function POST(request) {
   try {
     const formData = await request.formData();
+
+    // Debugging: Log form data
     console.log("Form Data Entries:");
     for (const [key, value] of formData.entries()) {
       console.log(key, value);
@@ -70,11 +72,7 @@ export async function POST(request) {
     const text = formData.get("text");
     const date = formData.get("date"); // Handle the date field
 
-    // console.log("Files:", files);
-    // console.log("Which:", which);
-    // console.log("Text:", text);
-    // console.log("Date:", date);
-
+    // Validation
     if (!files.length) {
       return NextResponse.json(
         { error: "At least one file is required." },
@@ -110,8 +108,8 @@ export async function POST(request) {
       })
     );
 
+    // Handle metadata
     if (text || date) {
-      // Create metadata object
       const metadata = {
         text: text || "",
         date: date || "",
