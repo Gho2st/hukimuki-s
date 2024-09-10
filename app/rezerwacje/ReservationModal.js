@@ -346,7 +346,7 @@ const ReservationModal = ({
             <p className={classes.errorMessage}>{errorMessage}</p>
           )}
           <div className={classes.buttons}>
-            <button onClick={handlePayment}>Kontynuuj</button>
+            <button onClick={handlePayment}>Potwierdź</button>
             <button onClick={onRequestClose}>Anuluj</button>
           </div>
         </>
@@ -361,7 +361,7 @@ const ReservationModal = ({
             Dziękujemy!
           </p> */}
           <p>
-            Twoja rezerwacja na {title} {lvl} o godzinie {selectedTime} w dniu
+            Twoja rezerwacja o wartości {price}zł na {title} {lvl} o godzinie {selectedTime} w dniu
             {formattedDate} jest przygotowywana, zapisz sobie maila aby go
             pokazać w dniu rezerwacji!
             <br></br>

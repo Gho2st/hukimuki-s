@@ -5,12 +5,12 @@
 
 .logo {
   text-align: center;
-  margin-top: 5rem;
+  margin-top: 6rem;
 }
 
 .logo h1 {
   color: #00bf63;
-  font-size: 5.5rem;
+  font-size: 4.5rem;
 }
 
 .logo h2 {
@@ -20,17 +20,17 @@
 
 .buttons {
   margin-top: 5rem;
-  margin-bottom: 7rem;
+  margin-bottom: 5rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 .buttons button {
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   border: 2px solid #00bf63;
   border-radius: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: bold;
   transition: all 0.2s ease;
   background: black;

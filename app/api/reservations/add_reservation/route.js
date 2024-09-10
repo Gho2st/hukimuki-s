@@ -56,7 +56,7 @@ export async function POST(request) {
       to: `${data.email}, hukimukiflorianska@gmail.com`,
       subject: "Potwierdzenie Rezerwacji w Huki Muki",
       html: `
-        <h2>Rezerwacja ${data.title} na ${data.time} w dniu ${data.date}</h2>
+        <h2>Rezerwacja ${data.title} o kwocie ${amount}zł na ${data.time} w dniu ${data.date}</h2>
         <ul>
           <li>Imię i Nazwisko: ${data.name}</li>
           <li>Email: ${data.email}</li>
@@ -70,7 +70,7 @@ export async function POST(request) {
 
     // Return successful response
     return NextResponse.json({
-      message: "Rezerwaja gotowa, mail z potwierdzeniem przesłany pomyślnie.",
+      message: "Rezerwacja gotowa, mail z potwierdzeniem przesłany pomyślnie.",
     });
   } catch (error) {
     console.error("Internal Error:", error);

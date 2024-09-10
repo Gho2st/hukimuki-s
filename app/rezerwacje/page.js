@@ -19,6 +19,8 @@ export default function Rezerwacje() {
         <h1>Rezerwacja miejsc online</h1>
         <p className={classes.text}>
           *kwota rezerwacji do wykorzystania w barze
+          <br></br>
+          **rezerwacja do opłacenia na miejscu
         </p>
         <Reservation />
       </div>

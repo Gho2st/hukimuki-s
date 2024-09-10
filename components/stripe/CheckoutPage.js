@@ -9,7 +9,7 @@ const CheckoutPage = ({ amount, reservationData }) => {
   console.log(reservationData);
 
   useEffect(() => {
-    fetch("/api/invoices", {
+    fetch("/api/stripe/invoices", {
       mode: "no-cors",
       method: "POST",
       headers: {
