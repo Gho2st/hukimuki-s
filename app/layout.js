@@ -12,6 +12,9 @@ const poppins = Poppins({
 
 export const metadata = {
   metadataBase: new URL("https://hukimuki.pl"),
+  verification: {
+    google: "jt-hIw0SxnDOp4XvZmGObx9Fajs9spuEDqiqIeSnG0o",
+  },
   keywords: [
     "HukiMuki",
     "pub Kraków",
