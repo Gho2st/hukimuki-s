@@ -3,7 +3,6 @@
 }
 .container {
   margin-bottom: 5rem;
-  margin-top: 3rem;
   min-height: 100vh;
 }
 
@@ -30,7 +29,7 @@
 }
 
 .socialsIcons svg {
-  font-size: 3.5rem;
+  font-size: 3.2rem;
   margin-bottom: 1.5rem;
   margin-top: 1.5rem;
   transition: all 0.1s ease-in;
@@ -80,7 +79,7 @@
   }
   .container {
     margin-bottom: 0rem;
-    margin-top: 7rem;
+    margin-top: 0rem;
   }
 }
 
@@ -90,6 +89,7 @@
   }
   .textContainer h4 {
     font-size: 1.8rem;
+    padding-top: 3rem;
   }
   .textContainer p {
     font-size: 0.85rem;
@@ -99,9 +99,5 @@
     font-size: 2.5rem;
     margin-top: 1.5rem;
     margin-bottom: 1.8rem;
-  }
-  .container {
-    margin-bottom: 0rem;
-    margin-top: 5rem;
   }
 }
