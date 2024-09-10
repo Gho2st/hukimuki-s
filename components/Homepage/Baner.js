@@ -8,7 +8,7 @@ import { useRef } from "react";
 export default function Baner() {
   const text = "Huki Muki";
   const skillRef = useRef();
-  const isSkillRefinView = useInView(skillRef);
+  const isSkillRefinView = useInView(skillRef, { once: true });
 
   return (
     <div className={classes.banerContainer} ref={skillRef}>

@@ -13,7 +13,7 @@ export default function Events() {
   const [imageUrl, setImageUrl] = useState("");
   const [date, setDate] = useState(null);
   const skillRef = useRef();
-  const isSkillRefinView = useInView(skillRef);
+  const isSkillRefinView = useInView(skillRef, { once: true });
 
   useEffect(() => {
     async function fetchData() {

@@ -37,11 +37,11 @@
   position: fixed;
   top: 1.5rem;
   right: 1.6rem;
-  background: rgb(2, 0, 36);
+  background: rgb(0, 0, 0);
   background: radial-gradient(
     circle,
-    rgba(2, 0, 36, 1) 0%,
-    rgb(0, 65, 26) 100%
+    rgb(0, 0, 0) 0%,
+    rgb(0, 36, 14) 100%
   );
   z-index: 1000;
   transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);

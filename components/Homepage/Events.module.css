@@ -8,7 +8,7 @@
   text-align: center;
   color: #919993;
   overflow-x: hidden;
-  background: radial-gradient(circle, rgb(0, 0, 9) 0%, rgb(0, 4, 1) 100%);
+  background: radial-gradient(circle, rgb(0, 0, 1) 0%, rgb(0, 1, 1) 100%);
 }
 
 .container h3 {
@@ -101,8 +101,8 @@
   }
   .content {
     flex-direction: column;
-    gap: 5rem;
-    margin-top: 5rem;
+    gap: 4rem;
+    margin-top: 4rem;
   }
   .textContainer {
     width: 100%;
@@ -125,13 +125,13 @@
   }
 
   .imageContainer {
-    width: 80%;
+    width: 100%;
     margin: auto;
   }
   .content {
     flex-direction: column;
-    gap: 5rem;
-    margin-top: 5rem;
+    gap: 3.5rem;
+    margin-top: 3.5rem;
   }
   .textContainer {
     width: 100%;
@@ -139,5 +139,8 @@
   }
   .buttonsContainer div {
     font-size: 0.9rem !important;
+  }
+  .description {
+    width: 100%;
   }
 }
