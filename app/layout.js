@@ -3,6 +3,7 @@ import "./globals.css";
 import TransitionProvider from "@/components/animations/TransitionProvider";
 import { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const poppins = Poppins({
   weight: ["200", "300", "400", "500", "600", "700"],
@@ -53,6 +54,7 @@ export default function RootLayout({ children }) {
         <TransitionProvider>{children}</TransitionProvider>
         <Analytics />
       </body>
+      <GoogleAnalytics gaId="G-4NPSC43RN9" />
     </html>
   );
 }
