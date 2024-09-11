@@ -7,15 +7,14 @@ import { useInView, motion } from "framer-motion";
 
 const fetchData = async (setImageUrl, setTextContent, setDate) => {
   try {
+    const timestamp = Date.parse(new Date().toString());
+
     // Dodaj unikalny parametr zapytania, np. timestamp
-    const response = await fetch(
-      `/api/events-aws/get_events?_=${new Date().getTime()}`,
-      {
-        headers: {
-          "Cache-Control": "no-cache",
-        },
-      }
-    );
+    const response = await fetch(`/api/events-aws/get_events/${timestamp}`, {
+      headers: {
+        "Cache-Control": "no-cache",
+      },
+    });
     const data = await response.json();
     console.log("Fetched Data:", data);
 
