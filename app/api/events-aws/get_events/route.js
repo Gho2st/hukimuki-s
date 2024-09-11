@@ -6,6 +6,10 @@ import {
 import { NextResponse } from "next/server";
 import { Readable } from "stream";
 
+// Logowanie zmiennych środowiskowych
+console.log("AWS_ID: ", process.env.AWS_ID ? "OK" : "MISSING");
+console.log("AWS_SECRET: ", process.env.AWS_SECRET ? "OK" : "MISSING");
+
 const s3Client = new S3Client({
   region: "eu-central-1",
   credentials: {
@@ -21,9 +25,14 @@ async function listObjectsInFolder(folder) {
   };
 
   const command = new ListObjectsCommand(params);
-  const data = await s3Client.send(command);
-
-  return data.Contents || [];
+  try {
+    const data = await s3Client.send(command);
+    console.log("ListObjectsCommand success: ", data);
+    return data.Contents || [];
+  } catch (error) {
+    console.error("Error in ListObjectsCommand: ", error);
+    throw error;
+  }
 }
 
 async function getObjectContent(key) {
@@ -33,28 +42,33 @@ async function getObjectContent(key) {
   };
 
   const command = new GetObjectCommand(params);
-  const data = await s3Client.send(command);
+  try {
+    const data = await s3Client.send(command);
+    console.log(`GetObjectCommand success for ${key}`);
+    const chunks = [];
+    const streamToString = (stream) =>
+      new Promise((resolve, reject) => {
+        stream.on("data", (chunk) => chunks.push(chunk));
+        stream.on("end", () => resolve(Buffer.concat(chunks).toString("utf8")));
+        stream.on("error", reject);
+      });
 
-  // Convert Readable stream to string
-  const chunks = [];
-  const streamToString = (stream) =>
-    new Promise((resolve, reject) => {
-      stream.on("data", (chunk) => chunks.push(chunk));
-      stream.on("end", () => resolve(Buffer.concat(chunks).toString("utf8")));
-      stream.on("error", reject);
-    });
-
-  const body = await streamToString(data.Body);
-  return body;
+    const body = await streamToString(data.Body);
+    return body;
+  } catch (error) {
+    console.error(`Error in GetObjectCommand for ${key}: `, error);
+    throw error;
+  }
 }
 
 export async function GET(request) {
-  console.log("api get");
+  console.log("GET request initiated");
 
   try {
     const folder = "events";
 
     if (!folder) {
+      console.error("Folder is undefined");
       return NextResponse.json(
         { error: "'folder' query parameter is required." },
         { status: 400 }
@@ -63,7 +77,6 @@ export async function GET(request) {
 
     const objects = await listObjectsInFolder(folder);
 
-    // Initialize variables to store metadata and other files
     let metadata = null;
     const files = await Promise.all(
       objects.map(async (obj) => {
@@ -75,16 +88,14 @@ export async function GET(request) {
           key.endsWith(".jpeg") ||
           key.endsWith(".png")
         ) {
-          // If it's an image, set content to null
-          console.log(`Image found: ${key}`); // Debug log
+          console.log(`Image found: ${key}`); // Logowanie obrazków
           return {
             key,
             url,
             content: null,
           };
         } else if (key.endsWith(".txt")) {
-          // If it's a text file, fetch content
-          console.log(`Text file found: ${key}`); // Debug log
+          console.log(`Text file found: ${key}`); // Logowanie plików tekstowych
           const content = await getObjectContent(key);
           return {
             key,
@@ -92,18 +103,28 @@ export async function GET(request) {
             content,
           };
         } else if (key.endsWith(".json")) {
-          // If it's a metadata JSON file, fetch content
-          console.log(`Metadata file found: ${key}`); // Debug log
+          console.log(`Metadata file found: ${key}`); // Logowanie plików JSON (metadata)
           const content = await getObjectContent(key);
           metadata = JSON.parse(content);
         }
 
-        // Ignore other file types
         return null;
       })
     );
 
-    return NextResponse.json({ metadata });
+    console.log("Files processed: ", files);
+    console.log("Metadata fetched: ", metadata);
+
+    return NextResponse.json(
+      { metadata },
+      {
+        headers: {
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Pragma: "no-cache",
+          Expires: "0",
+        },
+      }
+    );
   } catch (error) {
     console.error("Error fetching data from S3:", error);
     return NextResponse.json(
