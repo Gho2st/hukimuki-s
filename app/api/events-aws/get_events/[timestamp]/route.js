@@ -57,7 +57,7 @@ async function getObjectContent(key) {
 }
 
 export async function GET(request) {
-  console.log("GET request initiated");
+  // console.log("GET request initiated");
 
   try {
     const folder = "events";
@@ -83,14 +83,14 @@ export async function GET(request) {
           key.endsWith(".jpeg") ||
           key.endsWith(".png")
         ) {
-          console.log(`Image found: ${key}`); // Logowanie obrazków
+          // console.log(`Image found: ${key}`); // Logowanie obrazków
           return {
             key,
             url,
             content: null,
           };
         } else if (key.endsWith(".txt")) {
-          console.log(`Text file found: ${key}`); // Logowanie plików tekstowych
+          // console.log(`Text file found: ${key}`); // Logowanie plików tekstowych
           const content = await getObjectContent(key);
           return {
             key,
@@ -98,7 +98,7 @@ export async function GET(request) {
             content,
           };
         } else if (key.endsWith(".json")) {
-          console.log(`Metadata file found: ${key}`); // Logowanie plików JSON (metadata)
+          // console.log(`Metadata file found: ${key}`); // Logowanie plików JSON (metadata)
           const content = await getObjectContent(key);
           metadata = JSON.parse(content);
         }
@@ -107,8 +107,8 @@ export async function GET(request) {
       })
     );
 
-    console.log("Files processed: ", files);
-    console.log("Metadata fetched: ", metadata);
+    // console.log("Files processed: ", files);
+    // console.log("Metadata fetched: ", metadata);
 
     return NextResponse.json(
       { metadata },

@@ -29,7 +29,7 @@
   display: flex;
   justify-content: space-around;
   gap: 1rem;
-  margin-top: 7rem;
+  margin-top: 4.5rem;
 }
 
 .imageContainer {
@@ -45,11 +45,12 @@
 
 .textContainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-direction: column;
   width: 50%;
   text-align: left;
   font-size: 1.1rem;
+  line-height: 1.6; /* Dostosuj odstępy między liniami */
 }
 
 .date {
@@ -57,16 +58,12 @@
   margin-bottom: 2rem;
 }
 
-.text {
-  margin-bottom: 3rem;
-}
-
 .textContainer p {
   color: #a8b3ab;
 }
 
 .buttonsContainer {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
 }
 
 .buttonsContainer div {

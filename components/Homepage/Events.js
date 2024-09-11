@@ -16,25 +16,24 @@ const fetchData = async (setImageUrl, setTextContent, setDate) => {
       },
     });
     const data = await response.json();
-    console.log("Fetched Data:", data);
+    // console.log("Fetched Data:", data);
 
     const date = data.metadata.date;
     const text = data.metadata.text;
     const image = data.metadata.files[0].fileUrl;
-    console.log("Date:", date);
-    console.log("Text:", text);
-    console.log("Image:", image);
+
+    // Formatowanie tekstu
+    const formatText = (text) => {
+      return text.replace(/\r\n\r\n/g, "<br /><br />");
+    };
 
     if (image) {
-      console.log("Setting image URL:", image);
       setImageUrl(image);
     }
     if (text) {
-      console.log("Setting text content:", text);
-      setTextContent(text);
+      setTextContent(formatText(text)); // Format the text before setting it
     }
     if (date) {
-      console.log("Setting date:", date);
       setDate(date);
     }
   } catch (error) {
@@ -52,10 +51,6 @@ export default function Events() {
   useEffect(() => {
     fetchData(setImageUrl, setTextContent, setDate);
   }, []);
-
-  console.log("Rendered Date:", date);
-  console.log("Rendered Text:", textContent);
-  console.log("Rendered Image URL:", imageUrl);
 
   return (
     <div className={classes.container} ref={skillRef}>
@@ -93,15 +88,10 @@ export default function Events() {
         >
           <div>
             {date && <p className={classes.date}>{date}</p>}
-            <p className={classes.text}>
-              {textContent ||
-                "W Huki Muki zawsze dzieje się coś wyjątkowego! Już w ten piątek zapraszamy na niezapomniany wieczór pełen muzyki, śmiechu i dobrej zabawy. Nasz pub to miejsce, gdzie każdy znajdzie coś dla siebie - od koncertów na żywo, przez wieczory z DJ-em, aż po tematyczne imprezy z wyjątkowymi promocjami."}
-            </p>
-            <p>
-              Przygotuj się na niesamowite doznania i zarezerwuj stolik już
-              dziś, bo u nas nigdy nie brakuje emocji. Dołącz do nas na kolejny
-              niezapomniany wieczór!
-            </p>
+            <p
+              className={classes.text}
+              dangerouslySetInnerHTML={{ __html: textContent }}
+            />
           </div>
           <div className={classes.buttonsContainer}>
             <Button text="Rezerwacje" href="/rezerwacje" />
