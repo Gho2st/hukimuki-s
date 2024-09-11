@@ -4,11 +4,6 @@ import {
   GetObjectCommand,
 } from "@aws-sdk/client-s3";
 import { NextResponse } from "next/server";
-import { Readable } from "stream";
-
-// Logowanie zmiennych środowiskowych
-console.log("AWS_ID: ", process.env.AWS_ID ? "OK" : "MISSING");
-console.log("AWS_SECRET: ", process.env.AWS_SECRET ? "OK" : "MISSING");
 
 const s3Client = new S3Client({
   region: "eu-central-1",

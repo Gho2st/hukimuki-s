@@ -1,14 +1,49 @@
-"use client";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Button from "../UI/Buttons/Button";
 import Button2 from "../UI/Buttons/Button2";
 import classes from "./Events.module.css";
 import Image from "next/image";
-import { useState, useEffect } from "react";
 import { useInView, motion } from "framer-motion";
 
+const fetchData = async (setImageUrl, setTextContent, setDate) => {
+  try {
+    // Dodaj unikalny parametr zapytania, np. timestamp
+    const response = await fetch(
+      `/api/events-aws/get_events?_=${new Date().getTime()}`,
+      {
+        headers: {
+          "Cache-Control": "no-cache",
+        },
+      }
+    );
+    const data = await response.json();
+    console.log("Fetched Data:", data);
+
+    const date = data.metadata.date;
+    const text = data.metadata.text;
+    const image = data.metadata.files[0].fileUrl;
+    console.log("Date:", date);
+    console.log("Text:", text);
+    console.log("Image:", image);
+
+    if (image) {
+      console.log("Setting image URL:", image);
+      setImageUrl(image);
+    }
+    if (text) {
+      console.log("Setting text content:", text);
+      setTextContent(text);
+    }
+    if (date) {
+      console.log("Setting date:", date);
+      setDate(date);
+    }
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+};
+
 export default function Events() {
-  const [files, setFiles] = useState([]);
   const [textContent, setTextContent] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [date, setDate] = useState(null);
@@ -16,35 +51,12 @@ export default function Events() {
   const isSkillRefinView = useInView(skillRef, { once: true });
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch("/api/events-aws/get_events", {
-          headers: {
-            "Cache-Control": "no-cache",
-          },
-        });
-        const data = await response.json();
-        console.log(data);
-        const date = data.metadata.date;
-        const text = data.metadata.text;
-        const image = data.metadata.files[0].fileUrl;
-
-        if (image) {
-          setImageUrl(image);
-        }
-        if (text) {
-          setTextContent(text);
-        }
-        if (date) {
-          setDate(date);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    }
-
-    fetchData();
+    fetchData(setImageUrl, setTextContent, setDate);
   }, []);
+
+  console.log("Rendered Date:", date);
+  console.log("Rendered Text:", textContent);
+  console.log("Rendered Image URL:", imageUrl);
 
   return (
     <div className={classes.container} ref={skillRef}>
