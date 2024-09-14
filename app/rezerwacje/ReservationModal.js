@@ -168,14 +168,14 @@ const ReservationModal = ({
       setErrorMessage("Nieprawidłowy numer telefonu.");
       return;
     }
-    if (isCompany && !validateNIP(NIP)) {
-      setErrorMessage("Nieprawidłowy NIP.");
-      return;
-    }
-    if (!validatePostalCode(postal_code)) {
-      setErrorMessage("Nieprawidłowy kod pocztowy.");
-      return;
-    }
+    // if (isCompany && !validateNIP(NIP)) {
+    //   setErrorMessage("Nieprawidłowy NIP.");
+    //   return;
+    // }
+    // if (!validatePostalCode(postal_code)) {
+    //   setErrorMessage("Nieprawidłowy kod pocztowy.");
+    //   return;
+    // }
 
     setErrorMessage(null);
     setShowConfirmation(true);
@@ -262,11 +262,11 @@ const ReservationModal = ({
               checked={isCompany}
               onChange={() => setIsCompany(!isCompany)}
             />
-            Zakup na firmę?
+            Rezerwacja na firmę?
           </label>
 
           <div className={classes.personalInfo}>
-            {isCompany && (
+            {/* {isCompany && (
               <>
                 <label>NIP:</label>
                 <input
@@ -276,7 +276,7 @@ const ReservationModal = ({
                   placeholder="we formacie PL1234567890"
                 />
               </>
-            )}
+            )} */}
 
             {!isCompany && <label>Imię i Nazwisko:</label>}
             {isCompany && <label>Nazwa firmy:</label>}
@@ -302,10 +302,10 @@ const ReservationModal = ({
               inputMode="tel"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              placeholder="w formacie 666111222"
+              placeholder="we formacie 123321123"
             />
 
-            <label>Kraj:</label>
+            {/* <label>Kraj:</label>
             <input
               type="text"
               value={country}
@@ -343,7 +343,7 @@ const ReservationModal = ({
               value={postal_code}
               onChange={(e) => setPostalCode(e.target.value)}
               placeholder="np. 31-021"
-            />
+            /> */}
           </div>
           {errorMessage && (
             <p className={classes.errorMessage}>{errorMessage}</p>
@@ -365,7 +365,7 @@ const ReservationModal = ({
           </p> */}
           <p>
             Twoja rezerwacja o wartości {price}zł na {title} {lvl} o godzinie 
-            {selectedTime} w dniu
+            {selectedTime} w dniu 
             {formattedDate} jest przygotowywana, zapisz sobie maila aby go
             pokazać w dniu rezerwacji!
             <br></br>
