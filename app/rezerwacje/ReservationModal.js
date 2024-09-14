@@ -77,14 +77,17 @@ const ReservationModal = ({
   useEffect(() => {
     const fetchOccupiedDates = async () => {
       try {
-        const response = await fetch("/api/reservations/get_occupied-dates-postgres", {
-          mode: "no-cors",
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ title }),
-        });
+        const response = await fetch(
+          "/api/reservations/get_occupied-dates-postgres",
+          {
+            mode: "no-cors",
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ title }),
+          }
+        );
 
         if (response.ok) {
           const { occupiedTimes } = await response.json();
@@ -361,7 +364,8 @@ const ReservationModal = ({
             Dziękujemy!
           </p> */}
           <p>
-            Twoja rezerwacja o wartości {price}zł na {title} {lvl} o godzinie {selectedTime} w dniu
+            Twoja rezerwacja o wartości {price}zł na {title} {lvl} o godzinie 
+            {selectedTime} w dniu
             {formattedDate} jest przygotowywana, zapisz sobie maila aby go
             pokazać w dniu rezerwacji!
             <br></br>

@@ -7,7 +7,9 @@ export async function POST(request) {
     // Parsing the request body
     const { amount, reservationData } = await request.json();
 
-    console.log("Testing database connection");
+    // console.log("Testing database connection");
+
+    const amountCalculated = amount / 100;
 
     // Assume 'reservationData' contains all the required fields
     const data = reservationData;
@@ -16,9 +18,9 @@ export async function POST(request) {
     const isClub = data.isClub === "true" || data.isClub === true;
     const isCompany = data.isCompany === "true" || data.isCompany === true;
 
-    console.log({ ...data, isClub, isCompany }); // Log transformed data
+    // console.log({ ...data, isClub, isCompany }); // Log transformed data
 
-    // SQL query to insert data
+    // // SQL query to insert data
     const insertQuery = `
       INSERT INTO reservations (date, name, time, email, phone, title, isclub, iscompany)
       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
@@ -56,7 +58,7 @@ export async function POST(request) {
       to: `${data.email}, hukimukiflorianska@gmail.com`,
       subject: "Potwierdzenie Rezerwacji w Huki Muki",
       html: `
-        <h2>Rezerwacja ${data.title} o kwocie ${amount}zł na ${data.time} w dniu ${data.date}</h2>
+        <h2>Rezerwacja ${data.title} o kwocie ${amountCalculated}zł na ${data.time} w dniu ${data.date}</h2>
         <ul>
           <li>Imię i Nazwisko: ${data.name}</li>
           <li>Email: ${data.email}</li>
