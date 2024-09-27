@@ -20,7 +20,7 @@ export default function Photos() {
     try {
       const response = await fetch(`/api/gallery/get-gallery`);
       if (!response.ok) {
-        throw new Error("Failed to fetch images");
+        throw new Error("Wystąpił błąd podczas wczytywania galerii");
       }
       const data = await response.json();
       console.log(data);
@@ -90,7 +90,14 @@ export default function Photos() {
               </Link>
             </div>
           </div>
-          <SliderComponent images={images} />
+          {loading && <p>Ładowanie obrazów...</p>}
+          {error && <p className={classes.error}>{error}</p>}
+          {!loading && !error && images.length > 0 && (
+            <SliderComponent images={images} />
+          )}
+          {!loading && !error && images.length === 0 && (
+            <p>Brak obrazów do wyświetlenia.</p>
+          )}
         </div>
       </motion.div>
     </>
