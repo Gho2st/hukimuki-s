@@ -16,12 +16,12 @@ export default function Adult(props) {
         <ButtonOnClick text="Tak" onClick={props.ageHandler} />
         <ButtonOnClick text="Nie" onClick={props.negativeAge} />
       </div>
-      <Image
+      {/* <Image
         src={"/gifs/1.gif"}
         width={250}
         height={300}
         alt="drogowskaz"
-      ></Image>
+      ></Image> */}
     </div>
   );
 }
