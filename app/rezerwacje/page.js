@@ -5,7 +5,9 @@ import Reservation from "./Reservation";
 import { Metadata } from "next";
 
 export const metadata = {
-  title: "Rezerwacje Loży Online",
+  title: "Rezerwacje Loży Online - HukiMuki",
+  description:
+    "Zarezerwuj miejsce online w HukiMuki. Szybko i wygodnie zarezerwuj lożę i ciesz się niezapomnianą imprezą.",
   alternates: {
     canonical: "/rezerwacje",
   },

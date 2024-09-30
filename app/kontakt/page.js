@@ -5,7 +5,9 @@ import Footer from "@/components/UI/Footer/Footer";
 import { Metadata } from "next";
 
 export const metadata = {
-  title: "Kontakt",
+  title: "Skontaktuj się z HukiMuki",
+  description:
+    "Masz pytania? Skontaktuj się z nami przez formularz kontaktowy i dowiedz się więcej o ofercie HukiMuki.",
   alternates: {
     canonical: "/kontakt",
   },
