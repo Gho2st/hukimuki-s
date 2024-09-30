@@ -66,7 +66,7 @@ export default function Events() {
 
   return (
     <div className={classes.container} ref={skillRef}>
-      <h3>Nadchodzące Eventy</h3>
+      <h2>Nadchodzące Eventy</h2>
       <p className={classes.description}>
         Nie przegap tego, co przygotowaliśmy! Zobacz, jakie atrakcje czekają na
         Ciebie w najbliższym czasie.

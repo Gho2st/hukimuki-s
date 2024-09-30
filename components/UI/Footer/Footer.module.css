@@ -4,7 +4,7 @@
   justify-content: space-between;
 }
 
-.container h5 {
+.container h3 {
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
   font-weight: 400;
@@ -89,7 +89,7 @@
   }
 }
 @media (max-width: 900px) {
-  .container h5 {
+  .container h3 {
     font-size: 1.2rem;
     margin-bottom: 1.2rem;
   }

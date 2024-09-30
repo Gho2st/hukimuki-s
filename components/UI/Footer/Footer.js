@@ -13,7 +13,7 @@ export default function Footer() {
     <>
       <div className={classes.container}>
         <div>
-          <h5>Social media</h5>
+          <h3>Social media</h3>
           <div className={classes.socials}>
             <Link
               href={"https://www.facebook.com/hukimukikrakow"}
@@ -37,7 +37,7 @@ export default function Footer() {
           </div>
         </div>
         <div>
-          <h5>Dane kontaktowe</h5>
+          <h3>Dane kontaktowe</h3>
           <ul>
             <li>
               <CiLocationOn />
@@ -62,7 +62,7 @@ export default function Footer() {
           </ul>
         </div>
         <div>
-          <h5>Informacje</h5>
+          <h3>Informacje</h3>
           <ul>
             <a href="/info/Polityka-prywatnosci-HukiMuki.pdf" download>
               <li>Polityka prywatności</li>
@@ -76,12 +76,12 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <h6 className={classes.copyright}>
+      <p className={classes.copyright}>
         &copy; 2024 HukiMuki | Projekt i realizacja:
         <a href="https://www.domiweb.pl">
           <span> Domiweb. </span>
         </a>
-      </h6>
+      </p>
     </>
   );
 }

@@ -11,7 +11,7 @@
   background: radial-gradient(circle, rgb(0, 0, 1) 0%, rgb(0, 1, 1) 100%);
 }
 
-.container h3 {
+.container h2 {
   text-transform: uppercase;
   font-size: 3rem;
   background: -webkit-linear-gradient(#0ae657, #028646);
@@ -74,7 +74,7 @@
   .imageContainer {
     width: 35%;
   }
-  .container h3 {
+  .container h2 {
     font-size: 2.5rem;
   }
 }
@@ -114,7 +114,7 @@
 }
 
 @media (max-width: 600px) {
-  .container h3 {
+  .container h2 {
     font-size: 1.8rem;
   }
   .description {

@@ -13,7 +13,7 @@
   margin: auto;
 }
 
-.textContainer h4 {
+.textContainer h2 {
   text-transform: uppercase;
   padding-top: 4rem;
   font-size: 3rem;
@@ -59,7 +59,7 @@
 }
 
 @media (max-width: 1200px) {
-  .textContainer h4 {
+  .textContainer h2 {
     font-size: 2.5rem;
   }
 
@@ -92,7 +92,7 @@
   .textContainer {
     max-width: 80%;
   }
-  .textContainer h4 {
+  .textContainer h2 {
     font-size: 1.8rem;
     padding-top: 3rem;
   }

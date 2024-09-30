@@ -51,7 +51,7 @@ export default function Photos() {
       >
         <div className={classes.container} ref={skillRef}>
           <div className={classes.textContainer}>
-            <h4>Galeria Klubu</h4>
+            <h2>Galeria Klubu</h2>
             <p>
               Poczuj klimat imprez w Huki Muki Pub & Club! To tylko przedsmak –
               więcej zdjęć znajdziesz na naszym Instagramie. Sprawdź, jak bawimy
