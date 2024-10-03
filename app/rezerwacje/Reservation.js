@@ -78,6 +78,34 @@ export default function Reservation() {
           }
         />
         <Reservationitem
+          title="CLUB - 2 osoby"
+          lvl="Poziom -1"
+          price="100zł"
+          when="Rezerwacja dostępna tylko w piątki i soboty."
+          onClick={() =>
+            openModal({
+              title: "CLUB - 2 osoby",
+              price: 100,
+              isClub: true,
+              lvl: "Poziom -1",
+            })
+          }
+        />
+        <Reservationitem
+          title="CLUB - 4 osoby"
+          lvl="Poziom -1"
+          price="200zł"
+          when="Rezerwacja dostępna tylko w piątki i soboty."
+          onClick={() =>
+            openModal({
+              title: "CLUB - 4 osoby",
+              price: 200,
+              isClub: true,
+              lvl: "Poziom -1",
+            })
+          }
+        />
+        <Reservationitem
           title="CLUB - 5 osób"
           lvl="Poziom -1"
           price="250zł"
@@ -106,6 +134,20 @@ export default function Reservation() {
           }
         />
         <Reservationitem
+          title="CLUB - 7 osób"
+          lvl="Poziom -1"
+          price="350zł"
+          when="Rezerwacja dostępna tylko w piątki i soboty."
+          onClick={() =>
+            openModal({
+              title: "CLUB - 7 osób",
+              price: 350,
+              isClub: true,
+              lvl: "Poziom -1",
+            })
+          }
+        />
+        <Reservationitem
           title="CLUB - 8 osób"
           lvl="Poziom -1"
           price="400zł"
@@ -114,6 +156,20 @@ export default function Reservation() {
             openModal({
               title: "CLUB - 8 osób",
               price: 400,
+              isClub: true,
+              lvl: "Poziom -1",
+            })
+          }
+        />
+        <Reservationitem
+          title="CLUB - 9 osób"
+          lvl="Poziom -1"
+          price="450zł"
+          when="Rezerwacja dostępna tylko w piątki i soboty."
+          onClick={() =>
+            openModal({
+              title: "CLUB - 9 osób",
+              price: 450,
               isClub: true,
               lvl: "Poziom -1",
             })
