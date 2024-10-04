@@ -10,7 +10,7 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://hukimuki.pl"),
+  metadataBase: new URL("https://www.hukimuki.pl"),
   verification: {
     google: "jt-hIw0SxnDOp4XvZmGObx9Fajs9spuEDqiqIeSnG0o",
   },
@@ -39,7 +39,7 @@ export const metadata = {
   },
   openGraph: {
     type: "website",
-    url: "https://hukimuki.pl/",
+    url: "https://www.hukimuki.pl/",
     title: "HukiMuki - Pub i Klub Muzyczny w Krakowie",
     description:
       "Dołącz do nas w HukiMuki, najlepszym klubie w Krakowie. Sprawdź nasze drinki, promocje i wyjątkowe imprezy z muzyką na żywo.",

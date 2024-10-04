@@ -11,6 +11,6 @@ export default function robots() {
         disallow: ["/admin", "/privacy"],
       },
     ],
-    sitemap: `https://hukimuki.pl/sitemap.xml`,
+    sitemap: `https://www.hukimuki.pl/sitemap.xml`,
   };
 }

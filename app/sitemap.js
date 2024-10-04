@@ -1,25 +1,25 @@
 export default function sitemap() {
   return [
     {
-      url: "https://hukimuki.pl",
+      url: "https://www.hukimuki.pl",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: "https://hukimuki.pl/rezerwacje",
+      url: "https://www.hukimuki.pl/rezerwacje",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
-      url: "https://hukimuki.pl/menu",
+      url: "https://www.hukimuki.pl/menu",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
-      url: "https://hukimuki.pl/kontakt",
+      url: "https://www.hukimuki.pl/kontakt",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
