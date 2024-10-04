@@ -10,11 +10,13 @@
   min-width: 500px;
   min-height: 150px;
   margin-top: 2rem;
-  background: grey;
+  background: #333;
   padding: 1rem;
   color: white;
   border-radius: 1rem;
   margin-bottom: 1rem;
+  border: 2px solid #fff;
+  cursor: text;
 }
 
 .addingContainer button {
