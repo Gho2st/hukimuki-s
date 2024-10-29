@@ -51,7 +51,9 @@ export default function AdminGallery() {
     // Client-side file size validation
     for (const file of files) {
       if (file.size > MAX_FILE_SIZE) {
-        setUploadError(`Plik ${file.name} przekracza maksymalny rozmiar 10MB. Skompresuj lub dodaj inny.`);
+        setUploadError(
+          `Plik ${file.name} przekracza maksymalny rozmiar 10MB. Skompresuj lub dodaj inny.`
+        );
         setIsAdding(false);
         return;
       }

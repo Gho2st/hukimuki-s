@@ -25,3 +25,12 @@
 .loading {
   margin-top: 2rem;
 }
+
+.imageWrapper img{
+  object-fit: cover;
+}
+
+
+.error {
+  color: red !important;
+}
