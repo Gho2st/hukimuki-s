@@ -9,11 +9,12 @@ export default function AdminGallery() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isAdding, setIsAdding] = useState(false);
-  const [uploadError, setUploadError] = useState(null); // New state for upload errors
-  const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
+  const [uploadError, setUploadError] = useState(null); // Stan dla błędów przesyłania
+  const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB dla pojedynczego pliku
+  const MAX_TOTAL_SIZE = 10 * 1024 * 1024; // 10 MB dla całego zapytania
   const timestamp = Date.parse(new Date().toString());
 
-  // Function to fetch images
+  // Funkcja do pobierania obrazów
   const fetchImages = async () => {
     setLoading(true);
     setError(null);
@@ -41,18 +42,26 @@ export default function AdminGallery() {
     fetchImages();
   }, []);
 
-  // Handle file upload
+  // Obsługa przesyłania plików
   const handleFileUpload = async (event) => {
-    setUploadError(null); // Reset error state before a new upload
+    setUploadError(null); // Reset stanu błędu przed nowym przesyłaniem
     setIsAdding(true);
     const files = event.target.files;
     const formData = new FormData();
 
-    // Client-side file size validation
+    // Walidacja rozmiaru plików po stronie klienta
+    let totalSize = 0;
+
     for (const file of files) {
       if (file.size > MAX_FILE_SIZE) {
+        setUploadError(`Plik ${file.name} przekracza maksymalny rozmiar 10MB.`);
+        setIsAdding(false);
+        return;
+      }
+      totalSize += file.size;
+      if (totalSize > MAX_TOTAL_SIZE) {
         setUploadError(
-          `Plik ${file.name} przekracza maksymalny rozmiar 10MB. Skompresuj lub dodaj inny.`
+          "Łączny rozmiar plików przekracza 10MB. Dodaj mniej plików lub skompresuj zdjęcia."
         );
         setIsAdding(false);
         return;
@@ -72,7 +81,7 @@ export default function AdminGallery() {
 
       const data = await response.json();
       console.log(data);
-      await fetchImages(); // Refresh image list after uploading new files
+      await fetchImages(); // Odświeżenie listy zdjęć po przesłaniu nowych plików
     } catch (error) {
       console.error("Upload error:", error);
       setUploadError("Failed to upload images.");
@@ -81,10 +90,10 @@ export default function AdminGallery() {
     }
   };
 
-  // Remove image
+  // Usuwanie obrazu
   const removeImage = async (imageToRemove) => {
     try {
-      const fileName = imageToRemove.split("/").pop(); // Extract file name
+      const fileName = imageToRemove.split("/").pop(); // Pobierz nazwę pliku
 
       const response = await fetch(
         `/api/gallery/gallery-delete?file=${fileName}`,
@@ -112,9 +121,9 @@ export default function AdminGallery() {
       <h3 className={classes.header}>Edytuj Galerie</h3>
 
       <div className={classes.add}>
-        <h4>Dodaj zdjecie</h4>
+        <h4>Dodaj zdjęcie</h4>
         <p>
-          Pamiętaj tylko ze zdjecia beda dobrze wygladac tylko w tym samym
+          Pamiętaj tylko, że zdjęcia będą dobrze wyglądać tylko w tym samym
           rozmiarze
         </p>
         <input
@@ -124,8 +133,7 @@ export default function AdminGallery() {
           accept=".jpg,.jpeg,.png"
           onChange={handleFileUpload}
         />
-        {uploadError && <p className={classes.error}>{uploadError}</p>}{" "}
-        {/* Display file size errors */}
+        {uploadError && <p className={classes.error}>{uploadError}</p>}
         {isAdding && <h5>Dodawanie zdjęć trwa...</h5>}
       </div>
 
