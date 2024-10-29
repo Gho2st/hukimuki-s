@@ -11,13 +11,19 @@ export default function AdminGallery() {
   const [isAdding, setIsAdding] = useState(false);
   const [uploadError, setUploadError] = useState(null); // New state for upload errors
   const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
+  const timestamp = Date.parse(new Date().toString());
 
   // Function to fetch images
   const fetchImages = async () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`/api/gallery/get-gallery`);
+      const response = await fetch(`/api/gallery/get-gallery/${timestamp}`, {
+        headers: {
+          "Cache-Control": "no-cache",
+        },
+      });
+
       if (!response.ok) {
         throw new Error("Failed to fetch images");
       }
@@ -45,7 +51,7 @@ export default function AdminGallery() {
     // Client-side file size validation
     for (const file of files) {
       if (file.size > MAX_FILE_SIZE) {
-        setUploadError(`File ${file.name} exceeds the maximum size of 10MB.`);
+        setUploadError(`Plik ${file.name} przekracza maksymalny rozmair 10MB.`);
         setIsAdding(false);
         return;
       }
