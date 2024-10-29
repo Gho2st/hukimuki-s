@@ -12,13 +12,18 @@ export default function Photos() {
   const [error, setError] = useState(null);
   const skillRef = useRef();
   const isSkillRefinView = useInView(skillRef, { once: true });
+  const timestamp = Date.parse(new Date().toString());
 
   // Function to fetch images
   const fetchImages = async () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`/api/gallery/get-gallery`);
+      const response = await fetch(`/api/gallery/get-gallery/${timestamp}`, {
+        headers: {
+          "Cache-Control": "no-cache",
+        },
+      });
       if (!response.ok) {
         throw new Error("Wystąpił błąd podczas wczytywania galerii");
       }

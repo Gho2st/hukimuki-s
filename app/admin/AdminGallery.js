@@ -9,6 +9,8 @@ export default function AdminGallery() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isAdding, setIsAdding] = useState(false);
+  const [uploadError, setUploadError] = useState(null); // New state for upload errors
+  const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
 
   // Function to fetch images
   const fetchImages = async () => {
@@ -35,11 +37,18 @@ export default function AdminGallery() {
 
   // Handle file upload
   const handleFileUpload = async (event) => {
+    setUploadError(null); // Reset error state before a new upload
     setIsAdding(true);
     const files = event.target.files;
     const formData = new FormData();
 
+    // Client-side file size validation
     for (const file of files) {
+      if (file.size > MAX_FILE_SIZE) {
+        setUploadError(`File ${file.name} exceeds the maximum size of 10MB.`);
+        setIsAdding(false);
+        return;
+      }
       formData.append("files", file);
     }
 
@@ -55,10 +64,11 @@ export default function AdminGallery() {
 
       const data = await response.json();
       console.log(data);
-      setIsAdding(false);
       await fetchImages(); // Refresh image list after uploading new files
     } catch (error) {
-      console.error(error);
+      console.error("Upload error:", error);
+      setUploadError("Failed to upload images.");
+    } finally {
       setIsAdding(false);
     }
   };
@@ -95,14 +105,19 @@ export default function AdminGallery() {
 
       <div className={classes.add}>
         <h4>Dodaj zdjecie</h4>
-        <p>Pamiętaj tylko ze zdjecia beda dobrze wygladac tylko w tym samym rozmiarze</p>
+        <p>
+          Pamiętaj tylko ze zdjecia beda dobrze wygladac tylko w tym samym
+          rozmiarze
+        </p>
         <input
           id="fileInput"
           type="file"
-          multiple // Pozwala na wybór wielu plików
-          accept=".jpg,.jpeg,.png" // Restricts file types to JPG, JPEG, and PNG
+          multiple
+          accept=".jpg,.jpeg,.png"
           onChange={handleFileUpload}
         />
+        {uploadError && <p className={classes.error}>{uploadError}</p>}{" "}
+        {/* Display file size errors */}
         {isAdding && <h5>Dodawanie zdjęć trwa...</h5>}
       </div>
 
@@ -115,7 +130,7 @@ export default function AdminGallery() {
           images.map((file, index) => (
             <div key={index} className={classes.imageWrapper}>
               <Image
-                src={file.imageUrl} // Assuming full URL to the image
+                src={file.imageUrl}
                 width={100}
                 height={100}
                 alt={`Image ${index}`}
