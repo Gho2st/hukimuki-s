@@ -8,9 +8,10 @@ export default function AdminMenu() {
   const [isBeers, setIsBeers] = useState(false);
   const [isShots, setIsShots] = useState(false);
   const [isPromo, setIsPromo] = useState(false);
-  const [isPitchers, setIsPitchers] = useState(false);
+  const [isAlcohol, setIsAlcohol] = useState(false);
   const [isStudentsPromo, setIsStudentsPromo] = useState(false);
   const [isSets, setIsSets] = useState(false);
+  const [isNapoje, setIsNapoje] = useState(false);
 
   return (
     <div className={classes.container}>
@@ -21,9 +22,10 @@ export default function AdminMenu() {
             setIsCoctails(!isCoctails);
             setIsBeers(false);
             setIsPromo(false);
-            setIsPitchers(false);
+            setIsAlcohol(false);
             setIsStudentsPromo(false);
             setIsSets(false);
+            setIsNapoje(false);
           }}
         >
           Koktajle
@@ -32,10 +34,11 @@ export default function AdminMenu() {
           onClick={() => {
             setIsCoctails(false);
             setIsPromo(false);
-            setIsPitchers(false);
+            setIsAlcohol(false);
             setIsBeers(!isBeers);
             setIsStudentsPromo(false);
             setIsSets(false);
+            setIsNapoje(false);
           }}
         >
           Piwa
@@ -45,10 +48,11 @@ export default function AdminMenu() {
             setIsShots(false);
             setIsBeers(false);
             setIsCoctails(false);
-            setIsPitchers(false);
+            setIsAlcohol(false);
             setIsPromo(!isPromo);
             setIsSets(false);
             setIsStudentsPromo(false);
+            setIsNapoje(false);
           }}
         >
           Promocje
@@ -58,10 +62,11 @@ export default function AdminMenu() {
             setIsShots(!isShots);
             setIsBeers(false);
             setIsCoctails(false);
-            setIsPitchers(false);
+            setIsAlcohol(false);
             setIsPromo(false);
             setIsSets(false);
             setIsStudentsPromo(false);
+            setIsNapoje(false);
           }}
         >
           Shoty
@@ -71,10 +76,11 @@ export default function AdminMenu() {
             setIsShots(false);
             setIsBeers(false);
             setIsCoctails(false);
-            setIsPitchers(false);
+            setIsAlcohol(false);
             setIsPromo(false);
             setIsSets(false);
             setIsStudentsPromo(!isStudentsPromo);
+            setIsNapoje(false);
           }}
         >
           Promocje Studenckie
@@ -84,33 +90,48 @@ export default function AdminMenu() {
             setIsShots(false);
             setIsBeers(false);
             setIsCoctails(false);
-            setIsPitchers(false);
+            setIsAlcohol(false);
             setIsPromo(false);
             setIsStudentsPromo(false);
             setIsSets(!isSets);
+            setIsNapoje(false);
           }}
         >
           Zestawy
         </button>
-        {/* <button
+        <button
           onClick={() => {
             setIsShots(false);
             setIsBeers(false);
             setIsCoctails(false);
-            setIsPitchers(!isPitchers);
+            setIsAlcohol(!isAlcohol);
             setIsPromo(false);
-            setIsStudentsPromo(false)
-
+            setIsStudentsPromo(false);
+            setIsNapoje(false);
           }}
         >
-          Dzbanki
-        </button> */}
+          Alkohole
+        </button>
+        <button
+          onClick={() => {
+            setIsShots(false);
+            setIsBeers(false);
+            setIsCoctails(false);
+            setIsAlcohol(false);
+            setIsPromo(false);
+            setIsStudentsPromo(false);
+            setIsNapoje(!isNapoje);
+          }}
+        >
+          Napoje
+        </button>
       </div>
       <div className={classes.menuImages}>
         {isCoctails && <Which2 which="coctails" />}
         {isBeers && <Which2 which="beers" />}
         {isShots && <Which2 which="shots" />}
-        {/* {isPitchers && <Which2 which="pitchers" />} */}
+        {isAlcohol && <Which2 which="alcohol" />}
+        {isNapoje && <Which2 which="napoje" />}
         {isPromo && <Which2 which="promo" />}
         {isStudentsPromo && <Which2 which="students" />}
         {isSets && <Which2 which="sets" />}

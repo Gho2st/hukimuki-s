@@ -13,8 +13,9 @@ export default function Menu() {
   const [isShots, setIsShots] = useState(false);
   const [isPromo, setIsPromo] = useState(false);
   const [isSets, setIsSets] = useState(false);
-  const [isPitchers, setIsPitchers] = useState(false);
+  const [isAlcohol, setIsAlcohol] = useState(false);
   const [isStudentsPromo, setIsStudentsPromo] = useState(false);
+  const [isNapoje, setIsNapoje] = useState(false);
 
   const [is18, setIs18] = useState(null);
 
@@ -71,10 +72,11 @@ export default function Menu() {
                   setIsCoctails(!isCoctails);
                   setIsBeers(false);
                   setIsPromo(false);
-                  setIsPitchers(false);
+                  setIsAlcohol(false);
                   setIsStudentsPromo(false);
                   setIsSets(false);
                   setIsShots(false);
+                  setIsNapoje(false);
                 }}
               >
                 Koktajle
@@ -84,7 +86,7 @@ export default function Menu() {
                   setIsCoctails(false);
                   setIsShots(false);
                   setIsPromo(false);
-                  setIsPitchers(false);
+                  setIsAlcohol(false);
                   setIsBeers(!isBeers);
                   setIsStudentsPromo(false);
                   setIsSets(false);
@@ -97,10 +99,11 @@ export default function Menu() {
                   setIsShots(false);
                   setIsBeers(false);
                   setIsCoctails(false);
-                  setIsPitchers(false);
+                  setIsAlcohol(false);
                   setIsPromo(!isPromo);
                   setIsStudentsPromo(false);
                   setIsSets(false);
+                  setIsNapoje(false);
                 }}
               >
                 Promocje
@@ -110,10 +113,11 @@ export default function Menu() {
                   setIsShots(!isShots);
                   setIsBeers(false);
                   setIsCoctails(false);
-                  setIsPitchers(false);
+                  setIsAlcohol(false);
                   setIsPromo(false);
                   setIsStudentsPromo(false);
                   setIsSets(false);
+                  setIsNapoje(false);
                 }}
               >
                 Shoty
@@ -124,9 +128,10 @@ export default function Menu() {
                   setIsShots(false);
                   setIsBeers(false);
                   setIsCoctails(false);
-                  setIsPitchers(false);
+                  setIsAlcohol(false);
                   setIsPromo(false);
                   setIsSets(false);
+                  setIsNapoje(false);
                 }}
               >
                 Promocje Studenckie
@@ -137,30 +142,45 @@ export default function Menu() {
                   setIsShots(false);
                   setIsBeers(false);
                   setIsCoctails(false);
-                  setIsPitchers(false);
+                  setIsAlcohol(false);
                   setIsPromo(false);
                   setIsSets(!isSets);
+                  setIsNapoje(false);
                 }}
               >
                 Zestawy
               </button>
-              {/* <button
+              <button
                 onClick={() => {
                   setIsShots(false);
                   setIsBeers(false);
                   setIsCoctails(false);
-                  setIsPitchers(!isPitchers);
+                  setIsAlcohol(!isAlcohol);
                   setIsPromo(false);
+                  setIsNapoje(false);
                 }}
               >
-                Dzbanki
-              </button> */}
+                Alkohole
+              </button>
+              <button
+                onClick={() => {
+                  setIsShots(false);
+                  setIsBeers(false);
+                  setIsCoctails(false);
+                  setIsAlcohol(false);
+                  setIsPromo(false);
+                  setIsNapoje(!isNapoje);
+                }}
+              >
+                Napoje
+              </button>
             </div>
             <div className={classes.menuImages}>
               {isCoctails && <Which which="coctails" />}
               {isBeers && <Which which="beers" />}
               {isShots && <Which which="shots" />}
-              {/* {isPitchers && <Which which="pitchers" />} */}
+              {isAlcohol && <Which which="alcohol" />}
+              {isNapoje && <Which which="napoje" />}
               {isPromo && <Which which="promo" />}
               {isStudentsPromo && <Which which="students" />}
               {isSets && <Which which="sets" />}
