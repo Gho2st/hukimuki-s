@@ -69,20 +69,6 @@ export default function Menu() {
             <div className={classes.buttons}>
               <button
                 onClick={() => {
-                  setIsCoctails(!isCoctails);
-                  setIsBeers(false);
-                  setIsPromo(false);
-                  setIsAlcohol(false);
-                  setIsStudentsPromo(false);
-                  setIsSets(false);
-                  setIsShots(false);
-                  setIsNapoje(false);
-                }}
-              >
-                Koktajle
-              </button>
-              <button
-                onClick={() => {
                   setIsCoctails(false);
                   setIsShots(false);
                   setIsPromo(false);
@@ -94,19 +80,20 @@ export default function Menu() {
               >
                 Piwa
               </button>
+
               <button
                 onClick={() => {
-                  setIsShots(false);
+                  setIsCoctails(!isCoctails);
                   setIsBeers(false);
-                  setIsCoctails(false);
+                  setIsPromo(false);
                   setIsAlcohol(false);
-                  setIsPromo(!isPromo);
                   setIsStudentsPromo(false);
                   setIsSets(false);
+                  setIsShots(false);
                   setIsNapoje(false);
                 }}
               >
-                Promocje
+                Koktajle
               </button>
               <button
                 onClick={() => {
@@ -124,17 +111,15 @@ export default function Menu() {
               </button>
               <button
                 onClick={() => {
-                  setIsStudentsPromo(!isStudentsPromo);
                   setIsShots(false);
                   setIsBeers(false);
                   setIsCoctails(false);
-                  setIsAlcohol(false);
+                  setIsAlcohol(!isAlcohol);
                   setIsPromo(false);
-                  setIsSets(false);
                   setIsNapoje(false);
                 }}
               >
-                Promocje Studenckie
+                Alkohole
               </button>
               <button
                 onClick={() => {
@@ -150,18 +135,7 @@ export default function Menu() {
               >
                 Zestawy
               </button>
-              <button
-                onClick={() => {
-                  setIsShots(false);
-                  setIsBeers(false);
-                  setIsCoctails(false);
-                  setIsAlcohol(!isAlcohol);
-                  setIsPromo(false);
-                  setIsNapoje(false);
-                }}
-              >
-                Alkohole
-              </button>
+
               <button
                 onClick={() => {
                   setIsShots(false);
@@ -173,6 +147,35 @@ export default function Menu() {
                 }}
               >
                 Napoje
+              </button>
+              <button
+                onClick={() => {
+                  setIsShots(false);
+                  setIsBeers(false);
+                  setIsCoctails(false);
+                  setIsAlcohol(false);
+                  setIsPromo(!isPromo);
+                  setIsStudentsPromo(false);
+                  setIsSets(false);
+                  setIsNapoje(false);
+                }}
+              >
+                Promocje
+              </button>
+
+              <button
+                onClick={() => {
+                  setIsStudentsPromo(!isStudentsPromo);
+                  setIsShots(false);
+                  setIsBeers(false);
+                  setIsCoctails(false);
+                  setIsAlcohol(false);
+                  setIsPromo(false);
+                  setIsSets(false);
+                  setIsNapoje(false);
+                }}
+              >
+                Promocje Studenckie
               </button>
             </div>
             <div className={classes.menuImages}>
