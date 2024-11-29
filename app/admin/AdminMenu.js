@@ -8,7 +8,7 @@ export default function AdminMenu() {
   const [isBeers, setIsBeers] = useState(false);
   const [isShots, setIsShots] = useState(false);
   const [isPromo, setIsPromo] = useState(false);
-  const [isAlcohol, setIsAlcohol] = useState(false);
+  // const [isAlcohol, setIsAlcohol] = useState(false);
   const [isStudentsPromo, setIsStudentsPromo] = useState(false);
   const [isSets, setIsSets] = useState(false);
   const [isNapoje, setIsNapoje] = useState(false);
@@ -22,7 +22,7 @@ export default function AdminMenu() {
             setIsCoctails(false);
             setIsShots(false);
             setIsPromo(false);
-            setIsAlcohol(false);
+            // setIsAlcohol(false);
             setIsBeers(!isBeers);
             setIsStudentsPromo(false);
             setIsSets(false);
@@ -36,7 +36,7 @@ export default function AdminMenu() {
             setIsCoctails(!isCoctails);
             setIsBeers(false);
             setIsPromo(false);
-            setIsAlcohol(false);
+            // setIsAlcohol(false);
             setIsStudentsPromo(false);
             setIsSets(false);
             setIsShots(false);
@@ -50,7 +50,7 @@ export default function AdminMenu() {
             setIsShots(!isShots);
             setIsBeers(false);
             setIsCoctails(false);
-            setIsAlcohol(false);
+            // setIsAlcohol(false);
             setIsPromo(false);
             setIsStudentsPromo(false);
             setIsSets(false);
@@ -59,7 +59,7 @@ export default function AdminMenu() {
         >
           Shoty
         </button>
-        <button
+        {/* <button
           onClick={() => {
             setIsShots(false);
             setIsBeers(false);
@@ -70,14 +70,14 @@ export default function AdminMenu() {
           }}
         >
           Alkohole
-        </button>
+        </button> */}
         <button
           onClick={() => {
             setIsStudentsPromo(false);
             setIsShots(false);
             setIsBeers(false);
             setIsCoctails(false);
-            setIsAlcohol(false);
+            // setIsAlcohol(false);
             setIsPromo(false);
             setIsSets(!isSets);
             setIsNapoje(false);
@@ -91,7 +91,7 @@ export default function AdminMenu() {
             setIsShots(false);
             setIsBeers(false);
             setIsCoctails(false);
-            setIsAlcohol(false);
+            // setIsAlcohol(false);
             setIsPromo(false);
             setIsNapoje(!isNapoje);
           }}
@@ -103,7 +103,7 @@ export default function AdminMenu() {
             setIsShots(false);
             setIsBeers(false);
             setIsCoctails(false);
-            setIsAlcohol(false);
+            // setIsAlcohol(false);
             setIsPromo(!isPromo);
             setIsStudentsPromo(false);
             setIsSets(false);
@@ -119,7 +119,7 @@ export default function AdminMenu() {
             setIsShots(false);
             setIsBeers(false);
             setIsCoctails(false);
-            setIsAlcohol(false);
+            // setIsAlcohol(false);
             setIsPromo(false);
             setIsSets(false);
             setIsNapoje(false);
@@ -132,7 +132,7 @@ export default function AdminMenu() {
         {isCoctails && <Which2 which="coctails" />}
         {isBeers && <Which2 which="beers" />}
         {isShots && <Which2 which="shots" />}
-        {isAlcohol && <Which2 which="alcohol" />}
+        {/* {isAlcohol && <Which2 which="alcohol" />} */}
         {isNapoje && <Which2 which="napoje" />}
         {isPromo && <Which2 which="promo" />}
         {isStudentsPromo && <Which2 which="students" />}
