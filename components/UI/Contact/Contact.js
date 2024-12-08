@@ -3,6 +3,9 @@ import SubmitButton from "../Buttons/SubmitButton";
 import { useState } from "react";
 import classes from "./Contact.module.css";
 import Image from "next/image";
+import ReCAPTCHA from "react-google-recaptcha";
+import { useRef } from "react";
+
 export default function Contact() {
   const [text, setText] = useState("");
   const [fullName, setFullName] = useState("");
@@ -11,9 +14,18 @@ export default function Contact() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formError, setFormError] = useState(null);
   const [errorFields, setErrorFields] = useState([]);
+  const recaptchaRef = useRef(null); // Ref dla reCAPTCHA
 
   const sendMail = async (e) => {
     e.preventDefault();
+
+    // Pobranie tokena reCAPTCHA
+    const recaptchaToken = recaptchaRef.current.getValue();
+    if (!recaptchaToken) {
+      setFormError("Proszę zaznacz, że nie jestes robotem przed wysłaniem.");
+      return;
+    }
+
     const fieldsToCheck = {
       fullName,
       email,
@@ -41,6 +53,7 @@ export default function Contact() {
           fullName,
           email,
           phoneNumber,
+          recaptchaToken,
         }),
       });
 
@@ -53,6 +66,7 @@ export default function Contact() {
         setText("");
         setPhoneNumber("");
         onFormSubmit();
+        recaptchaRef.current.reset(); // Zresetuj CAPTCHA po wysłaniu
       } else {
         const errorData = await response.json();
         setFormError(`Error: ${errorData.message}`);
@@ -143,6 +157,11 @@ export default function Contact() {
                   border: errorFields.includes("text") ? "1px solid red" : "0",
                 }}
               ></textarea>
+              <ReCAPTCHA
+                className={classes.recaptcha}
+                ref={recaptchaRef}
+                sitekey="6LetqpUqAAAAABRwX_slcBybtlkC7S4X4QZZEYUo" // Wstaw swój Site Key
+              />
               <div className={classes.buttonContainer}>
                 <SubmitButton text="Wyślij" />
               </div>

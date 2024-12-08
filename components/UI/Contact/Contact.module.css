@@ -99,6 +99,10 @@
   margin-top: 1rem;
 }
 
+.recaptcha{
+  margin-top: 1rem;
+}
+
 @media (max-width: 1200px) {
   .container h1 {
     font-size: 2.5rem;

@@ -1,9 +1,29 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+// Funkcja weryfikująca token reCAPTCHA
+async function verifyRecaptcha(token) {
+  const secret = process.env.RECAPTCHA_SECRET_KEY; // Secret Key reCAPTCHA
+  const response = await fetch(
+    `https://www.google.com/recaptcha/api/siteverify`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        secret,
+        response: token,
+      }),
+    }
+  );
+
+  const data = await response.json();
+  return data.success;
+}
+
 export async function POST(request) {
   try {
-    const { text, fullName, email, phoneNumber } = await request.json();
+    const { text, fullName, email, phoneNumber, recaptchaToken } =
+      await request.json();
 
     if (!email || !text || !phoneNumber || !fullName) {
       return NextResponse.json(
@@ -12,6 +32,18 @@ export async function POST(request) {
       );
     }
 
+    // Weryfikacja reCAPTCHA
+    const recaptchaValid = await verifyRecaptcha(recaptchaToken);
+    console.log("Weryfikacja reCAPTCHA:", recaptchaValid); // Sprawdzamy wynik weryfikacji
+    if (!recaptchaValid) {
+      console.error("Nieudana weryfikacja reCAPTCHA"); // Dodaj logowanie
+      return NextResponse.json(
+        { message: "Weryfikacja reCAPTCHA nie powiodła się." },
+        { status: 400 }
+      );
+    }
+
+    // konfiguracja transporteru STMP
     const transporter = nodemailer.createTransport({
       service: "gmail",
       host: "smtp.gmail.com",
@@ -25,7 +57,7 @@ export async function POST(request) {
 
     const mailOption = {
       from: "hukimuki.rezerwacje@gmail.com",
-      to: "hukimukiflorianska@gmail.com",
+      to: "domiweb.biuro@gmail.com",
       subject: "Email ze strony HukiMuki od klienta",
       html: `
         <div style="font-family: Arial, sans-serif; color: #333; padding: 20px;">
@@ -52,6 +84,8 @@ export async function POST(request) {
       `,
     };
 
+
+    // wysylka wiadomosci email
     await transporter.sendMail(mailOption);
 
     return NextResponse.json(
