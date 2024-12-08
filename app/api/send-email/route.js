@@ -57,7 +57,7 @@ export async function POST(request) {
 
     const mailOption = {
       from: "hukimuki.rezerwacje@gmail.com",
-      to: "domiweb.biuro@gmail.com",
+      to: "hukimukiflorianska@gmail.com",
       subject: "Email ze strony HukiMuki od klienta",
       html: `
         <div style="font-family: Arial, sans-serif; color: #333; padding: 20px;">

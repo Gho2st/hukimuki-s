@@ -58,7 +58,7 @@ export default function Contact() {
       });
 
       if (response.ok) {
-        console.log("Form submitted succesfully");
+        // console.log("Form submitted succesfully");
         setFormSubmitted(true);
         setFormError(null);
         setEmail("");
