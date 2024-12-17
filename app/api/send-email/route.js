@@ -58,6 +58,7 @@ export async function POST(request) {
     const mailOption = {
       from: "hukimuki.rezerwacje@gmail.com",
       to: "hukimukiflorianska@gmail.com",
+      replyTo: email,
       subject: "Email ze strony HukiMuki od klienta",
       html: `
         <div style="font-family: Arial, sans-serif; color: #333; padding: 20px;">
@@ -83,7 +84,6 @@ export async function POST(request) {
         </div>
       `,
     };
-
 
     // wysylka wiadomosci email
     await transporter.sendMail(mailOption);
