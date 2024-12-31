@@ -11,11 +11,11 @@ export default function Menu() {
   const [isCoctails, setIsCoctails] = useState(false);
   const [isBeers, setIsBeers] = useState(false);
   const [isShots, setIsShots] = useState(false);
-  const [isPromo, setIsPromo] = useState(false);
   const [isSets, setIsSets] = useState(false);
   // const [isAlcohol, setIsAlcohol] = useState(false);
-  const [isStudentsPromo, setIsStudentsPromo] = useState(false);
-  const [isNapoje, setIsNapoje] = useState(false);
+  // const [isPromo, setIsPromo] = useState(false);
+  // const [isStudentsPromo, setIsStudentsPromo] = useState(false);
+  // const [isNapoje, setIsNapoje] = useState(false);
 
   const [is18, setIs18] = useState(null);
 
@@ -71,11 +71,12 @@ export default function Menu() {
                 onClick={() => {
                   setIsCoctails(false);
                   setIsShots(false);
-                  setIsPromo(false);
                   // setIsAlcohol(false);
                   setIsBeers(!isBeers);
-                  setIsStudentsPromo(false);
                   setIsSets(false);
+                  // setIsStudentsPromo(false);
+                  // setIsPromo(false);
+                  // setIsNapoje(false);
                 }}
               >
                 Piwa
@@ -85,12 +86,11 @@ export default function Menu() {
                 onClick={() => {
                   setIsCoctails(!isCoctails);
                   setIsBeers(false);
-                  setIsPromo(false);
                   // setIsAlcohol(false);
-                  setIsStudentsPromo(false);
                   setIsSets(false);
                   setIsShots(false);
-                  setIsNapoje(false);
+                  // setIsStudentsPromo(false);
+                  // setIsPromo(false);
                 }}
               >
                 Koktajle
@@ -100,11 +100,11 @@ export default function Menu() {
                   setIsShots(!isShots);
                   setIsBeers(false);
                   setIsCoctails(false);
-                  // setIsAlcohol(false);
-                  setIsPromo(false);
-                  setIsStudentsPromo(false);
                   setIsSets(false);
-                  setIsNapoje(false);
+                  // setIsAlcohol(false);
+                  // setIsPromo(false);
+                  // setIsStudentsPromo(false);
+                  // setIsNapoje(false);
                 }}
               >
                 Shoty
@@ -123,20 +123,20 @@ export default function Menu() {
               </button> */}
               <button
                 onClick={() => {
-                  setIsStudentsPromo(false);
                   setIsShots(false);
                   setIsBeers(false);
                   setIsCoctails(false);
-                  // setIsAlcohol(false);
-                  setIsPromo(false);
                   setIsSets(!isSets);
-                  setIsNapoje(false);
+                  // setIsAlcohol(false);
+                  // setIsPromo(false);
+                  // setIsNapoje(false);
+                  // setIsStudentsPromo(false);
                 }}
               >
                 Zestawy
               </button>
 
-              <button
+              {/* <button
                 onClick={() => {
                   setIsShots(false);
                   setIsBeers(false);
@@ -147,8 +147,8 @@ export default function Menu() {
                 }}
               >
                 Napoje
-              </button>
-              <button
+              </button> */}
+              {/* <button
                 onClick={() => {
                   setIsShots(false);
                   setIsBeers(false);
@@ -156,36 +156,36 @@ export default function Menu() {
                   // setIsAlcohol(false);
                   setIsPromo(!isPromo);
                   setIsStudentsPromo(false);
-                  setIsSets(false);
                   setIsNapoje(false);
+                  setIsSets(false);
                 }}
               >
                 Promocje
-              </button>
+              </button> */}
 
-              <button
+              {/* <button
                 onClick={() => {
-                  setIsStudentsPromo(!isStudentsPromo);
                   setIsShots(false);
                   setIsBeers(false);
                   setIsCoctails(false);
                   // setIsAlcohol(false);
                   setIsPromo(false);
-                  setIsSets(false);
                   setIsNapoje(false);
+                  setIsStudentsPromo(!isStudentsPromo);
+                  setIsSets(false);
                 }}
               >
                 Promocje Studenckie
-              </button>
+              </button> */}
             </div>
             <div className={classes.menuImages}>
               {isCoctails && <Which which="coctails" />}
               {isBeers && <Which which="beers" />}
               {isShots && <Which which="shots" />}
               {/* {isAlcohol && <Which which="alcohol" />} */}
-              {isNapoje && <Which which="napoje" />}
-              {isPromo && <Which which="promo" />}
-              {isStudentsPromo && <Which which="students" />}
+              {/* {isNapoje && <Which which="napoje" />} */}
+              {/* {isPromo && <Which which="promo" />} */}
+              {/* {isStudentsPromo && <Which which="students" />} */}
               {isSets && <Which which="sets" />}
             </div>
           </div>
