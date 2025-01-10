@@ -11,6 +11,7 @@ export default function Coctails({ which }) {
   const [uploadSuccess, setUploadSuccess] = useState(null); // Stan dla komunikatu o sukcesie
   const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB dla pojedynczego pliku
   const MAX_TOTAL_SIZE = 10 * 1024 * 1024; // 10 MB dla całego zapytania
+  const timestamp = Date.parse(new Date().toString());
 
   // Fetch images from the server
   const fetchImages = useCallback(async () => {
@@ -18,7 +19,7 @@ export default function Coctails({ which }) {
     setError(null);
     try {
       const response = await fetch(
-        `/api/menu/get_specific_menu?which=${which}`
+        `/api/menu/get_specific_menu/${timestamp}?which=${which}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch images");
