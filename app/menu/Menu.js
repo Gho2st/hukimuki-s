@@ -10,7 +10,6 @@ import Adult from "@/components/Homepage/Adult";
 export default function Menu() {
   const [folders, setFolders] = useState([]);
   const [selectedFolder, setSelectedFolder] = useState(null);
-  const [newFolder, setNewFolder] = useState(""); // Nowy folder do dodania
   const [loading, setLoading] = useState(false); // Śledzenie stanu ładowania
   const [error, setError] = useState(null); // Śledzenie błędów
   const [is18, setIs18] = useState(null);
@@ -22,7 +21,7 @@ export default function Menu() {
       setError(null);
       try {
         const res = await fetch(`/api/menu/get_all_menu/${timestamp}`);
-        if (!res.ok) throw new Error("Błąd podczas pobierania danych.");
+        if (!res.ok) throw new Error("Błąd podczas pobierania menu.");
         const data = await res.json();
         console.log(data);
         setFolders(data); // Przypisanie nazw folderów
@@ -80,6 +79,10 @@ export default function Menu() {
               </h1>
               <h2>Menu</h2>
             </div>
+            {loading && <p className={classes.loading}>Ładowanie menu...</p>}{" "}
+            {/* Komunikat o ładowaniu */}
+            {error && <p className={classes.error}>Błąd: {error}</p>}{" "}
+            {/* Komunikat o błędzie */}
             <div className={classes.buttons}>
               {folders.map((folder, index) => {
                 return (
