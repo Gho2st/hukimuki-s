@@ -14,7 +14,7 @@ const MenuList = () => {
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch("/api/menu/get_all_menu");
+        const res = await fetch("/api/menu/get_all_menu/${timestamp}");
         if (!res.ok) throw new Error("Błąd podczas pobierania danych.");
         const data = await res.json();
         setFolders(data); // Przypisanie nazw folderów
