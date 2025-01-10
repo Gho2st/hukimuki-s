@@ -6,6 +6,7 @@ export default function Coctails({ which }) {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const timestamp = Date.parse(new Date().toString());
 
   const fetchImages = useCallback(async () => {
     setLoading(true);
@@ -13,7 +14,7 @@ export default function Coctails({ which }) {
     try {
       console.log(which);
       const response = await fetch(
-        `/api/menu/get_specific_menu?which=${which}`
+        `/api/menu/get_specific_menu/${timestamp}?which=${which}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch images");
