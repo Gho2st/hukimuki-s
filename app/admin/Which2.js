@@ -1,4 +1,3 @@
-// components/Coctails.js (Front-end)
 import { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 import classes from "./Which2.module.css";
@@ -9,6 +8,7 @@ export default function Coctails({ which }) {
   const [error, setError] = useState(null);
   const [isAdding, setIsAdding] = useState(false);
   const [uploadError, setUploadError] = useState(null); // Stan dla błędów przesyłania
+  const [uploadSuccess, setUploadSuccess] = useState(null); // Stan dla komunikatu o sukcesie
   const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB dla pojedynczego pliku
   const MAX_TOTAL_SIZE = 10 * 1024 * 1024; // 10 MB dla całego zapytania
 
@@ -39,6 +39,7 @@ export default function Coctails({ which }) {
   // Handle file upload
   const handleFileUpload = async (event) => {
     setUploadError(null);
+    setUploadSuccess(null); // Reset successful upload message
     setIsAdding(true);
     const files = event.target.files;
     const formData = new FormData();
@@ -77,9 +78,10 @@ export default function Coctails({ which }) {
 
       const data = await response.json();
       await fetchImages(); // Refresh images after successful upload
+      setUploadSuccess("Zdjęcia zostały pomyślnie dodane!"); // Success message for the admin
     } catch (error) {
       console.error("Upload error:", error);
-      setUploadError("Failed to upload images.");
+      setUploadError("Nie udało się przesłać zdjęć. Spróbuj ponownie.");
     } finally {
       setIsAdding(false);
     }
@@ -147,6 +149,14 @@ export default function Coctails({ which }) {
       <div className={classes.container}>
         <div className={classes.addingContainer}>
           <h4>Dodaj :)</h4>
+          <p>
+            proszę wziąć pod uwagę aby sprawdzić rozmiar zdjęć (dbać o
+            optymalizację)
+          </p>
+          <p>
+            pliki, które mozesz dodac to po prostu zdjecia/zrzuty ekranu jak
+            jpg, png, jpeg
+          </p>
           <input
             id="fileInput"
             type="file"
@@ -155,6 +165,12 @@ export default function Coctails({ which }) {
             onChange={handleFileUpload}
           />
           {isAdding && <h5>Dodawanie zdjęć trwa...</h5>}
+          {uploadError && <p className={classes.error}>{uploadError}</p>}{" "}
+          {/* Error Message */}
+          {uploadSuccess && (
+            <p className={classes.success}>{uploadSuccess}</p>
+          )}{" "}
+          {/* Success Message */}
         </div>
         <div className={classes.imageContainer}>
           {images.length > 0 ? (
