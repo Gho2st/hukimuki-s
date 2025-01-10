@@ -4,7 +4,6 @@ import Header from "@/components/UI/Header/Header";
 import React, { useState } from "react";
 import classes from "./Admin.module.css";
 import ButtonOnClick from "@/components/UI/Buttons/ButtonOnClick";
-import AdminMenu from "./AdminMenu";
 import NewEvent from "./NewEvent";
 import AdminGallery from "./AdminGallery";
 import MenuList from "./MenuList";
@@ -92,7 +91,6 @@ export default function Admin() {
           />
         </div>
         {isEvents && <NewEvent />}
-        {/* {isMenu && <AdminMenu />} */}
         {isMenu && <MenuList />}
         {isGallery && <AdminGallery />}
       </div>

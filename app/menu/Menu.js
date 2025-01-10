@@ -14,13 +14,14 @@ export default function Menu() {
   const [loading, setLoading] = useState(false); // Śledzenie stanu ładowania
   const [error, setError] = useState(null); // Śledzenie błędów
   const [is18, setIs18] = useState(null);
+  const timestamp = Date.parse(new Date().toString());
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch("/api/menu/get_all_menu/${timestamp}");
+        const res = await fetch(`/api/menu/get_all_menu/${timestamp}`);
         if (!res.ok) throw new Error("Błąd podczas pobierania danych.");
         const data = await res.json();
         console.log(data);

@@ -1,4 +1,4 @@
-// Zmieniony komponent front-endowy obsługujący wiele plików
+// components/Coctails.js (Front-end)
 import { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 import classes from "./Which2.module.css";
@@ -8,12 +8,15 @@ export default function Coctails({ which }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isAdding, setIsAdding] = useState(false);
+  const [uploadError, setUploadError] = useState(null); // Stan dla błędów przesyłania
+  const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB dla pojedynczego pliku
+  const MAX_TOTAL_SIZE = 10 * 1024 * 1024; // 10 MB dla całego zapytania
 
+  // Fetch images from the server
   const fetchImages = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
-      console.log(which);
       const response = await fetch(
         `/api/menu/get_specific_menu?which=${which}`
       );
@@ -21,7 +24,6 @@ export default function Coctails({ which }) {
         throw new Error("Failed to fetch images");
       }
       const data = await response.json();
-      console.log(data);
       setImages(data);
     } catch (error) {
       setError(error.message);
@@ -34,15 +36,34 @@ export default function Coctails({ which }) {
     fetchImages();
   }, [fetchImages]);
 
+  // Handle file upload
   const handleFileUpload = async (event) => {
+    setUploadError(null);
     setIsAdding(true);
     const files = event.target.files;
     const formData = new FormData();
 
+    let totalSize = 0;
+
+    // Validate file sizes before upload
     for (const file of files) {
+      if (file.size > MAX_FILE_SIZE) {
+        setUploadError(`Plik ${file.name} przekracza maksymalny rozmiar 10MB.`);
+        setIsAdding(false);
+        return;
+      }
+      totalSize += file.size;
+      if (totalSize > MAX_TOTAL_SIZE) {
+        setUploadError(
+          "Łączny rozmiar plików przekracza 10MB. Dodaj mniej plików lub skompresuj zdjęcia."
+        );
+        setIsAdding(false);
+        return;
+      }
       formData.append("files", file);
     }
-    formData.append("which", which);
+
+    formData.append("which", which); // Add "which" field
 
     try {
       const response = await fetch("/api/menu/s3-upload", {
@@ -55,14 +76,16 @@ export default function Coctails({ which }) {
       }
 
       const data = await response.json();
-      console.log(data);
-      setIsAdding(false);
-      await fetchImages(); // Odśwież listę zdjęć po dodaniu nowych
+      await fetchImages(); // Refresh images after successful upload
     } catch (error) {
-      console.error(error);
+      console.error("Upload error:", error);
+      setUploadError("Failed to upload images.");
+    } finally {
+      setIsAdding(false);
     }
   };
 
+  // Move image position
   const moveImage = async (index, direction) => {
     try {
       const newPosition = index + direction;
@@ -71,14 +94,6 @@ export default function Coctails({ which }) {
         const [movedImage] = updatedImages.splice(index, 1);
         updatedImages.splice(newPosition, 0, movedImage);
 
-        console.log("Moving image:", {
-          index,
-          direction,
-          newPosition,
-          updatedImages,
-        });
-
-        // Update the server with the new order
         const response = await fetch("/api/menu/update_image_order", {
           method: "POST",
           body: JSON.stringify({
@@ -89,8 +104,6 @@ export default function Coctails({ which }) {
             "Content-Type": "application/json",
           },
         });
-
-        console.log("Server response:", await response.json());
 
         if (!response.ok) {
           throw new Error(`Server responded with status ${response.status}`);
@@ -103,6 +116,7 @@ export default function Coctails({ which }) {
     }
   };
 
+  // Remove image
   const removeImage = async (imageToRemove) => {
     try {
       const fileName = imageToRemove.split("/").pop();
@@ -133,20 +147,11 @@ export default function Coctails({ which }) {
       <div className={classes.container}>
         <div className={classes.addingContainer}>
           <h4>Dodaj :)</h4>
-          <p>
-            proszę wziąć pod uwagę aby sprawdzić rozmiar zdjęć (dbać o
-            optymalizację)
-          </p>
-          <p>
-            pliki, które mozesz dodac to po prostu zdjecia/zrzuty ekranu jak
-            jpg, png, jpeg
-          </p>
-
           <input
             id="fileInput"
             type="file"
-            multiple // Pozwala na wybór wielu plików
-            accept=".jpg,.jpeg,.png" // Restricts file types to JPG, JPEG, and PNG
+            multiple
+            accept=".jpg,.jpeg,.png"
             onChange={handleFileUpload}
           />
           {isAdding && <h5>Dodawanie zdjęć trwa...</h5>}
@@ -156,7 +161,7 @@ export default function Coctails({ which }) {
             images.map((file, index) => (
               <div key={file} className={classes.imageWrapper}>
                 <Image
-                  src={file} // Use the full URL here
+                  src={file}
                   width={100}
                   height={100}
                   alt={`zdjęcie menu nr ${index}`}

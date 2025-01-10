@@ -8,13 +8,14 @@ const MenuList = () => {
   const [newFolder, setNewFolder] = useState(""); // Nowy folder do dodania
   const [loading, setLoading] = useState(false); // Śledzenie stanu ładowania
   const [error, setError] = useState(null); // Śledzenie błędów
+  const timestamp = Date.parse(new Date().toString());
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch("/api/menu/get_all_menu/${timestamp}");
+        const res = await fetch(`/api/menu/get_all_menu/${timestamp}`);
         if (!res.ok) throw new Error("Błąd podczas pobierania danych.");
         const data = await res.json();
         setFolders(data); // Przypisanie nazw folderów
@@ -58,7 +59,6 @@ const MenuList = () => {
       setError("Nazwa folderu nie może być pusta.");
       return;
     }
-
     setLoading(true);
     setError(null);
 
