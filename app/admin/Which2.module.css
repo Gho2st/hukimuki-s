@@ -1,9 +1,15 @@
+.container{
+  margin-bottom: 5rem;
+}
+
 .addingContainer h4 {
   font-size: 1.6rem;
 }
 
 .addingContainer p {
   font-size: 1rem !important;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .addingContainer h5 {
@@ -11,6 +17,22 @@
   font-weight: 400;
   margin-top: 1rem;
   font-size: 1.2rem;
+}
+
+.imageContainer {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2rem;
+}
+
+.imageWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.imageWrapper img {
+  width: 250px !important;
 }
 
 .imageWrapper button {

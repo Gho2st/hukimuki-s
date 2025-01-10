@@ -22,10 +22,10 @@ export async function GET(request) {
       return NextResponse.json([], { status: 400 });
     }
 
-    // Spróbuj pobrać plik order.json
+    // Spróbuj pobrać plik order.json z hukimuki/menu/order.json
     const params = {
       Bucket: "hukimuki",
-      Key: `${which}/order.json`,
+      Key: `/menu/${which}/order.json`,
     };
 
     let imageUrls;
@@ -47,23 +47,37 @@ export async function GET(request) {
 
       const jsonData = await streamToString(s3Data.Body);
       imageUrls = JSON.parse(jsonData);
+      console.log(imageUrls);
     } catch (error) {
       console.log("order.json not found, listing all images in folder.");
 
       // Pobierz wszystkie obrazy z folderu, jeśli order.json nie istnieje
       const listParams = {
         Bucket: "hukimuki",
-        Prefix: `${which}/`,
+        Prefix: `menu/${which}/`,
       };
+
+      console.log(listParams);
 
       const listCommand = new ListObjectsV2Command(listParams);
       const listData = await s3Client.send(listCommand);
 
-      imageUrls = listData.Contents.filter(
-        (item) => item.Size > 0 && item.Key.endsWith(".png") // Wykluczamy folder i inne pliki
-      ).map(
-        (item) => `https://hukimuki.s3.eu-central-1.amazonaws.com/${item.Key}`
-      );
+      // Sprawdź, czy `Contents` istnieje
+      const contents = listData.Contents || [];
+      console.log("Contents:", contents);
+
+      imageUrls = contents
+        .filter(
+          (item) =>
+            item.Size > 0 &&
+            (item.Key.endsWith(".png") ||
+              item.Key.endsWith(".jpg") ||
+              item.Key.endsWith(".jpeg"))
+        ) // Filtruj tylko obrazy
+        .map(
+          (item) =>
+            `https://hukimuki.s3.eu-central-1.amazonaws.com/${item.Key}`
+        );
     }
 
     return NextResponse.json(imageUrls);

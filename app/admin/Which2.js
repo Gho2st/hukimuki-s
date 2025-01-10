@@ -13,7 +13,10 @@ export default function Coctails({ which }) {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`/api/menu/get_admin_menu?which=${which}`);
+      console.log(which);
+      const response = await fetch(
+        `/api/menu/get_specific_menu?which=${which}`
+      );
       if (!response.ok) {
         throw new Error("Failed to fetch images");
       }
@@ -127,51 +130,58 @@ export default function Coctails({ which }) {
 
   return (
     <>
-      <div className={classes.addingContainer}>
-        <h4>Dodaj :)</h4>
-        <p>
-          proszę wziąć pod uwagę aby sprawdzić rozmiar zdjęć (dbać o
-          optymalizację)
-        </p>
-        <p>
-          pliki, które mozesz dodac to po prostu zdjecia/zrzuty ekranu jak jpg,
-          png, jpeg
-        </p>
+      <div className={classes.container}>
+        <div className={classes.addingContainer}>
+          <h4>Dodaj :)</h4>
+          <p>
+            proszę wziąć pod uwagę aby sprawdzić rozmiar zdjęć (dbać o
+            optymalizację)
+          </p>
+          <p>
+            pliki, które mozesz dodac to po prostu zdjecia/zrzuty ekranu jak
+            jpg, png, jpeg
+          </p>
 
-        <input
-          id="fileInput"
-          type="file"
-          multiple // Pozwala na wybór wielu plików
-          accept=".jpg,.jpeg,.png" // Restricts file types to JPG, JPEG, and PNG
-          onChange={handleFileUpload}
-        />
-        {isAdding && <h5>Dodawanie zdjęć trwa...</h5>}
+          <input
+            id="fileInput"
+            type="file"
+            multiple // Pozwala na wybór wielu plików
+            accept=".jpg,.jpeg,.png" // Restricts file types to JPG, JPEG, and PNG
+            onChange={handleFileUpload}
+          />
+          {isAdding && <h5>Dodawanie zdjęć trwa...</h5>}
+        </div>
+        <div className={classes.imageContainer}>
+          {images.length > 0 ? (
+            images.map((file, index) => (
+              <div key={file} className={classes.imageWrapper}>
+                <Image
+                  src={file} // Use the full URL here
+                  width={100}
+                  height={100}
+                  alt={`zdjęcie menu nr ${index}`}
+                  layout="responsive"
+                />
+                <button onClick={() => removeImage(file)}>Usuń</button>
+                <button
+                  onClick={() => moveImage(index, -1)}
+                  disabled={index === 0}
+                >
+                  Przesuń w górę
+                </button>
+                <button
+                  onClick={() => moveImage(index, 1)}
+                  disabled={index === images.length - 1}
+                >
+                  Przesuń w dół
+                </button>
+              </div>
+            ))
+          ) : (
+            <div>Nie znaleziono menu (puste)</div>
+          )}
+        </div>
       </div>
-      {images.length > 0 ? (
-        images.map((file, index) => (
-          <div key={file} className={classes.imageWrapper}>
-            <Image
-              src={file} // Use the full URL here
-              width={100}
-              height={100}
-              alt={`Cocktail ${index}`}
-              layout="responsive"
-            />
-            <button onClick={() => removeImage(file)}>Usuń</button>
-            <button onClick={() => moveImage(index, -1)} disabled={index === 0}>
-              Przesuń w górę
-            </button>
-            <button
-              onClick={() => moveImage(index, 1)}
-              disabled={index === images.length - 1}
-            >
-              Przesuń w dół
-            </button>
-          </div>
-        ))
-      ) : (
-        <div>Nie znaleziono menu (puste)</div>
-      )}
     </>
   );
 }

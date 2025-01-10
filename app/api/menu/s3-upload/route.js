@@ -16,7 +16,7 @@ const s3Client = new S3Client({
 async function uploadFileToS3(fileBuffer, fileName, which) {
   const params = {
     Bucket: "hukimuki",
-    Key: `${which}/${fileName}`,
+    Key: `menu/${which}/${fileName}`,
     Body: fileBuffer,
     ContentType: "image/jpg", // Upewnij się, że ContentType pasuje do formatu pliku
   };
@@ -75,7 +75,7 @@ export async function POST(request) {
     }
 
     // Ścieżka do pliku order.json
-    const orderJsonKey = `${which}/order.json`;
+    const orderJsonKey = `menu/${which}/order.json`;
 
     let orderJsonData;
     try {

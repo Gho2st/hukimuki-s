@@ -8,16 +8,35 @@ import { useState, useEffect } from "react";
 import Adult from "@/components/Homepage/Adult";
 
 export default function Menu() {
-  const [isCoctails, setIsCoctails] = useState(false);
-  const [isBeers, setIsBeers] = useState(false);
-  const [isShots, setIsShots] = useState(false);
-  const [isSets, setIsSets] = useState(false);
-  // const [isAlcohol, setIsAlcohol] = useState(false);
-  const [isPromo, setIsPromo] = useState(false);
-  const [isStudentsPromo, setIsStudentsPromo] = useState(false);
-  const [isNapoje, setIsNapoje] = useState(false);
-
+  const [folders, setFolders] = useState([]);
+  const [selectedFolder, setSelectedFolder] = useState(null);
+  const [newFolder, setNewFolder] = useState(""); // Nowy folder do dodania
+  const [loading, setLoading] = useState(false); // Śledzenie stanu ładowania
+  const [error, setError] = useState(null); // Śledzenie błędów
   const [is18, setIs18] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const res = await fetch("/api/menu/get_all_menu");
+        if (!res.ok) throw new Error("Błąd podczas pobierania danych.");
+        const data = await res.json();
+        console.log(data);
+        setFolders(data); // Przypisanie nazw folderów
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const handleFolderClick = (folder) => {
+    setSelectedFolder(folder);
+  };
 
   useEffect(() => {
     const token = localStorage.getItem("isAdult");
@@ -59,137 +78,18 @@ export default function Menu() {
                 <i>Huki Muki</i>
               </h1>
               <h2>Menu</h2>
-              {/* <Image
-                src={"/gifs/3.gif"}
-                width={200}
-                height={200}
-                alt="stukajace sie butelki"
-              /> */}
             </div>
             <div className={classes.buttons}>
-              <button
-                onClick={() => {
-                  setIsCoctails(false);
-                  setIsShots(false);
-                  // setIsAlcohol(false);
-                  setIsBeers(!isBeers);
-                  setIsSets(false);
-                  setIsStudentsPromo(false);
-                  setIsPromo(false);
-                  setIsNapoje(false);
-                }}
-              >
-                Piwa
-              </button>
-
-              <button
-                onClick={() => {
-                  setIsCoctails(!isCoctails);
-                  setIsBeers(false);
-                  // setIsAlcohol(false);
-                  setIsSets(false);
-                  setIsShots(false);
-                  setIsStudentsPromo(false);
-                  setIsPromo(false);
-                  setIsNapoje(false);
-                }}
-              >
-                Koktajle
-              </button>
-              <button
-                onClick={() => {
-                  setIsShots(!isShots);
-                  setIsBeers(false);
-                  setIsCoctails(false);
-                  setIsSets(false);
-                  // setIsAlcohol(false);
-                  setIsPromo(false);
-                  setIsStudentsPromo(false);
-                  setIsNapoje(false);
-                }}
-              >
-                Shoty
-              </button>
-              {/* <button
-                onClick={() => {
-                  setIsShots(false);
-                  setIsBeers(false);
-                  setIsCoctails(false);
-                  setIsAlcohol(!isAlcohol);
-                  setIsPromo(false);
-                  setIsNapoje(false);
-                  setIsStudentsPromo(false);
-                }}
-              >
-                Alkohole
-              </button> */}
-              <button
-                onClick={() => {
-                  setIsShots(false);
-                  setIsBeers(false);
-                  setIsCoctails(false);
-                  setIsSets(!isSets);
-                  // setIsAlcohol(false);
-                  setIsPromo(false);
-                  setIsNapoje(false);
-                  setIsStudentsPromo(false);
-                }}
-              >
-                Zestawy
-              </button>
-
-              <button
-                onClick={() => {
-                  setIsShots(false);
-                  setIsBeers(false);
-                  setIsCoctails(false);
-                  // setIsAlcohol(false);
-                  setIsPromo(false);
-                  setIsNapoje(!isNapoje);
-                  setIsStudentsPromo(false);
-                }}
-              >
-                Napoje
-              </button>
-              <button
-                onClick={() => {
-                  setIsShots(false);
-                  setIsBeers(false);
-                  setIsCoctails(false);
-                  // setIsAlcohol(false);
-                  setIsPromo(!isPromo);
-                  setIsStudentsPromo(false);
-                  setIsNapoje(false);
-                  setIsSets(false);
-                }}
-              >
-                Promocje
-              </button>
-
-              <button
-                onClick={() => {
-                  setIsShots(false);
-                  setIsBeers(false);
-                  setIsCoctails(false);
-                  // setIsAlcohol(false);
-                  setIsPromo(false);
-                  setIsNapoje(false);
-                  setIsStudentsPromo(!isStudentsPromo);
-                  setIsSets(false);
-                }}
-              >
-                Promocje Studenckie
-              </button>
+              {folders.map((folder, index) => {
+                return (
+                  <button key={index} onClick={() => handleFolderClick(folder)}>
+                    {folder.replace("menu/", "").replace("/", "")}
+                  </button>
+                );
+              })}
             </div>
             <div className={classes.menuImages}>
-              {isCoctails && <Which which="coctails" />}
-              {isBeers && <Which which="beers" />}
-              {isShots && <Which which="shots" />}
-              {/* {isAlcohol && <Which which="alcohol" />} */}
-              {isNapoje && <Which which="napoje" />}
-              {isPromo && <Which which="promo" />}
-              {isStudentsPromo && <Which which="students" />}
-              {isSets && <Which which="sets" />}
+              {selectedFolder && <Which which={selectedFolder} />}
             </div>
           </div>
           <Footer />

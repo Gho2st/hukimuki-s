@@ -11,7 +11,10 @@ export default function Coctails({ which }) {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`/api/menu/get_admin_menu?which=${which}`);
+      console.log(which);
+      const response = await fetch(
+        `/api/menu/get_specific_menu?which=${which}`
+      );
       if (!response.ok) {
         throw new Error("Failed to fetch images");
       }
@@ -51,7 +54,7 @@ export default function Coctails({ which }) {
             ))}
           </div>
         ) : (
-          <div>Nie znaleziono menu.</div>
+          <div className={classes.empty}>Nie znaleziono menu.</div>
         )}
       </div>
     </>

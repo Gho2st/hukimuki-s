@@ -18,7 +18,7 @@ const s3Client = new S3Client({
 async function saveOrderToS3(which, images) {
   const params = {
     Bucket: "hukimuki",
-    Key: `${which}/order.json`,
+    Key: `/menu/${which}/order.json`,
     Body: JSON.stringify(images, null, 2),
     ContentType: "application/json",
   };
@@ -31,7 +31,7 @@ async function saveOrderToS3(which, images) {
 async function createDefaultOrderInS3(which) {
   const params = {
     Bucket: "hukimuki",
-    Key: `${which}/order.json`,
+    Key: `/menu/${which}/order.json`,
     Body: JSON.stringify([], null, 2), // Domyślna zawartość to pusty array
     ContentType: "application/json",
   };
@@ -53,7 +53,7 @@ const streamToString = (stream) =>
 async function getOrderFromS3(which) {
   const params = {
     Bucket: "hukimuki",
-    Key: `${which}/order.json`,
+    Key: `/menu/${which}/order.json`,
   };
 
   try {

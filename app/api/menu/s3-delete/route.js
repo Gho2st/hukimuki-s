@@ -19,7 +19,7 @@ const s3Client = new S3Client({
 async function deleteFileFromS3(fileName, which) {
   const params = {
     Bucket: "hukimuki",
-    Key: `${which}/${fileName}`,
+    Key: `menu/${which}/${fileName}`,
   };
 
   const command = new DeleteObjectCommand(params);
@@ -78,7 +78,7 @@ export async function DELETE(request) {
     await deleteFileFromS3(file, which);
 
     // Ścieżka do pliku order.json
-    const orderJsonKey = `${which}/order.json`;
+    const orderJsonKey = `menu/${which}/order.json`;
 
     let orderJsonData;
     try {

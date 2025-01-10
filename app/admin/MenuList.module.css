@@ -1,0 +1,87 @@
+.container {
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+
+.container h3 {
+  text-align: center;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  font-size: 2rem;
+}
+
+.errorInfo p {
+  text-align: center;
+  color: greenyellow;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.inputContainer {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.inputContainer p {
+  font-size: 1.2rem;
+  color: white;
+}
+.inputContainer input {
+  padding: 0.8rem;
+  border: 0;
+  border-radius: 0.1rem;
+}
+.inputContainer button {
+  margin-left: 1rem;
+  padding: 1rem;
+  border: 0;
+  border-radius: 1rem;
+  background: blue;
+  color: white;
+  font-size: 1rem;
+}
+
+.inputContainer button:hover {
+  cursor: pointer;
+  background: rgb(50, 50, 248);
+}
+.buttonsList {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 3rem;
+}
+
+.itemContainer {
+  padding: 1rem;
+  border: 0.2rem solid green;
+  border-radius: 1rem;
+}
+
+.mainButton {
+  padding: 1rem;
+  font-size: 1.5rem;
+  border: 0;
+  border-radius: 1rem;
+  margin-bottom: 3rem;
+  background-color: rgb(58, 58, 58);
+  color: white;
+}
+.mainButton:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.functionalButtons button {
+  margin: 0.2rem;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  border-radius: 0.5rem;
+  border: 0;
+  color: white;
+  background: rgb(0, 81, 0);
+}
+.functionalButtons button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}

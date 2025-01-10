@@ -7,6 +7,7 @@ import ButtonOnClick from "@/components/UI/Buttons/ButtonOnClick";
 import AdminMenu from "./AdminMenu";
 import NewEvent from "./NewEvent";
 import AdminGallery from "./AdminGallery";
+import MenuList from "./MenuList";
 
 export default function Admin() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -91,7 +92,8 @@ export default function Admin() {
           />
         </div>
         {isEvents && <NewEvent />}
-        {isMenu && <AdminMenu />}
+        {/* {isMenu && <AdminMenu />} */}
+        {isMenu && <MenuList />}
         {isGallery && <AdminGallery />}
       </div>
       <Footer />

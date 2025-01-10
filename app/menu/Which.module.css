@@ -19,6 +19,11 @@
   font-size: 1.3rem;
 }
 
+.empty{
+  text-align: center;
+  font-size: 1.2rem;
+}
+
 @media (max-width: 1200px) {
   .imagesContainer {
     grid-template-columns: 1fr 1fr;
