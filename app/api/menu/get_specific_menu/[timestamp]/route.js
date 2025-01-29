@@ -17,6 +17,7 @@ export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url);
     const which = searchParams.get("which");
+    console.log(which)
 
     if (!which) {
       return NextResponse.json([], { status: 400 });
