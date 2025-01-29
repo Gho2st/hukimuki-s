@@ -75,11 +75,11 @@ export async function GET(request) {
               item.Key.endsWith(".jpeg"))
         ) // Filtruj tylko obrazy
         .map(
-          (item) =>
-            `https://hukimuki.s3.eu-central-1.amazonaws.com/${item.Key}`
+          (item) => `https://hukimuki.s3.eu-central-1.amazonaws.com/${item.Key}`
         );
     }
 
+    console.log(imageUrls);
     return NextResponse.json(imageUrls);
   } catch (error) {
     console.log("Error occurred:", error);

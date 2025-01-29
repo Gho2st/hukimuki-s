@@ -59,7 +59,7 @@ export default function Admin() {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div className={classes.container2}>
         <h1>Panel Admina</h1>
         <p>Witaj w panelu admina!</p>
