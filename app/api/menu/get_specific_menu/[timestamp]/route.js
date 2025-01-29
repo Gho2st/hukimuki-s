@@ -25,7 +25,7 @@ export async function GET(request) {
     // Spróbuj pobrać plik order.json z hukimuki/menu/order.json
     const params = {
       Bucket: "hukimuki",
-      Key: `/menu/${which}/order.json`,
+      Key: `menu/${which}/order.json`,
     };
 
     let imageUrls;

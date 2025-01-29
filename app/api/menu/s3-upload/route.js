@@ -25,7 +25,9 @@ async function uploadFileToS3(fileBuffer, fileName, which) {
   const command = new PutObjectCommand(params);
   await s3Client.send(command);
 
-  const s3Url = `https://hukimuki.s3.eu-central-1.amazonaws.com/${which}/${fileName}`;
+  const s3Url = `https://hukimuki.s3.eu-central-1.amazonaws.com/menu/${encodeURIComponent(
+    which
+  )}/${fileName}`;
   return s3Url;
 }
 
