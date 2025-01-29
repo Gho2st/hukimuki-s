@@ -75,7 +75,10 @@ export async function GET(request) {
               item.Key.endsWith(".jpeg"))
         ) // Filtruj tylko obrazy
         .map(
-          (item) => `https://hukimuki.s3.eu-central-1.amazonaws.com/${item.Key}`
+          (item) =>
+            `https://hukimuki.s3.eu-central-1.amazonaws.com/${encodeURIComponent(
+              item.Key
+            )}`
         );
     }
 
