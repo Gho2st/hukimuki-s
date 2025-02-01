@@ -9,8 +9,8 @@ export default function Coctails({ which }) {
   const [isAdding, setIsAdding] = useState(false);
   const [uploadError, setUploadError] = useState(null); // Stan dla błędów przesyłania
   const [uploadSuccess, setUploadSuccess] = useState(null); // Stan dla komunikatu o sukcesie
-  const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB dla pojedynczego pliku
-  const MAX_TOTAL_SIZE = 10 * 1024 * 1024; // 10 MB dla całego zapytania
+  const MAX_FILE_SIZE = 4.5 * 1024 * 1024; // 4.5 MB dla pojedynczego pliku
+  const MAX_TOTAL_SIZE = 4.5 * 1024 * 1024; // 4.5 MB dla całego zapytania
   const timestamp = Date.parse(new Date().toString());
 
   // Fetch images from the server

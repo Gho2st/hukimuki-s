@@ -56,6 +56,7 @@ export async function POST(request) {
     const mailOptions = {
       from: "hukimuki.rezerwacje@gmail.com",
       to: `${data.email}, hukimukiflorianska@gmail.com`,
+      // to: `${data.email}, dominik.jojczyk@gmail.com`,
       // to: "jestemfajny1244@gmail.com",
       subject: "Potwierdzenie Rezerwacji w Huki Muki",
       html: `
