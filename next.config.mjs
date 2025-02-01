@@ -6,7 +6,7 @@ const nextConfig = {
   },
   reactStrictMode: false,
   experimental: {
-    bodySizeLimit: "10mb", // Możesz ustawić większy limit, jeśli chcesz
+    bodySizeLimit: "25mb", // Możesz ustawić większy limit, jeśli chcesz
   },
 };
 
