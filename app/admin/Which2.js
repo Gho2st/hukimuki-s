@@ -57,7 +57,7 @@ export default function Coctails({ which }) {
       totalSize += file.size;
       if (totalSize > MAX_TOTAL_SIZE) {
         setUploadError(
-          "Łączny rozmiar plików przekracza 10MB. Dodaj mniej plików lub skompresuj zdjęcia."
+          "Łączny rozmiar plików przekracza 4.5 mb. Dodaj mniej plików lub skompresuj zdjęcia."
         );
         setIsAdding(false);
         return;
