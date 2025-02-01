@@ -66,6 +66,7 @@ export async function DELETE(request) {
     const { searchParams } = new URL(request.url);
     const file = searchParams.get("file");
     const which = searchParams.get("which");
+    console.log(searchParams)
 
     if (!file || !which) {
       return NextResponse.json(

@@ -5,6 +5,9 @@ const nextConfig = {
     unoptimized: true,
   },
   reactStrictMode: false,
+  experimental: {
+    bodySizeLimit: "10mb", // Możesz ustawić większy limit, jeśli chcesz
+  },
 };
 
 export default nextConfig;
