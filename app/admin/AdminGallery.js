@@ -10,8 +10,8 @@ export default function AdminGallery() {
   const [error, setError] = useState(null);
   const [isAdding, setIsAdding] = useState(false);
   const [uploadError, setUploadError] = useState(null); // Stan dla błędów przesyłania
-  const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB dla pojedynczego pliku
-  const MAX_TOTAL_SIZE = 10 * 1024 * 1024; // 10 MB dla całego zapytania
+  const MAX_FILE_SIZE = 4.5 * 1024 * 1024; // 4.5 MB dla pojedynczego pliku
+  const MAX_TOTAL_SIZE = 4.5 * 1024 * 1024; // 4.5 MB dla całego zapytania
   const timestamp = Date.parse(new Date().toString());
 
   // Funkcja do pobierania obrazów
@@ -54,14 +54,16 @@ export default function AdminGallery() {
 
     for (const file of files) {
       if (file.size > MAX_FILE_SIZE) {
-        setUploadError(`Plik ${file.name} przekracza maksymalny rozmiar 10MB.`);
+        setUploadError(
+          `Plik ${file.name} przekracza maksymalny rozmiar 4.5MB.`
+        );
         setIsAdding(false);
         return;
       }
       totalSize += file.size;
       if (totalSize > MAX_TOTAL_SIZE) {
         setUploadError(
-          "Łączny rozmiar plików przekracza 10MB. Dodaj mniej plików lub skompresuj zdjęcia."
+          "Łączny rozmiar plików przekracza 4.5MB. Dodaj mniej plików lub skompresuj zdjęcia."
         );
         setIsAdding(false);
         return;

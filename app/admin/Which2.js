@@ -50,7 +50,9 @@ export default function Coctails({ which }) {
     // Validate file sizes before upload
     for (const file of files) {
       if (file.size > MAX_FILE_SIZE) {
-        setUploadError(`Plik ${file.name} przekracza maksymalny rozmiar 10MB.`);
+        setUploadError(
+          `Plik ${file.name} przekracza maksymalny rozmiar 4.5MB.`
+        );
         setIsAdding(false);
         return;
       }
