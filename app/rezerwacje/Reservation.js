@@ -21,7 +21,7 @@ export default function Reservation() {
   return (
     <>
       <div className={classes.container}>
-        <Reservationitem
+        {/* <Reservationitem
           title="Antresola - 4 osoby"
           lvl="Poziom 0"
           price="300zł"
@@ -76,7 +76,7 @@ export default function Reservation() {
               lvl: "Poziom 0",
             })
           }
-        />
+        /> */}
         <Reservationitem
           title="CLUB - 2 osoby"
           lvl="Poziom -1"
