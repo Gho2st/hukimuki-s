@@ -1,8 +1,7 @@
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import TransitionProvider from "@/components/animations/TransitionProvider";
-import { Metadata } from "next";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 const poppins = Poppins({
   weight: ["200", "300", "400", "500", "600", "700"],
@@ -52,10 +51,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="pl">
+      <GoogleTagManager gtmId="GTM-THZF9JRL" />
       <body className={poppins.className}>
         <TransitionProvider>{children}</TransitionProvider>
       </body>
-      <GoogleAnalytics gaId="G-4NPSC43RN9" />
     </html>
   );
 }
