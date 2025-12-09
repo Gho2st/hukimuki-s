@@ -79,10 +79,20 @@ export default function Menu() {
               </h1>
               <h2>Menu</h2>
             </div>
-            {loading && <p className={classes.loading}>Ładowanie menu...</p>}{" "}
-            {/* Komunikat o ładowaniu */}
-            {error && <p className={classes.error}>Błąd: {error}</p>}{" "}
-            {/* Komunikat o błędzie */}
+
+            {/* 1. Komunikat o ładowaniu */}
+            {loading && <p className={classes.loading}>Ładowanie menu...</p>}
+
+            {/* 2. Komunikat o błędzie */}
+            {error && <p className={classes.error}>Błąd: {error}</p>}
+
+            {/* 3. NOWE: Komunikat o pustym menu (gdy nie ma błędu, nie ładuje, a lista jest pusta) */}
+            {!loading && !error && folders.length === 0 && (
+              <p className={classes.loading}>
+                Aktualnie brak dostępnych pozycji w menu.
+              </p>
+            )}
+
             <div className={classes.buttons}>
               {folders.map((folder, index) => {
                 return (

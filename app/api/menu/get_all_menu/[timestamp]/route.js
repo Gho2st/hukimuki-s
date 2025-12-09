@@ -15,7 +15,7 @@ const s3Client = new S3Client({
 
 export async function GET(request) {
   try {
-    // Function to convert a stream to a string
+    // Funkcja konwertująca stream na string
     const streamToString = (stream) =>
       new Promise((resolve, reject) => {
         const chunks = [];
@@ -26,7 +26,7 @@ export async function GET(request) {
         );
       });
 
-    // Fetch the order.json file
+    // 1. Pobieranie pliku order.json
     let orderList = [];
     try {
       const orderParams = {
@@ -38,13 +38,13 @@ export async function GET(request) {
       const orderData = await s3Client.send(orderCommand);
       const orderJson = await streamToString(orderData.Body);
 
-      orderList = JSON.parse(orderJson); // Parse the contents of order.json
+      orderList = JSON.parse(orderJson);
       console.log("Order from order.json:", orderList);
     } catch (error) {
       console.log("Failed to fetch order.json. Defaulting to unordered list.");
     }
 
-    // Fetch the list of folders from S3
+    // 2. Pobieranie listy folderów z S3
     const listParams = {
       Bucket: "hukimuki",
       Prefix: `menu/`,
@@ -54,13 +54,16 @@ export async function GET(request) {
     const listCommand = new ListObjectsV2Command(listParams);
     const listData = await s3Client.send(listCommand);
 
-    const folderNames = listData.CommonPrefixes.map((prefix) =>
-      prefix.Prefix.replace(`menu/`, "").replace("/", "")
-    ).filter((name) => name);
+    // --- POPRAWKA TUTAJ ---
+    // Dodano (listData.CommonPrefixes || []), aby uniknąć błędu 'undefined',
+    // gdy S3 nie zwróci żadnych podfolderów.
+    const folderNames = (listData.CommonPrefixes || [])
+      .map((prefix) => prefix.Prefix.replace(`menu/`, "").replace("/", ""))
+      .filter((name) => name);
 
     console.log("Unordered folder names:", folderNames);
 
-    // Sort the folders based on the order in order.json
+    // 3. Sortowanie folderów na podstawie order.json
     const orderedSet = new Set(orderList);
     const orderedFolders = orderList.filter((folder) =>
       folderNames.includes(folder)
@@ -68,13 +71,13 @@ export async function GET(request) {
 
     const unorderedFolders = folderNames
       .filter((folder) => !orderedSet.has(folder))
-      .sort(); // Sort remaining folders alphabetically
+      .sort(); // Sortowanie reszty alfabetycznie
 
     const sortedFolders = [...orderedFolders, ...unorderedFolders];
 
     console.log("Sorted folder names:", sortedFolders);
 
-    return NextResponse.json(sortedFolders); // Return the sorted list of folders
+    return NextResponse.json(sortedFolders);
   } catch (error) {
     console.error("Error occurred:", error);
     return NextResponse.json([], { status: 500 });

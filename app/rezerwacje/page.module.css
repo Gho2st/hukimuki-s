@@ -2,12 +2,90 @@
   min-height: 100vh;
   padding: 2rem 9%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Wyśrodkowanie elementów w pionie */
 }
 
 .container h1 {
   font-size: 3.5rem;
   margin-top: 5rem;
+  margin-bottom: 3rem; /* Dodany odstęp pod tytułem */
 }
+
+/* --- Nowe style dla sekcji kontaktowej --- */
+.contactWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  width: 100%;
+  max-width: 1000px;
+  flex-wrap: wrap; /* Zawijanie na mniejszych ekranach */
+}
+
+.contactCard {
+  background: rgba(255, 255, 255, 0.03); /* Bardzo delikatne tło */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.contactCard:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.contactCard h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.contactCard p {
+  color: #b4b4b4;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+.actionButton {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.actionButton:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Opcjonalnie: Inny kolor hover dla Instagrama */
+.instaButton:hover {
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  border-color: transparent;
+  color: #fff;
+}
+/* ----------------------------------------- */
 
 .container p {
   color: #b4b4b4;
@@ -15,6 +93,8 @@
 
 .text {
   margin-top: 1rem;
+  font-size: 0.9rem;
+  opacity: 0.7;
 }
 
 @media (max-width: 1200px) {
@@ -28,6 +108,15 @@
   .container h1 {
     font-size: 2.3rem;
   }
+
+  .contactWrapper {
+    gap: 1.5rem;
+  }
+
+  .contactCard {
+    padding: 2rem 1.5rem;
+  }
+
   .container p {
     color: #b4b4b4;
     font-size: 0.9rem;

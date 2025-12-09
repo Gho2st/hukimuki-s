@@ -8,7 +8,7 @@ export async function POST(request) {
   // zmienic tez na vercel
 
   if (password === adminPassword) {
-    // Możesz użyć tokenów sesji, cookies lub innych metod do zarządzania autoryzacją 
+    // Możesz użyć tokenów sesji, cookies lub innych metod do zarządzania autoryzacją
     return NextResponse.json({ message: "Pomyślne logowanie" });
   } else {
     return NextResponse.json(
