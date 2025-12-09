@@ -10,7 +10,7 @@ const s3Client = new S3Client({
 });
 
 export async function GET(request) {
-  console.log("tutaj api get gallery");
+  // console.log("tutaj api get gallery");
   const bucketName = "hukimuki";
   const prelink = "https://hukimuki.s3.eu-central-1.amazonaws.com/";
 

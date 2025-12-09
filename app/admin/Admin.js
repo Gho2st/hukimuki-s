@@ -1,10 +1,9 @@
 "use client";
 import Footer from "@/components/UI/Footer/Footer";
-import Header from "@/components/UI/Header/Header";
 import React, { useState } from "react";
 import classes from "./Admin.module.css";
 import ButtonOnClick from "@/components/UI/Buttons/ButtonOnClick";
-import NewEvent from "./NewEvent";
+// import NewEvent from "./NewEvent";
 import AdminGallery from "./AdminGallery";
 import MenuList from "./MenuList";
 
@@ -65,14 +64,14 @@ export default function Admin() {
         <p>Witaj w panelu admina!</p>
         <ButtonOnClick onClick={handleLogout} text="Wyloguj się" />
         <div className={classes.buttons}>
-          <ButtonOnClick
+          {/* <ButtonOnClick
             onClick={() => {
               setIsEvents(!isEvents);
               setIsGallery(false);
               setIsMenu(false);
             }}
             text="Eventy"
-          />
+          /> */}
           <ButtonOnClick
             onClick={() => {
               setIsMenu(!isMenu);
@@ -90,7 +89,7 @@ export default function Admin() {
             text="Galeria"
           />
         </div>
-        {isEvents && <NewEvent />}
+        {/* {isEvents && <NewEvent />} */}
         {isMenu && <MenuList />}
         {isGallery && <AdminGallery />}
       </div>

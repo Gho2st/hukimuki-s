@@ -46,11 +46,11 @@ export default function Rezerwacje() {
           </div>
         </div>
 
-        <p className={classes.text}>
+        {/* <p className={classes.text}>
           *kwota rezerwacji do wykorzystania w barze
           <br />
           **rezerwacja do opłacenia na miejscu
-        </p>
+        </p> */}
 
         {/* <Reservation /> */}
       </div>
